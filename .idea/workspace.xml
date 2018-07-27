@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="88c1eef5-65fe-40b7-be2a-db96cd50f48a" name="Default" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_in_test_baidu_py.coverage" NAME="Unittests in test_baidu.py Coverage Results" MODIFIED="1528527722431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_for_test_baidu_BaiduTest_test_baidu.coverage" NAME="Unittests for test_baidu.BaiduTest.test_baidu Coverage Results" MODIFIED="1528519632599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/AT_Demo$main.coverage" NAME="main Coverage Results" MODIFIED="1528553148958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_in_test_baidu2_py.coverage" NAME="Unittests in test_baidu2.py Coverage Results" MODIFIED="1528525618518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/AT_Demo$conn_oracle.coverage" NAME="conn_oracle Coverage Results" MODIFIED="1530690798552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AT_Demo$log.coverage" NAME="log Coverage Results" MODIFIED="1528536179281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_for_test_baidu_BaiduTests_test_baidu.coverage" NAME="Unittests for test_baidu.BaiduTests.test_baidu Coverage Results" MODIFIED="1528530153155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/AT_Demo_Show$Unittests_for_app_ATtest_BaiduTests_test_jyb_login_demo.coverage" NAME="Unittests for app_ATtest.BaiduTests.test_jyb_login_demo Coverage Results" MODIFIED="1532531839265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases/functions" />
+    <SUITE FILE_PATH="coverage/AT_Demo$logger.coverage" NAME="logger Coverage Results" MODIFIED="1528527350909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_for_cases_test_baidu_BaiduTests.coverage" NAME="Unittests for cases.test_baidu.BaiduTests Coverage Results" MODIFIED="1528520870150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_in_est_baidu_py.coverage" NAME="Unittests in est_baidu.py Coverage Results" MODIFIED="1528519298815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_in_Index_py.coverage" NAME="Unittests in Index.py Coverage Results" MODIFIED="1528469158439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_for_test_baidu2_BaiduTest.coverage" NAME="Unittests for test_baidu2.BaiduTest Coverage Results" MODIFIED="1528520004472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/AT_Demo_Show$Unittests_for_app_ATtest_BaiduTests_test_baidu.coverage" NAME="Unittests for app_ATtest.BaiduTests.test_baidu Coverage Results" MODIFIED="1531214094168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases/functions" />
+    <SUITE FILE_PATH="coverage/AT_Demo_Show$log.coverage" NAME="log Coverage Results" MODIFIED="1531301497064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_for_test_baidu_BaiduTests.coverage" NAME="Unittests for test_baidu.BaiduTests Coverage Results" MODIFIED="1528534995599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/AT_Demo$main_func.coverage" NAME="main_func Coverage Results" MODIFIED="1528538147613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AT_Demo$main_entrance.coverage" NAME="main_entrance Coverage Results" MODIFIED="1528516008009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AT_Demo_Show$Unittests_for_app_ATtest_BaiduTests.coverage" NAME="Unittests for app_ATtest.BaiduTests Coverage Results" MODIFIED="1532532069208" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases/functions" />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_for_test_baidu2_BaiduTest_test_baidu.coverage" NAME="Unittests for test_baidu2.BaiduTest.test_baidu Coverage Results" MODIFIED="1528521390734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/AT_Demo$Unittests_for_test_baidu_BaiduTest.coverage" NAME="Unittests for test_baidu.BaiduTest Coverage Results" MODIFIED="1528519387816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases" />
+    <SUITE FILE_PATH="coverage/AT_Demo_Show$Unittests_in_app_ATtest_py.coverage" NAME="Unittests in app_ATtest.py Coverage Results" MODIFIED="1531301603127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/cases/functions" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="app_ATtest.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cases/functions/app_ATtest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+              <folding>
+                <element signature="e#16#46#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common_func.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/common_func.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3675">
+              <caret line="158" column="28" selection-start-line="158" selection-start-column="28" selection-end-line="158" selection-end-column="28" />
+              <folding>
+                <element signature="e#37#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>self.mylogger</find>
+      <find>log</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>my_logger</replace>
+      <replace>self.log</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Index.py" />
+        <option value="$PROJECT_DIR$/youdao.py" />
+        <option value="$PROJECT_DIR$/main_entrance.py" />
+        <option value="$PROJECT_DIR$/report/main.py" />
+        <option value="$PROJECT_DIR$/common/commonFunction.py" />
+        <option value="$PROJECT_DIR$/cases/test_youdao.py" />
+        <option value="$PROJECT_DIR$/main_smoking.py" />
+        <option value="$PROJECT_DIR$/logs/20180609 124308.log" />
+        <option value="$PROJECT_DIR$/logs/20180609 124712.log" />
+        <option value="$PROJECT_DIR$/logs/20180609 143504.log" />
+        <option value="$PROJECT_DIR$/cases/test_baidu2.py" />
+        <option value="$PROJECT_DIR$/log_cfg.py" />
+        <option value="$PROJECT_DIR$/log_cfg.conf" />
+        <option value="$PROJECT_DIR$/cases/test_baidu.py" />
+        <option value="$PROJECT_DIR$/common/logger.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/common/conn_mysql.py" />
+        <option value="$PROJECT_DIR$/main_func.py" />
+        <option value="$PROJECT_DIR$/interface.ini" />
+        <option value="$PROJECT_DIR$/common/read_interface_ini.py" />
+        <option value="$PROJECT_DIR$/common/configHTTP.py" />
+        <option value="$PROJECT_DIR$/common/readFilesData.py" />
+        <option value="$PROJECT_DIR$/common/connect_mysql.py" />
+        <option value="$PROJECT_DIR$/main_Interface.py" />
+        <option value="$PROJECT_DIR$/common/conn_oracle.py" />
+        <option value="$PROJECT_DIR$/common/conn_MSServer.py" />
+        <option value="$PROJECT_DIR$/common/Interface.py" />
+        <option value="$PROJECT_DIR$/common/log.py" />
+        <option value="$PROJECT_DIR$/common/common_func.py" />
+        <option value="$PROJECT_DIR$/cases/functions/app_ATtest.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="71" />
+    <option name="y" value="60" />
+    <option name="width" value="1460" />
+    <option name="height" value="894" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="AT_Demo_Show" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AT_Demo_Show" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AT_Demo_Show" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AT_Demo_Show" type="462c0819:PsiDirectoryNode" />
+              <item name="cases" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AT_Demo_Show" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AT_Demo_Show" type="462c0819:PsiDirectoryNode" />
+              <item name="cases" type="462c0819:PsiDirectoryNode" />
+              <item name="functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AT_Demo_Show" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AT_Demo_Show" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="Ini" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pythonTechnologys" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\python\Projects\AT_Demo\cases\functions" />
+      <recent name="D:\projects\python\Projects\AT_Demo\cases\module1" />
+      <recent name="D:\projects\python\Projects\AT_Demo\cases\sub1" />
+      <recent name="D:\projects\python\Projects\AT_Demo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Py_Projects\AT_Demo_Show\cases\functions" />
+      <recent name="D:\Py_Projects\AT_Demo\common" />
+      <recent name="D:\projects\python\Projects\AT_Demo\cases" />
+      <recent name="D:\projects\python\Projects\AT_Demo\common" />
+      <recent name="D:\projects\python\Projects\AT_Demo\report" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python tests.Unittests for app_ATtest.BaiduTests">
+    <configuration name="log" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="AT_Demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/common" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/common/log.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="Unittests for app_ATtest.BaiduTests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="AT_Demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cases/functions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;app_ATtest.BaiduTests&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for app_ATtest.BaiduTests.test_baidu" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="AT_Demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cases/functions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;app_ATtest.BaiduTests.test_baidu&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests for app_ATtest.BaiduTests.test_jyb_login_demo" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="AT_Demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cases/functions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;app_ATtest.BaiduTests.test_jyb_login_demo&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+    </configuration>
+    <configuration name="Unittests in app_ATtest.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="AT_Demo" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cases/functions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/cases/functions/app_ATtest.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
+    <list>
+      <item itemvalue="Python tests.Unittests for app_ATtest.BaiduTests.test_baidu" />
+      <item itemvalue="Python tests.Unittests for app_ATtest.BaiduTests" />
+      <item itemvalue="Python tests.Unittests in app_ATtest.py" />
+      <item itemvalue="Python tests.Unittests for app_ATtest.BaiduTests.test_jyb_login_demo" />
+      <item itemvalue="Python.log" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Unittests for app_ATtest.BaiduTests" />
+        <item itemvalue="Python tests.Unittests for app_ATtest.BaiduTests.test_jyb_login_demo" />
+        <item itemvalue="Python tests.Unittests in app_ATtest.py" />
+        <item itemvalue="Python.log" />
+        <item itemvalue="Python tests.Unittests for app_ATtest.BaiduTests.test_baidu" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="88c1eef5-65fe-40b7-be2a-db96cd50f48a" name="Default" comment="" />
+      <created>1528468851433</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1528468851433</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests_test_jyb_login_demo - 2018.07.25 at 21h 18m 17s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests.test_jyb_login_demo" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests_test_jyb_login_demo - 2018.07.25 at 21h 23m 30s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests.test_jyb_login_demo" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests_test_jyb_login_demo - 2018.07.25 at 21h 24m 25s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests.test_jyb_login_demo" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests_test_jyb_login_demo - 2018.07.25 at 21h 38m 18s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests.test_jyb_login_demo" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests - 2018.07.25 at 22h 21m 28s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests - 2018.07.25 at 22h 22m 09s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests - 2018.07.25 at 23h 17m 04s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests_test_jyb_login_demo - 2018.07.25 at 23h 17m 29s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests.test_jyb_login_demo" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests - 2018.07.25 at 23h 20m 15s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_app_ATtest_BaiduTests - 2018.07.25 at 23h 21m 19s.xml">
+      <configuration name="Unittests for app_ATtest.BaiduTests" configurationId="tests" />
+    </history-entry>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="71" y="60" width="1460" height="894" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4287548" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3137119" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.407319" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Data View" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32914287" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/logs/20180609 124308.log" />
+    <entry file="file://$PROJECT_DIR$/logs/20180609 130806.log" />
+    <entry file="file://D:/Python/Python36/Lib/unittest/suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cases/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/20180609 124712.log" />
+    <entry file="file://$PROJECT_DIR$/logs/20180609 143230.log" />
+    <entry file="file://$PROJECT_DIR$/report/2018-06-09 14_32_49result.html" />
+    <entry file="file://$PROJECT_DIR$/logs/20180609 143504.log" />
+    <entry file="file://$PROJECT_DIR$/logs/20180609 144100.log" />
+    <entry file="file://$PROJECT_DIR$/logs/20180609 144600.log" />
+    <entry file="file://$PROJECT_DIR$/report/2018-06-09 14_52_14result.html" />
+    <entry file="file://$PROJECT_DIR$/logs/20180609 145838.log" />
+    <entry file="file://$PROJECT_DIR$/logs/20180609 153133.log" />
+    <entry file="file://$PROJECT_DIR$/logs/20180609 153651.log" />
+    <entry file="file://$PROJECT_DIR$/cases/functions/test_youdao.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/20180609 154233.log" />
+    <entry file="file://D:/Python/Python36/Lib/configparser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="958" selection-start-line="958" selection-end-line="958" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log_cfg.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/2018-06-09 16_40_08_func_result.html" />
+    <entry file="file://$PROJECT_DIR$/geckodriver.log" />
+    <entry file="file://D:/Python/Python36/Lib/logging/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="108" selection-start-line="108" selection-end-line="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/2018-06-09 17_05_37_func_result.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/2018-06-09 17_34_14_func_result.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="10" lean-forward="true" selection-start-line="18" selection-start-column="10" selection-end-line="18" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/20180609 174150.log" />
+    <entry file="file://$PROJECT_DIR$/report/2018-06-09 22_05_49_func_result.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cases/functions/test_baidu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="31" column="21" selection-start-line="31" selection-start-column="21" selection-end-line="31" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cases/functions/test_baidu2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interface" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.ini" />
+    <entry file="file://$PROJECT_DIR$/main_smoking.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_func.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="925">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/configHTTP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/connect_mysql.py" />
+    <entry file="file://$PROJECT_DIR$/main_Interface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/InterfaceClass.py" />
+    <entry file="file://$PROJECT_DIR$/common/logger.py" />
+    <entry file="file://$PROJECT_DIR$/common/readFilesData.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/uploadFile.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/conn_oracle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2250">
+          <caret line="90" selection-start-line="45" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interface.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/conn_MSServer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/20180609 174420.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/read_interface_ini.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/conn_mysql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="34" column="18" selection-start-line="32" selection-start-column="4" selection-end-line="34" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/Interface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/20180711 173323.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/log.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/common_func.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3675">
+          <caret line="158" column="28" selection-start-line="158" selection-start-column="28" selection-end-line="158" selection-end-column="28" />
+          <folding>
+            <element signature="e#37#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Python/Python36/Lib/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cases/functions/app_ATtest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+          <folding>
+            <element signature="e#16#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

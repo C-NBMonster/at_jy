@@ -1,0 +1,9 @@
+test_baidu (module1.test_baidu2.BaiduTest) ... ok
+test_xx (module1.test_baidu2.BaiduTest) ... ok
+test_baidu (test_baidu.BaiduTests) ... ok
+test_youdao (test_youdao.YoudaoTest) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 41.904s
+
+OK
