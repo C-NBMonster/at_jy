@@ -181,7 +181,7 @@ class C_selenium_rewrite():
 
     def get_text(self, loc):
         """
-        获取text内容
+        获取元素text内容
         :param loc:元素定位
         :return:
         """
