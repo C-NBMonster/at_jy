@@ -1,3 +1,4 @@
+#coding:utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,48 +6,49 @@
 @software: JYB_Android_AT
 @file: rewrite.py
 @time: 2018/9/3 14:14
-@desc: ÖØĞ´seleniumÖĞµÄÔªËØ²Ù×÷·½·¨
+@desc: é‡å†™seleniumä¸­çš„å…ƒç´ æ“ä½œæ–¹æ³•
 """
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
+
 import time
 
 
 class C_selenium_rewrite():
     """
-    ·â×°²¿·ÖAPI£¬Ê¹ÓÃµÄÊ±ºò¼ÇµÃ°ÑBy¸øµ¼Èë½øÀ´
+    å°è£…éƒ¨åˆ†APIï¼Œä½¿ç”¨çš„æ—¶å€™è®°å¾—æŠŠByç»™å¯¼å…¥è¿›æ¥
     """
-    def find_el(self, loc):
+    def find_el(self, driver, timeOut, loc):
         """
-        ²éÕÒµ¥¸öÔªËØ
-        :param loc:ÔªËØ¶¨Î»
+        æŸ¥æ‰¾å•ä¸ªå…ƒç´ 
+        :param loc:å…ƒç´ å®šä½
         :return:
         :usage:driver.find_el((By.XPATH,"//a"))
         """
         try:
-            WebDriverWait(self.driver, self.timeout).until(lambda driver: driver.find_element(*loc).is_displayed())
-            return self.driver.find_element(*loc)
+            WebDriverWait(driver, timeOut).until(lambda driver: driver.find_element(*loc).is_displayed())
+            return driver.find_element(*loc)
         except Exception as e:
-            print(u"%s Ò³ÃæÖĞ³¬Ê±%dsÎ´ÄÜÕÒµ½ %s ÔªËØ%s" % (self, self.timeout, loc, e))
+            print(u"%s é¡µé¢ä¸­è¶…æ—¶%dsæœªèƒ½æ‰¾åˆ° %s å…ƒç´ %s" % (self, timeOut, loc, e))
 
-    def find_els(self, loc):
+    def find_els(self, driver, timeOut, loc):
         """
-        ²éÕÒ¶à¸öÔªËØ
-        :param loc:ÔªËØ¶¨Î»
+        æŸ¥æ‰¾å¤šä¸ªå…ƒç´ 
+        :param loc:å…ƒç´ å®šä½
         :return:
         :usage:driver.find_els((By.XPATH,"//a"))
         """
         try:
-            WebDriverWait(self.driver, self.timeout).until(lambda driver: driver.find_elements(*loc).is_displayed())
-            return self.driver.find_element(*loc)
+            WebDriverWait(driver, timeOut).until(lambda driver: driver.find_elements(*loc).is_displayed())
+            return driver.find_element(*loc)
         except Exception as e:
-            print(u"%s Ò³ÃæÖĞ³¬Ê±%dsÎ´ÄÜÕÒµ½ %s ÔªËØ%s" % (self, self.timeout, loc, e))
+            print(u"%s é¡µé¢ä¸­è¶…æ—¶%dsæœªèƒ½æ‰¾åˆ° %s å…ƒç´ %s" % (self, timeOut, loc, e))
 
     def click_keys(self, loc):
         """
-        µã»÷ÔªËØ
-        :param loc:ÔªËØ¶¨Î»
+        ç‚¹å‡»å…ƒç´ 
+        :param loc:å…ƒç´ å®šä½
         :return:
         :usage:driver.click_keys((By.XPATH,"//a"))
         """
@@ -54,8 +56,8 @@ class C_selenium_rewrite():
 
     def clear_keys(self, loc):
         """
-        Çå³ıÊäÈë¿òµÄÄÚÈİ
-        :param loc:ÔªËØ¶¨Î»
+        æ¸…é™¤è¾“å…¥æ¡†çš„å†…å®¹
+        :param loc:å…ƒç´ å®šä½
         :return:
         :usage:driver.clear_keys((By.XPATH,"//a"))
         """
@@ -63,127 +65,186 @@ class C_selenium_rewrite():
 
     def send_keys(self, loc, content):
         """
-        ÏòÊäÈë¿ò·¢ËÍÄÚÈİ:
-        handle:ÔªËØ¾ä±ú
-        content:ÏòÔªËØ·¢ËÍµÄÄÚÈİ
+        å‘è¾“å…¥æ¡†å‘é€å†…å®¹:
+        handle:å…ƒç´ å¥æŸ„
+        content:å‘å…ƒç´ å‘é€çš„å†…å®¹
         Usage:driver.send_keys((By.XPATH,"//a"),'a')
         """
         self.clear_keys(loc).clear()
         self.find_el(loc).send_keys(content)
 
-    def exec_script(self, src):
+    def exec_script(self, driver, src):
         """
-        Ö´ĞĞÆäËüÓïÑÔµÄ½Å±¾£¬JS
+        æ‰§è¡Œå…¶å®ƒè¯­è¨€çš„è„šæœ¬ï¼ŒJS
         :param src:
         :return:
         Usage:exec_script(src)
         """
-        return self.driver.execute_script(src)
+        return driver.execute_script(src)
 
-    def right_click(self, loc):
+    def right_click(self, driver, loc):
         """
-        ÓÒ»÷
+        å³å‡»
         :param loc:
         :return:
         Usage: right_click((By.XPATH,"//a"))
         """
         el = self.find_el(loc)
-        ActionChains(self.driver).context_click(el).perform()
+        ActionChains(driver).context_click(el).perform()
 
-    def move_to_element(self, loc):
+    def move_to_element(self, driver, loc):
 
         """
-        ÒÆ¶¯Êó±êµ½ÔªËØÉÏ
+        ç§»åŠ¨é¼ æ ‡åˆ°å…ƒç´ ä¸Š
         :param loc:
         :return:
         Usage: move_to_element((By.XPATH,"//a"))
         """
         el = self.find_el(loc)
-        ActionChains(self.driver).move_to_element(el).perform()
+        ActionChains(driver).move_to_element(el).perform()
 
-    def double_click(self, loc):
+    def double_click(self, driver, loc):
         """
-        Ë«»÷
+        åŒå‡»
         :param loc:
         :return:
         Uage:driver.double_click((By.XPATH,"//a"))
         """
         el = self.find_el(loc)
-        ActionChains(self.driver).double_click(el).perform()
+        ActionChains(driver).double_click(el).perform()
 
-    def drag_and_drop(self, loc1, loc2):
+    def drag_and_drop(self, driver, loc1, loc2):
         """
-        ÍÏ¶¯ÔªËØµ½Ö¸¶¨Î»ÖÃ£¬PS£ºActionChainsµÄÍÏ¶¯²¢Ã»ÄÇÃ´ÓĞĞ§¹û£¬Õâ¸öĞèÒªÔÙÍêÉÆÒ»ÏÂ
-        :param loc1: ÆğÊ¼Î»ÖÃ
-        :param loc2: ½áÊøÎ»ÖÃ
+        æ‹–åŠ¨å…ƒç´ åˆ°æŒ‡å®šä½ç½®ï¼ŒPSï¼šActionChainsçš„æ‹–åŠ¨å¹¶æ²¡é‚£ä¹ˆæœ‰æ•ˆæœï¼Œè¿™ä¸ªéœ€è¦å†å®Œå–„ä¸€ä¸‹
+        :param loc1: èµ·å§‹ä½ç½®
+        :param loc2: ç»“æŸä½ç½®
         :return:
         Usage:driver.drag_and_drop((By.XPATH,"//a"),(By.XPATH,"//b"))
         """
         element = self.find_el(loc1)
         target = self.find_el(loc2)
-        ActionChains(self.driver).drag_and_drop(element, target).perform()
+        ActionChains(driver).drag_and_drop(element, target).perform()
 
-    def get_display(self, loc):
+    def get_display(self, driver, timeOut, loc):
         """
-        ÅĞ¶ÏÔªËØÊÇ·ñÏÔÊ¾
-        :param loc: ÔªËØ¶¨Î»
+        åˆ¤æ–­å…ƒç´ æ˜¯å¦æ˜¾ç¤º
+        :param loc: å…ƒç´ å®šä½
         :return:
         """
         try:
-            WebDriverWait(self.driver, self.timeout).until(lambda driver: driver.find_element(*loc).is_displayed())
+            WebDriverWait(driver, timeOut).until(lambda driver: driver.find_element(*loc).is_displayed())
             return True
         except Exception as e:
-            print(u"%s Ò³ÃæÖĞ³¬Ê±%dsÎ´ÄÜÕÒµ½ %s ÔªËØ%s" % (self, self.timeout, loc, e))
+            print(u"%s é¡µé¢ä¸­è¶…æ—¶%dsæœªèƒ½æ‰¾åˆ° %s å…ƒç´ %s" % (self, timeOut, loc, e))
             return False
 
-    def isElement(self, identifyBy, c):
+    def isElement(self, driver, identifyBy, c):
         """
-        ÅĞ¶ÏÔªËØÊÇ·ñ´æÔÚ
-        :param identifyBy:Í¨¹ıÊ²Ã´¶¨Î»·½Ê½»ñÈ¡ÔªËØ
-        :param c: ¶¨Î»·½Ê½µÄÖµ
+        åˆ¤æ–­å…ƒç´ æ˜¯å¦å­˜åœ¨
+        :param identifyBy:é€šè¿‡ä»€ä¹ˆå®šä½æ–¹å¼è·å–å…ƒç´ 
+        :param c: å®šä½æ–¹å¼çš„å€¼
         :return:
         """
         time.sleep(1)
         flag = None
         try:
             if identifyBy == "id":
-                # self.driver.implicitly_wait(60)
-                self.driver.find_element_by_id(c)
+                # driver.implicitly_wait(60)
+                driver.find_element_by_id(c)
             elif identifyBy == "xpath":
-                # self.driver.implicitly_wait(60)
-                self.driver.find_element_by_xpath(c)
+                # driver.implicitly_wait(60)
+                driver.find_element_by_xpath(c)
             elif identifyBy == "class":
-                self.driver.find_element_by_class_name(c)
+                driver.find_element_by_class_name(c)
             elif identifyBy == "link text":
-                self.driver.find_element_by_link_text(c)
+                driver.find_element_by_link_text(c)
             elif identifyBy == "partial link text":
-                self.driver.find_element_by_partial_link_text(c)
+                driver.find_element_by_partial_link_text(c)
             elif identifyBy == "name":
-                self.driver.find_element_by_name(c)
+                driver.find_element_by_name(c)
             elif identifyBy == "tag name":
-                self.driver.find_element_by_tag_name(c)
+                driver.find_element_by_tag_name(c)
             elif identifyBy == "css selector":
-                self.driver.find_element_by_css_selector(c)
+                driver.find_element_by_css_selector(c)
             flag = True
         except NoSuchElementException as e:
-            print("%s Ò³ÃæÃ»ÓĞÕÒµ½Í¨¹ı %s %s ¶¨Î»µÄÔªËØ¡£%s" % self, identifyBy, c, e)
+            print("%s é¡µé¢æ²¡æœ‰æ‰¾åˆ°é€šè¿‡ %s %s å®šä½çš„å…ƒç´ ã€‚%s" % self, identifyBy, c, e)
             flag = False
         finally:
             return flag
 
-    def refresh(self):
+    def refresh(self, driver):
         """
-        10s×Ô¶¯Ë¢ĞÂÒ³Ãæ
+        10sè‡ªåŠ¨åˆ·æ–°é¡µé¢
         :return:
         """
-        self.driver.implicitly_wait(10)
-        self.driver.refresh()
+        driver.implicitly_wait(10)
+        driver.refresh()
 
     def get_text(self, loc):
         """
-        »ñÈ¡ÔªËØtextÄÚÈİ
-        :param loc:ÔªËØ¶¨Î»
+        è·å–å…ƒç´ textå†…å®¹
+        :param loc:å…ƒç´ å®šä½
         :return:
         """
         return self.find_el(loc).text
 
+
+
+    #å°è£…æ»‘åŠ¨æ–¹æ³•
+
+    def swipeUp(self, driver, t=500, n=1):
+        """
+        å‘ä¸Šæ»‘åŠ¨å±å¹•
+        :param t: æ»‘åŠ¨æŒç»­æ—¶é—´
+        :param n: æ»‘åŠ¨çš„æ¬¡æ•°
+        :return:
+        """
+        l_winSize = driver.get_window_size()
+        x1 = l_winSize['width'] * 0.5  # xåæ ‡
+        y1 = l_winSize['height'] * 0.75  # èµ·å§‹yåæ ‡
+        y2 = l_winSize['height'] * 0.25  # ç»ˆç‚¹yåæ ‡
+        for i in range(n):
+            driver.swipe(x1, y1, x1, y2, t)
+
+    def swipeDown(self, driver, t=500, n=1):
+        """
+        å‘ä¸‹æ»‘åŠ¨å±å¹•
+        :param t:  æ»‘åŠ¨æŒç»­æ—¶é—´
+        :param n: æ»‘åŠ¨çš„æ¬¡æ•°
+        :return:
+        """
+        l_winSize = driver.get_window_size()
+        x1 = l_winSize['width'] * 0.5  # xåæ ‡
+        y1 = l_winSize['height'] * 0.25  # èµ·å§‹yåæ ‡
+        y2 = l_winSize['height'] * 0.75  # ç»ˆç‚¹yåæ ‡
+        for i in range(n):
+            driver.swipe(x1, y1, x1, y2, t)
+
+    def swipLeft(self, driver, t=500, n=1):
+        """
+        å‘å·¦æ»‘åŠ¨å±å¹•
+        :param t: æ»‘åŠ¨æŒç»­æ—¶é—´
+        :param n: æ»‘åŠ¨çš„æ¬¡æ•°
+        :return:
+        """
+        l_winSize = driver.get_window_size()
+        x1 = l_winSize['width'] * 0.75
+        y1 = l_winSize['height'] * 0.5
+        x2 = l_winSize['width'] * 0.25
+        for i in range(n):
+            driver.swipe(x1, y1, x2, y1, t)
+
+    def swipRight(self, driver, t=500, n=1):
+        """
+        å‘å³æ»‘åŠ¨å±å¹•
+        :param t: æ»‘åŠ¨æŒç»­æ—¶é—´
+        :param n: æ»‘åŠ¨çš„æ¬¡æ•°
+        :return:
+        """
+        l_winSize = driver.get_window_size()
+        x1 = l_winSize['width'] * 0.25
+        y1 = l_winSize['height'] * 0.5
+        x2 = l_winSize['width'] * 0.75
+        for i in range(n):
+            driver.swipe(x1, y1, x2, y1, t)
