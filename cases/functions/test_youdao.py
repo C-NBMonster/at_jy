@@ -22,6 +22,7 @@ class YoudaoTest(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
+        print("搞定！")
 
 
 if __name__ == "__main__":
