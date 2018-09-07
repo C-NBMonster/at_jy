@@ -19,7 +19,7 @@ class C_selenium_rewrite():
     """
     封装部分API，使用的时候记得把By给导入进来
     """
-    def find_el(self, driver, timeOut, loc):
+    def find_el(self, driver, timeOut, *loc):
         """
         查找单个元素
         :param loc:元素定位
@@ -29,7 +29,7 @@ class C_selenium_rewrite():
         try:
             WebDriverWait(driver, timeOut).until(lambda driver: driver.find_element(*loc).is_displayed())
             return driver.find_element(*loc)
-        except Exception as e:
+        except NoSuchElementException as e:
             print(u"%s 页面中超时%ds未能找到 %s 元素%s" % (self, timeOut, loc, e))
 
     def find_els(self, driver, timeOut, loc):
@@ -42,7 +42,7 @@ class C_selenium_rewrite():
         try:
             WebDriverWait(driver, timeOut).until(lambda driver: driver.find_elements(*loc).is_displayed())
             return driver.find_element(*loc)
-        except Exception as e:
+        except NoSuchElementException as e:
             print(u"%s 页面中超时%ds未能找到 %s 元素%s" % (self, timeOut, loc, e))
 
     def click_keys(self, loc):
@@ -234,6 +234,7 @@ class C_selenium_rewrite():
         x2 = l_winSize['width'] * 0.25
         for i in range(n):
             driver.swipe(x1, y1, x2, y1, t)
+            time.sleep(0.5)
 
     def swipRight(self, driver, t=500, n=1):
         """
