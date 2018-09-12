@@ -10,18 +10,21 @@ from appium.webdriver.common.mobileby import MobileBy
 from selenium.webdriver.common.by import By
 #my_logger = Logger(logger='BaiduTests').getlog()
 from common.rewrite import C_selenium_rewrite
+from business.b_login import C_B_Login
 
 
-class BaiduTests(unittest.TestCase):
+class NewOrder_Process_Tests(unittest.TestCase):
 
-#adb shell dumpsys window w |findstr \/ |findstr name=     用于查看当前activity。建议用这个
+    #adb shell dumpsys window w |findstr \/ |findstr name=     用于查看当前activity。建议用这个
+
+
     def setUp(self):
         self.log = Log("app demo test")
         self.base_url = 'http://localhost:4723/wd/hub'
         self.desired_caps = {}
         self.desired_caps['platformName']    = 'Android'
-        self.desired_caps['platformVersion'] = '5.1.1'
-        self.desired_caps['deviceName']  = '127.0.0.1:62026'
+        self.desired_caps['platformVersion'] = '4.4.2'
+        self.desired_caps['deviceName']  = '127.0.0.1:62001'
         #AndroidDebugBridge().call_adb('127.0.0.1:62025')  用于切换模拟器
         self.desired_caps['appPackage']  = 'com.giveu.corder'
         self.desired_caps['appActivity'] = 'com.giveu.corder.index.activity.SplashActivity'
@@ -33,9 +36,8 @@ class BaiduTests(unittest.TestCase):
         #.me.activity.LoginActivity}
         #print(os.path.dirname(os.getcwd()))
         self.driver = webdriver.Remote(self.base_url, self.desired_caps)
-
-        self.C_sel_re = C_selenium_rewrite()
-
+        self.C_sel_Rewrite = C_selenium_rewrite()
+        self.C_B_login = C_B_Login()
 
 
     def test_jyb_login_demo(self):
@@ -46,38 +48,24 @@ class BaiduTests(unittest.TestCase):
         welcome = 'com.giveu.corder.index.activity.WelcomeActivity'
         self.driver.wait_activity(welcome, 10, 1)
         print("info::switch to the welcome activity successfully!!!")
-        self.C_sel_re.swipLeft(self.driver, 500, 2)
-        # l_winSize = self.driver.get_window_size()
-        # x1 = l_winSize['width'] * 0.75
-        # y1 = l_winSize['height'] * 0.5
-        # x2 = l_winSize['width'] * 0.25
-        # for i in range(2):
-        #     self.driver.swipe(x1, y1, x2, y1, 500)
-        #     time.sleep(0.5)
-        self.driver.find_element_by_id("tv_into").click()
-        #self.C_sel_re.find_el(self.driver, 10, (By.ID, "tv_into")).click()
-        #time.sleep(3)
-        #at = self.driver.current_activity()
-        #print("at:",at)
-        # self.driver.find_element_by_accessibility_id("com.giveu.corder:id/et_account") #find_element_by_id("com.giveu.corder:id/et_account").clear()
+
+        #滑动欢迎页
+        self.C_sel_Rewrite.swipLeft(self.driver, 500, 2)
+
+        #点击进入登录页
+        self.C_sel_Rewrite.find_el(self.driver, 20, (By.ID, "tv_into")).click()
+
+        #登录
         act_login = "com.giveu.corder.me.activity.LoginActivity"
-        self.driver.wait_activity(act_login,10,1)
-        self.driver.find_element_by_id("et_account").send_keys("801985")
-        self.driver.find_element_by_id("et_pwd").clear()
-        self.driver.find_element_by_id("et_pwd").send_keys("123456")
-        self.driver.find_element_by_id("tv_login").click()
-        act_main = "com.giveu.corder.index.activity.MainActivity"
-        self.driver.wait_activity(act_main, 10, 1)
-        self.driver.find_element_by_id("tv_not_set").click()
+        self.driver.wait_activity(act_login,20,1)
+        self.C_B_login.b_login(self.driver, 300079, 123456)
+
+        #登录成功验证
+        print("current_context:", self.driver.current_context())
+        print(self.driver.contexts())
+
         print("login,good!!!")
-        # try:
-        #     self.driver.find_element_by_id("top_tab_center_title").is_displayed()
-        # except:
-        #     self.assertEquals(1, 2, u"登录没有成功！,请查找原因")
-        # finally:
-        #     tt=self.driver.find_element_by_id("top_tab_center_title").text()
-        #     tl = tt.strip()
-        #     self.assertEquals(tl,u"新建订单",u"jyb登录成功")
+
         #self.log.info("jyb登录成功")
 
 
