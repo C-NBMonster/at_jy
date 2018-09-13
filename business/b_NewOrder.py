@@ -7,12 +7,20 @@
 @time: 2018/9/7 17:23
 @desc: 即有宝新增订单业务逻辑代码
 """
-from elements.el_JYT.el_NewOrder import C_el_NewOrder
+from elements.el_JYT.el_NewOrder_1 import C_el_NewOrder_1
+from elements.el_JYT.el_NewOrder_2 import C_el_NewOrder_2
+from elements.el_JYT.el_NewOrder_3 import C_el_NewOrder_3
+from common.rewrite import C_selenium_rewrite
 import unittest
+from selenium.webdriver.common.touch_actions import TouchActions
 class C_B_NewOrder(unittest.TestCase):
 
-    def __init__(self):
-        self.Cel_NewOrder = C_el_NewOrder()  #实例化
+    def setUp(self):
+        self.Cel_NewOrder_1 = C_el_NewOrder_1()  #实例化
+        self.Cel_NewOrder_2 = C_el_NewOrder_2()
+        self.Cel_NewOrder_3 = C_el_NewOrder_3()
+        self.C_sel_Rewrite  = C_selenium_rewrite()
+        self.TouchAct = TouchActions()
         self.shopName = u"选择商品门店"
         self.goodType = u"选择商品类型"
         self.productVersion = u"选择产品版本"
@@ -27,13 +35,13 @@ class C_B_NewOrder(unittest.TestCase):
         :param shopeName:商品门店名称
         :return:
         """
-        self.Cel_NewOrder.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 1)  #点击商品门店
+        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 1)  #点击商品门店
 
     def b_Common_Choose(self, driver, tName, strName):
         #弹窗选择内容公共函数
         #四个类型的弹窗，放在一个list里面，减少形参
-        if self.Cel_NewOrder.el_NewOrder_Common_PopUp_Title(driver).getText().strip() == tName:
-            self.Cel_NewOrder.el_NewOrder_Common_PopUp_List(driver, strName).click()
+        if self.Cel_NewOrder_1.el_NewOrder_Common_PopUp_Title(driver).getText().strip() == tName:
+            self.Cel_NewOrder_1.el_NewOrder_Common_PopUp_List(driver, strName).click()
         else:
             print("不是选择 %s 弹窗" % strName)
 
@@ -44,7 +52,7 @@ class C_B_NewOrder(unittest.TestCase):
         :param GoodsType: 商品类型
         :return:
         """
-        self.Cel_NewOrder.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 2)  # 点击商品类型
+        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 2)  # 点击商品类型
 
     def b_Choose_ProductVerson_Click(self, driver):
         """
@@ -53,7 +61,7 @@ class C_B_NewOrder(unittest.TestCase):
         :param ProductVerson: 产品版本
         :return:
         """
-        self.Cel_NewOrder.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 3)  # 点击产品版本
+        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 3)  # 点击产品版本
         # 这里还没写选择产品版本代码
 
     def b_Choose_ProductType_Click(self, driver):
@@ -63,7 +71,7 @@ class C_B_NewOrder(unittest.TestCase):
         :param ProductType: 产品类型
         :return:
         """
-        self.Cel_NewOrder.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 4)  # 点击产品类型
+        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 4)  # 点击产品类型
         # 这里还没写选择产品类型代码
 
     def b_Fill_GoodsTotel(self, driver, GoodsTotel):
@@ -73,8 +81,8 @@ class C_B_NewOrder(unittest.TestCase):
         :param GoodsTotel: 商品总额
         :return:
         """
-        self.Cel_NewOrder.el_NewOrder1_MoneyTotle(driver, 1).clear()
-        self.Cel_NewOrder.el_NewOrder1_MoneyTotle(driver, 1).send_keys(GoodsTotel)
+        self.Cel_NewOrder_1.el_NewOrder1_MoneyTotle(driver, 1).clear()
+        self.Cel_NewOrder_1.el_NewOrder1_MoneyTotle(driver, 1).send_keys(GoodsTotel)
 
     def b_Fill_Downpayment(self, driver, Downpayment):
         """
@@ -83,14 +91,14 @@ class C_B_NewOrder(unittest.TestCase):
         :param Downpayment: 首付金额
         :return:
         """
-        self.Cel_NewOrder.el_NewOrder1_MoneyTotle(driver, 2).clear()
-        self.Cel_NewOrder.el_NewOrder1_MoneyTotle(driver, 2).send_keys(Downpayment)
+        self.Cel_NewOrder_1.el_NewOrder1_MoneyTotle(driver, 2).clear()
+        self.Cel_NewOrder_1.el_NewOrder1_MoneyTotle(driver, 2).send_keys(Downpayment)
 
 
     # -------------------------------------------------------------
     """业务组合"""
     # -------------------------------------------------------------
-    def b_Fill_NewOrder_1(self, driver, goodsTotel, downpayment):
+    def b_NewOrder_1(self, driver, goodsTotel, downpayment):
         """
         新建订单，第一个内容填写页面，汇总
         :goodsTotel:商品总价
@@ -110,10 +118,17 @@ class C_B_NewOrder(unittest.TestCase):
 
     def b_NewOrder_1_submit(self, driver):
         """第一步提交"""
-        self.Cel_NewOrder.el_NewOrder_submit_1(driver).click()
+        self.Cel_NewOrder_1.el_NewOrder_submit_1(driver).click()
 
     def b_Check_LoanSum(self, driver, goodsTotel, downpayment):
-        loanSum = int((self.Cel_NewOrder.el_NewOrder1_LoanSum(driver)).strip())
+        """
+        验证贷款金额是否正确
+        :param driver:
+        :param goodsTotel: 商品总价
+        :param downpayment:首付金额
+        :return:
+        """
+        loanSum = int((self.Cel_NewOrder_1.el_NewOrder1_LoanSum(driver)).strip())
         tt = int(goodsTotel) - int(downpayment)
         if tt == loanSum:
             return True
@@ -121,7 +136,128 @@ class C_B_NewOrder(unittest.TestCase):
             self.assertEquals(int(goodsTotel) - int(downpayment), loanSum, u"errorInfo:贷款金额计算不正确")
             return False
 
+    #--------------------------------------------------
+    #新建订单第二个页面--------------------------------
+    def b_NewOrder_2_Check_LoanSum(self, driver, loanSum):
+        """检查贷款金额是否正确"""
+        sText = self.Cel_NewOrder_2.el_NewOrder2_LoanSum(driver).getText().strip()
+        if sText != loanSum:
+            self.assertEquals(sText, loanSum, u"新建订单第二个页面，贷款金额显示错误，请检查!")
+        else:
+            #添加日志信息
+            print(u"贷款信息显示正确！")
 
+    def b_NewOrder_2_No_TreasureFee(self, driver):
+        """不参加免还大礼包"""
+        #通过坐标来移动元素。不同分辨率，则会出现bug，以后再想办法
+        driver.flick(1040, 322, 934, 322)
 
+    def b_NewOrder_2_ChooseInstalment(self, driver, instalment):
+        """选择分期"""
+        instal = self.Cel_NewOrder_2.el_NewOrder2_InstalmentItem(driver, instalment)
+        l_instals = []
+        for el in instal:
+            l_instals.append(el.getText().strip())
+        index = 0
+        if len(l_instals) == 0:
+            #这里仅记录日志信息
+            print("查询条件：%s - %s - %s - %s : 没有搜索到商品分期，请检查所选门店及商品类型，产品版本等是否正确" % self.shopName, self.goodType, self.productVersion, self.productType)
+            return
+        else:
+            for str in l_instals:
+                if str == instalment:
+                    index = l_instals.index(str)
+            self.Cel_NewOrder_2.el_NewOrder2_InstalmentList(driver)[index].click()
 
+    def b_NewOrder_2_Submit(self, driver):
+        """点击下一步"""
+        self.Cel_NewOrder_2.el_NewOrder2_Submit(driver).click()
 
+    #-----------------------------------------------------------------------------
+    #新建订单第三步
+    #-----------------------------------------------------------------------------
+    def b_NewOrder_3_Choose_SubCategory(self, driver, subCategory):
+        """选择商品小类"""
+        self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver)[0].click()
+        if self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Title(driver).getText().strip() == u"选择商品小类":
+            els = self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Items(driver)
+            for el  in els:
+                if el.getText().strip() == subCategory:
+                    el.click()
+                else:
+                    return
+
+    def b_NewOrder_3_Check_SubCategory(self, driver, subCategory):
+        """验证是否成功选择商品小类"""
+        subText = self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 0).getText().strip()
+        if subText == subCategory:
+            print("成功选择商品小类")
+        else:
+            print("选择商品小类失败，请检查")
+
+    def b_NewOrder_3_Choose_Brand(self, driver, brand):
+        """选择商品品牌"""
+        self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 1).click()
+        if self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Title(driver).getText().strip() == u"选择商品品牌":
+            els = self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Items(driver)
+            for el  in els:
+                if el.getText().strip() == brand:
+                    el.click()
+                else:
+                    return
+
+    def b_NewOrder_3_Check_brand(self, driver, brand):
+        """验证是否成功选择商品品牌"""
+        subText = self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 1).getText().strip()
+        if subText == brand:
+            print("成功选择商品品牌")
+        else:
+            print("选择商品品牌失败，请检查")
+
+    def b_NewOrder_3_Choose_SKU(self, driver, sku):
+        """
+        选择商品型号。PS：有时是下拉框形式，有时是输入框形式。注意！！！
+        :param driver:
+        :param sku:
+        :return:
+        """
+        #如果是输入框
+        br = self.Cel_NewOrder_3.el_NewOrder3_Edit_GP_DP(driver,2).is_Displayed()
+        bh = self.Cel_NewOrder_3.el_NewOrder3_Edit_GP_DP(driver,2)
+        if br == True:
+            self.C_sel_Rewrite.send_keys(bh, sku)
+        else:
+            #下拉框形式
+            self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 2).click()
+            if self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Title(driver).getText().strip() == u"选择商品型号":
+                els = self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Items(driver)
+                for el in els:
+                    if el.getText().strip() == sku:
+                        el.click()
+                    else:
+                        return
+
+    def b_NewOrder_3_Check_SKU(self, driver, sku):
+        """验证是否成功选择商品型号"""
+        subText = self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 2).getText().strip()
+        if subText == sku:
+            print("成功选择商品型号")
+        else:
+            print("选择商品型号失败，请检查")
+
+    #----------------------------------------------------------------------
+    #业务组合
+    # ----------------------------------------------------------------------
+
+    def b_NewOrder_3_Add_GoodInfo(self, driver, subCategory, brand, sku):
+        #填写商品信息
+        self.b_NewOrder_3_Choose_SubCategory(driver, subCategory)
+        self.b_NewOrder_3_Check_SubCategory(driver, subCategory)
+        self.b_NewOrder_3_Choose_Brand(driver,brand)
+        self.b_NewOrder_3_Check_brand(driver, brand)
+        self.b_NewOrder_3_Choose_SKU(driver, sku)
+        self.b_NewOrder_3_Check_SKU(driver, sku)
+
+    def b_NewOrder_3_Submit(self, driver):
+        """提交，下一步"""
+        self.Cel_NewOrder_3.el_NewOrder3_Next(driver).click()

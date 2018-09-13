@@ -3,13 +3,13 @@
 @license: (C) Copyright 2011-2018, mirror personal Limited.
 @contact: chenjingxu3@dafycredit.com
 @software: JYB_Android_AT
-@file: el_NewOrder.py
+@file: el_NewOrder_1.py
 @time: 2018/9/7 17:05
 @desc: 即有宝新建订单页面元素
 """
 from common.rewrite import C_selenium_rewrite
 from selenium.webdriver.common.by import By
-class C_el_NewOrder():
+class C_el_NewOrder_1():
     
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()

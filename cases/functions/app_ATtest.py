@@ -11,6 +11,7 @@ from selenium.webdriver.common.by import By
 #my_logger = Logger(logger='BaiduTests').getlog()
 from common.rewrite import C_selenium_rewrite
 from business.b_login import C_B_Login
+from business.b_NewOrder import C_B_NewOrder
 
 
 class NewOrder_Process_Tests(unittest.TestCase):
@@ -38,6 +39,7 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.driver = webdriver.Remote(self.base_url, self.desired_caps)
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.C_B_login = C_B_Login()
+        self.C_B_newOrder = C_B_NewOrder()
 
 
     def test_jyb_login_demo(self):
@@ -46,7 +48,7 @@ class NewOrder_Process_Tests(unittest.TestCase):
         #ca = self.driver.current_activity()
         #print("当前activity: %s" % sys.stdout.pritn(str(ca)))
         welcome = 'com.giveu.corder.index.activity.WelcomeActivity'
-        self.driver.wait_activity(welcome, 10, 1)
+        self.driver.wait_activity(welcome, 20, 1)
         print("info::switch to the welcome activity successfully!!!")
 
         #滑动欢迎页
@@ -64,9 +66,68 @@ class NewOrder_Process_Tests(unittest.TestCase):
         print("current_context:", self.driver.current_context())
         print(self.driver.contexts())
 
+        self.C_B_login.accept_PopUp(self.driver)
         print("login,good!!!")
 
         #self.log.info("jyb登录成功")
+
+    def test_NewOrder(self):
+        """
+        新建订单
+        :return:
+        """
+        #新建订单，填写第一页内容
+        goodsTotel  = 6000 #从Excel取值
+        downPayment = 3000 #从Excel取值
+        loanSum     = goodsTotel - downPayment
+        instalment  = 12
+        self.C_B_newOrder.b_NewOrder_1(self.driver, goodsTotel, downPayment)
+
+        #验证贷款金额是否正确.判断：返回True则是正确的,返回False则整个用例失败
+        b = self.C_B_newOrder.b_Check_LoanSum(self.driver, goodsTotel, downPayment)
+        if b != True:
+            self.assertEquals(b, True, u"贷款金额计算不正常")
+
+        #点击下一步
+        self.C_B_newOrder.b_NewOrder_1_submit(self.driver)
+
+        #新建订单第二步
+        orderActivity = "com.giveu.corder.ordercreate.activity.InstallmentOrderActivity"
+        self.driver.wait_activity(orderActivity, 20, 1)
+
+        #先验证贷款信息是否显示正确，这信息重要，check一下
+        self.C_B_newOrder.b_NewOrder_2_Check_LoanSum(self.driver, loanSum)
+
+        #不参加免还大礼包
+        #self.C_B_newOrder.b_NewOrder_2_No_TreasureFee(self.driver)
+
+        #选择分期
+        self.C_B_newOrder.b_NewOrder_2_ChooseInstalment(self.driver, instalment)
+
+        #提交：点击下一步
+        self.C_B_newOrder.b_NewOrder_2_Submit(self.driver)
+
+
+        #新建订单第三步：
+        act_addGood = "com.giveu.corder.ordercreate.activity.AddGoodsActivity"
+        self.driver.wait_activity(act_addGood, 20, 1)
+
+        #填写商品信息
+        subCategory = '苹果手机(iPhone)'
+        brand = '苹果'
+        sku   = '8(256G)'
+        self.C_B_newOrder.b_NewOrder_3_Add_GoodInfo(self.driver, subCategory, brand, sku)
+
+        #提交，下一步
+        self.C_B_newOrder.b_NewOrder_3_Submit(self.driver)
+
+
+
+
+
+
+
+
 
 
     def tearDown(self):

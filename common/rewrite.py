@@ -35,7 +35,7 @@ class C_selenium_rewrite():
         except NoSuchElementException as msg:
             print(u"%s 页面中超时%ds未能找到 %s 元素%s" % (self, timeOut, loc, msg))
 
-    def find_els(self, Driver, timeOut, frequency=1, ignored_exceptions=u"找不到该元素", *loc):
+    def find_els(self, Driver, timeOut=30, frequency=1, ignored_exceptions=u"找不到该元素", *loc):
         """
         查找多个元素
         :param loc:元素定位
@@ -73,7 +73,8 @@ class C_selenium_rewrite():
         content:向元素发送的内容
         Usage:Driver.send_keys((By.XPATH,"//a"),'a')
         """
-        self.clear_keys(loc).clear()
+        #self.clear_keys(loc).clear()
+        self.find_el(loc).clear()
         self.find_el(loc).send_keys(content)
 
     def exec_script(self, Driver, src):
