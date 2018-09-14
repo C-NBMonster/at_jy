@@ -60,7 +60,7 @@ class NewOrder_Process_Tests(unittest.TestCase):
         #登录
         act_login = "com.giveu.corder.me.activity.LoginActivity"
         self.driver.wait_activity(act_login,20,1)
-        self.C_B_login.b_login(self.driver, 300079, 123456)
+        self.C_B_login.b_login(self.driver, 829023, 123456)
 
         #登录成功验证
         print("current_context:", self.driver.current_context())
@@ -81,6 +81,13 @@ class NewOrder_Process_Tests(unittest.TestCase):
         downPayment = 3000 #从Excel取值
         loanSum     = goodsTotel - downPayment
         instalment  = 12
+        cName = "陈真真"
+        idNo  = "370126199604209539"
+        l_addr= ['广东','深圳', '福田区']
+        addrDetail = "华富街道福中一路华润万家"
+        startDate  = "2012/09/09"
+        endDate    = "2020/09/09"
+        phone      = "13410342899"
         self.C_B_newOrder.b_NewOrder_1(self.driver, goodsTotel, downPayment)
 
         #验证贷款金额是否正确.判断：返回True则是正确的,返回False则整个用例失败
@@ -109,8 +116,8 @@ class NewOrder_Process_Tests(unittest.TestCase):
 
 
         #新建订单第三步：
-        act_addGood = "com.giveu.corder.ordercreate.activity.AddGoodsActivity"
-        self.driver.wait_activity(act_addGood, 20, 1)
+        act_AddGood = "com.giveu.corder.ordercreate.activity.AddGoodsActivity"
+        self.driver.wait_activity(act_AddGood, 20, 1)
 
         #填写商品信息
         subCategory = '苹果手机(iPhone)'
@@ -121,8 +128,16 @@ class NewOrder_Process_Tests(unittest.TestCase):
         #提交，下一步
         self.C_B_newOrder.b_NewOrder_3_Submit(self.driver)
 
+        #新建订单第四步：填写客户信息
+        act_CustomerInfo = "com.giveu.corder.ordercreate.activity.UploadIdCardActivity"
+        self.driver.wait_activity(act_CustomerInfo, 20, 1)
+        self.C_B_newOrder.b_NewOrder_4_IDInfo(self.driver, cName, idNo, l_addr,
+                                              addrDetail, startDate, endDate, phone)
 
+        #第四步提交
+        self.C_B_newOrder.b_NewOrder_4_Submit(self.driver)
 
+        #第五步，上传店员合影
 
 
 

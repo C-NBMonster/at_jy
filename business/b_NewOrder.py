@@ -10,8 +10,10 @@
 from elements.el_JYT.el_NewOrder_1 import C_el_NewOrder_1
 from elements.el_JYT.el_NewOrder_2 import C_el_NewOrder_2
 from elements.el_JYT.el_NewOrder_3 import C_el_NewOrder_3
+from elements.el_JYT.el_NewOrder_4 import C_el_NewOrder_4
 from common.rewrite import C_selenium_rewrite
 import unittest
+import time
 from selenium.webdriver.common.touch_actions import TouchActions
 class C_B_NewOrder(unittest.TestCase):
 
@@ -19,6 +21,7 @@ class C_B_NewOrder(unittest.TestCase):
         self.Cel_NewOrder_1 = C_el_NewOrder_1()  #实例化
         self.Cel_NewOrder_2 = C_el_NewOrder_2()
         self.Cel_NewOrder_3 = C_el_NewOrder_3()
+        self.Cel_NewOrder_4 = C_el_NewOrder_4()
         self.C_sel_Rewrite  = C_selenium_rewrite()
         self.TouchAct = TouchActions()
         self.shopName = u"选择商品门店"
@@ -245,6 +248,86 @@ class C_B_NewOrder(unittest.TestCase):
         else:
             print("选择商品型号失败，请检查")
 
+
+    #----------------------------------------------------------------------------------
+    #新增订单第四步：填写客户信息
+
+    def b_NewOrder_4_Upload_IDFront(self, driver):
+        """上传身份证正面"""
+        #拍照
+        self.Cel_NewOrder_4.el_NewOrder4_IDCard_Front(driver).click()
+        act_Camera = "com.giveu.corder.ordercreate.activity.CameraActivity"
+        driver.wait_activity(act_Camera, 20, 1)
+        self.Cel_NewOrder_4.el_NewOrder4_Camera_Shot(driver).click()
+        #验证代码missed
+
+    def b_NewOrder_4_cName(self, driver, cName):
+        # 填写用户姓名
+        hName = self.Cel_NewOrder_4.el_NewOrder4_ID_Name(driver)
+        self.C_sel_Rewrite.send_keys(hName, cName)
+
+    def b_NewOrder_4_IDNo(self, driver, idNo):
+        #身份证号
+        hIDNo = self.Cel_NewOrder_4.el_NewOrder4_ID_No(driver)
+        self.C_sel_Rewrite.send_keys(hIDNo, idNo)
+
+    def b_NewOrder_4_parentAddr(self, driver, l_addr):
+        """
+        选择省市区,
+        :param driver:
+        :param l_addr: 省市区列表
+        :return:
+        """
+        self.Cel_NewOrder_4.el_NewOrder4_Address_Click(driver).click()
+        hAddrs = self.Cel_NewOrder_4.el_NewOrder4_Choose_Address(driver)
+        for addr in hAddrs:
+            #选择省
+            if addr.getText().strip() == l_addr[0]:
+                addr.click()
+                #选择市
+                hAddrs = self.Cel_NewOrder_4.el_NewOrder4_Choose_Address(driver)
+                for addr in hAddrs:
+                    # 选择省
+                    if addr.getText().strip() == l_addr[1]:
+                        addr.click()
+                        #选择区县
+                        hAddrs = self.Cel_NewOrder_4.el_NewOrder4_Choose_Address(driver)
+                        for addr in hAddrs:
+                            # 选择省
+                            if addr.getText().strip() == l_addr[2]:
+                                addr.click()
+
+    def b_NewOrder_4_AddressDetail(self, driver, addrDetail):
+        #填写详细地址
+        hAddr = self.Cel_NewOrder_4.el_NewOrder4_ID_Address(driver)
+        self.C_sel_Rewrite.send_keys(hAddr, addrDetail)
+
+    #身份证背面信息---------------------------------------
+    def b_NewOrder_4_IDCard_Back(self, driver):
+        #拍照身份证背面
+        self.Cel_NewOrder_4.el_NewOrder4_IDCard_Back(driver).click()
+        act_Camera = "com.giveu.corder.ordercreate.activity.CameraActivity"
+        driver.wait_activity(act_Camera, 20, 1)
+        self.Cel_NewOrder_4.el_NewOrder4_Camera_Shot(driver).click()
+
+    def  b_NewOrder_4_startDate(self, driver, startDate):
+        #开始日期：2011/11/11
+        hDate = self.Cel_NewOrder_4.el_NewOrder4_ID_DateStart(driver)
+        self.C_sel_Rewrite.send_keys(hDate, startDate)
+
+    def b_NewOrder_4_EndDate(self, driver, endDate):
+        # 结束日期：2016/11/11
+        hDate = self.Cel_NewOrder_4.el_NewOrder4_ID_DateEnd(driver)
+        self.C_sel_Rewrite.send_keys(hDate, endDate)
+
+    def b_NewOrder_4_Phone(self, driver, phone):
+        hPhone = self.Cel_NewOrder_4.el_NewOrder4_Phone(driver)
+        self.C_sel_Rewrite.send_keys(hPhone, phone)
+
+    def b_NewOrder_4_Submit(self, driver):
+        """提交"""
+        self.Cel_NewOrder_4.el_NewOrder4_Submit(driver)
+
     #----------------------------------------------------------------------
     #业务组合
     # ----------------------------------------------------------------------
@@ -253,7 +336,7 @@ class C_B_NewOrder(unittest.TestCase):
         #填写商品信息
         self.b_NewOrder_3_Choose_SubCategory(driver, subCategory)
         self.b_NewOrder_3_Check_SubCategory(driver, subCategory)
-        self.b_NewOrder_3_Choose_Brand(driver,brand)
+        self.b_NewOrder_3_Choose_Brand(driver, brand)
         self.b_NewOrder_3_Check_brand(driver, brand)
         self.b_NewOrder_3_Choose_SKU(driver, sku)
         self.b_NewOrder_3_Check_SKU(driver, sku)
@@ -261,3 +344,27 @@ class C_B_NewOrder(unittest.TestCase):
     def b_NewOrder_3_Submit(self, driver):
         """提交，下一步"""
         self.Cel_NewOrder_3.el_NewOrder3_Next(driver).click()
+
+    def b_NewOrder_4_IDInfo(self, driver, cName, idNo, l_addr, addrDetail, startDate, endDate, phone):
+        """填写IDInfo"""
+        #正面
+        self.b_NewOrder_4_Upload_IDFront(driver)
+        act_CustomerInfo = "com.giveu.corder.ordercreate.activity.UploadIdCardActivity"
+        driver.wait_activity(act_CustomerInfo, 20, 1)
+        #姓名
+        self.b_NewOrder_4_cName(driver, cName)
+        #身份证号码
+        self.b_NewOrder_4_IDNo(driver, idNo)
+        #选择省市区
+        self.b_NewOrder_4_parentAddr(driver, l_addr)
+        #详细地址
+        self.b_NewOrder_4_AddressDetail(driver, addrDetail)
+
+        #背面
+        self.b_NewOrder_4_IDCard_Back(driver)
+        self.b_NewOrder_4_startDate(driver, startDate)
+        self.b_NewOrder_4_EndDate(driver, endDate)
+        self.b_NewOrder_4_Phone(driver, phone)
+
+
+
