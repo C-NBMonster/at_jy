@@ -138,6 +138,14 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder_4_Submit(self.driver)
 
         #第五步，上传店员合影
+        act_CS = "com.giveu.corder.ordercreate.activity.CustomerStorePhotoActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+        #上传店员合照
+        self.C_B_newOrder.b_NewOrder_5_Upload_GroupPhoto(self.driver)
+
+        #提交
+        self.driver.wait_activity(act_CS, 20, 1)
+        self.C_B_newOrder.b_NewOrder_5_Submit(self.driver)
 
 
 

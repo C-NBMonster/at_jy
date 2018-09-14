@@ -11,6 +11,7 @@ from elements.el_JYT.el_NewOrder_1 import C_el_NewOrder_1
 from elements.el_JYT.el_NewOrder_2 import C_el_NewOrder_2
 from elements.el_JYT.el_NewOrder_3 import C_el_NewOrder_3
 from elements.el_JYT.el_NewOrder_4 import C_el_NewOrder_4
+from elements.el_JYT.el_NewOrder_5 import C_el_NewOrder_5
 from common.rewrite import C_selenium_rewrite
 import unittest
 import time
@@ -22,6 +23,7 @@ class C_B_NewOrder(unittest.TestCase):
         self.Cel_NewOrder_2 = C_el_NewOrder_2()
         self.Cel_NewOrder_3 = C_el_NewOrder_3()
         self.Cel_NewOrder_4 = C_el_NewOrder_4()
+        self.Cel_NewOrder_5 = C_el_NewOrder_5()
         self.C_sel_Rewrite  = C_selenium_rewrite()
         self.TouchAct = TouchActions()
         self.shopName = u"选择商品门店"
@@ -366,5 +368,14 @@ class C_B_NewOrder(unittest.TestCase):
         self.b_NewOrder_4_EndDate(driver, endDate)
         self.b_NewOrder_4_Phone(driver, phone)
 
+    def b_NewOrder_5_Upload_GroupPhoto(self, driver):
+        #上传店员合影
+        self.Cel_NewOrder_5.el_NewOrder5_GroupPhoto_click(driver).click()
+        act_Camera = "com.android.camera.Camera"
+        driver.wait_activity(act_Camera, 20, 1)
+        self.Cel_NewOrder_5.el_NewOrder5_Camera_Shot(driver).click()
+        self.Cel_NewOrder_5.el_NewOrder5_Camera_Done(driver).click()
 
-
+    def b_NewOrder_5_Submit(self, driver):
+        #提交
+        self.Cel_NewOrder_5.el_NewOrder5_Submit(driver).click()

@@ -34,8 +34,17 @@ class C_el_NewOrder_5():
         el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "btn_cancel"))
         return el
 
+    def el_NewOrder5_Camera_Done(self, driver):
+        """最终选择"""
+        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "btn_done"))
+        return el
+
     def el_NewOrder5_Camera_Shot(self, driver):
         """拍照"""
         el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "shutter_button"))
         return el
 
+    def el_NewOrder5_Camera_Reshot(self, driver):
+        """最终选择"""
+        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "btn_retake"))
+        return el
