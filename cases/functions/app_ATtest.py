@@ -148,6 +148,12 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder_5_Submit(self.driver)
 
 
+        #第六步获取短信授权码
+        """
+        #select code from  dafy_sales.CS_SMS_AUTHORITY  where mobile=13410342892 order by update_time desc;
+        """
+
+
 
 
 
