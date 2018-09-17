@@ -148,12 +148,24 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder_5_Submit(self.driver)
 
 
-        #第六步获取短信授权码
-        """
-        #select code from  dafy_sales.CS_SMS_AUTHORITY  where mobile=13410342892 order by update_time desc;
-        """
+        #第六步 获取短信授权码
+        #获取短信授权码
+        code = self.C_B_newOrder.b_NewOrder_6_GetCode(self.driver)
+        #输入验证码
+        self.C_B_newOrder.b_NewOrder_6_FillCode(self.driver, code)
+        #提交验证
+        self.C_B_newOrder.b_NewOrder_6_Submit(self.driver)
 
+        #第七步 其它信息 ，对门店和客户的评定，备注
+        item = 1
+        self.C_B_newOrder.b_NewOrder_7_SelectCode(self.driver, item)
+        #是否移动门店:是
+        self.C_B_newOrder.b_NewOrder_7_IsMove(self.driver)
+        #备注
+        self.C_B_newOrder.b_NewOrder_7_Remark(self.driver, remark="123")
+        self.C_B_newOrder.b_NewOrder_7_Submit(self.driver)
 
+        #第八步
 
 
 

@@ -26,23 +26,43 @@ close()         关闭游标对象
 
 import cx_Oracle
 
-# 连接数据库
-user=u'dafy_sales'
-passwd = u'Ju$2017'
-print(cx_Oracle.clientversion())
-#host = 'idcdbtest.dafycredit.com'
-host = "10.11.11.71"
-port = 1521
-dbname='testdb'
-dsn = cx_Oracle.makedsn(host, port, dbname)
-conn = cx_Oracle.connect( user, passwd, dsn)
-cursor = conn.cursor()
-cursor.execute("select address from temp_m_customer_addr_info where ID = '103791721'")
-row = cursor.fetchone()
-print(row)
+class C_oracle():
+    # 连接数据库
+    def __init__(self):
+        user=u'dafy_sales'
+        passwd = u'Ju$2017'
+        print(cx_Oracle.clientversion())
+        host = 'idcdbtest.dafycredit.com'
+        #host = "10.11.11.71"
+        port = 1521
+        dbname='testdb'
+        #dsn = cx_Oracle.makedsn(host, port, dbname)
+        self.conn = cx_Oracle.connect("dafy_sales","Ju$2017","idcdbtest.dafycredit.com:1521/DBTEST01")
+        self.cursor = self.conn.cursor()
 
+    # 查询数据
+
+    def oracle_Search(self, sql):
+        self.cursor.execute(sql)
+        result = self.cursor.fetchall()
+        for row in result:
+            print("Name:%s\tSaving:%.2f" % row)
+        print('共查找出', self.cursor.rowcount, '条数据')
+        return result
+
+    def __del__(self):
+        # 关闭连接
+        self.cursor.close()
+        self.conn.close()
+
+
+
+
+
+""""
 # 获取游标
 cursor = conn.cursor()
+
 
 # 插入数据
 sql = "INSERT INTO trade (name, account, saving) VALUES ( '%s', '%s', %.2f )"
@@ -58,13 +78,7 @@ cursor.execute(sql % data)
 conn.commit()
 print('成功修改', cursor.rowcount, '条数据')
 
-# 查询数据
-sql = "SELECT name,saving FROM trade WHERE account = '%s' "
-data = ('13512345678',)
-cursor.execute(sql % data)
-for row in cursor.fetchall():
-    print("Name:%s\tSaving:%.2f" % row)
-print('共查找出', cursor.rowcount, '条数据')
+
 
 # 删除数据
 sql = "DELETE FROM trade WHERE account = '%s' LIMIT %d"
@@ -88,7 +102,7 @@ except Exception as e:
 else:
     conn.commit()  # 事务提交
     print('事务处理成功', cursor.rowcount)
-
-# 关闭连接
-cursor.close()
-conn.close()
+"""
+# # 关闭连接
+#     cursor.close()
+#     conn.close()

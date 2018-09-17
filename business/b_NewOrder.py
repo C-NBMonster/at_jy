@@ -12,9 +12,17 @@ from elements.el_JYT.el_NewOrder_2 import C_el_NewOrder_2
 from elements.el_JYT.el_NewOrder_3 import C_el_NewOrder_3
 from elements.el_JYT.el_NewOrder_4 import C_el_NewOrder_4
 from elements.el_JYT.el_NewOrder_5 import C_el_NewOrder_5
+from elements.el_JYT.el_NewOrder_6 import C_el_NewOrder_6
+from elements.el_JYT.el_NewOrder_7 import C_el_NewOrder_7
+from elements.el_JYT.el_NewOrder_8 import C_el_NewOrder_8
+from elements.el_JYT.el_NewOrder_9 import C_el_NewOrder_9
+from elements.el_JYT.el_NewOrder_10 import C_el_NewOrder_10
 from common.rewrite import C_selenium_rewrite
+from common.conn_oracle import C_oracle
 import unittest
 import time
+import threading
+import cx_Oracle
 from selenium.webdriver.common.touch_actions import TouchActions
 class C_B_NewOrder(unittest.TestCase):
 
@@ -24,8 +32,14 @@ class C_B_NewOrder(unittest.TestCase):
         self.Cel_NewOrder_3 = C_el_NewOrder_3()
         self.Cel_NewOrder_4 = C_el_NewOrder_4()
         self.Cel_NewOrder_5 = C_el_NewOrder_5()
+        self.Cel_NewOrder_6 = C_el_NewOrder_6()
+        self.Cel_NewOrder_7 = C_el_NewOrder_7()
+        self.Cel_NewOrder_8 = C_el_NewOrder_8()
+        self.Cel_NewOrder_9 = C_el_NewOrder_9()
+        self.Cel_NewOrder_10 = C_el_NewOrder_10()
         self.C_sel_Rewrite  = C_selenium_rewrite()
-        self.TouchAct = TouchActions()
+        self.C_ORCLE = C_oracle()
+        #self.TouchAct = TouchActions(driver)
         self.shopName = u"选择商品门店"
         self.goodType = u"选择商品类型"
         self.productVersion = u"选择产品版本"
@@ -250,7 +264,6 @@ class C_B_NewOrder(unittest.TestCase):
         else:
             print("选择商品型号失败，请检查")
 
-
     #----------------------------------------------------------------------------------
     #新增订单第四步：填写客户信息
 
@@ -330,6 +343,73 @@ class C_B_NewOrder(unittest.TestCase):
         """提交"""
         self.Cel_NewOrder_4.el_NewOrder4_Submit(driver)
 
+    def b_NewOrder_5_Upload_GroupPhoto(self, driver):
+        #上传店员合影
+        self.Cel_NewOrder_5.el_NewOrder5_GroupPhoto_click(driver).click()
+        act_Camera = "com.android.camera.Camera"
+        driver.wait_activity(act_Camera, 20, 1)
+        self.Cel_NewOrder_5.el_NewOrder5_Camera_Shot(driver).click()
+        self.Cel_NewOrder_5.el_NewOrder5_Camera_Done(driver).click()
+
+    def b_NewOrder_5_Submit(self, driver):
+        #提交
+        self.Cel_NewOrder_5.el_NewOrder5_Submit(driver).click()
+
+    def b_NewOrder_6_GetCode(self, driver):
+        self.Cel_NewOrder_6.el_NewOrder6_Time(driver).click()
+        #此处要操作一下数据库
+        sText = self.Cel_NewOrder_6.el_NewOrder6_Phone(driver).getText().strip()
+        sql = r"select CODE from  CS_SMS_AUTHORITY  where mobile=" + str(sText) + " order by update_time desc"
+        code = self.C_ORCLE.oracle_Search(sql)
+        if code == '':
+            print("30s内每隔3s尝试再次查询")
+            for i in range(10):
+                global timer
+                timer = threading.Timer(3,self.b_NewOrder_6_GetCode(driver))
+                timer.start()
+            timer.cancel()
+        else:
+            return code
+
+    def b_NewOrder_6_FillCode(self, driver, code):
+        #填写授权码
+        loc  = self.Cel_NewOrder_6.el_NewOrder6_ETCode(driver)
+        self.C_sel_Rewrite.send_keys(loc, code)
+
+    def b_NewOrder_6_Submit(self, driver):
+        #提交验证
+        self.Cel_NewOrder_6.el_NewOrder6_Submit(driver).click()
+
+
+    #第七步 对客户门店评价备注
+    def b_NewOrder_7_Code_Click(self, driver):
+        #点击弹出弹窗
+        self.Cel_NewOrder_7.el_NewOrder7_Code_Click(driver).click()
+
+    def b_NewOrder_7_Select_Code(self, driver, item):
+        els = self.Cel_NewOrder_7.el_NewOrder7_PopUp(driver)
+        for el in els :
+            if el.getText().strip()  == item :
+                el.click()
+                break
+            else:
+                print("没有找到对应项，请检查输入是否有误")
+
+    def b_NewOrder_7_IsMove(self, driver):
+        #是否移动门店:是
+        el = self.Cel_NewOrder_7.el_NewOrder7_Is_MoveShop(driver)
+        driver.flick(el, 960, 324)
+
+    def b_NewOrder_7_Remark(self, driver, remark):
+        #填写备注
+        h = self.Cel_NewOrder_7.el_NewOrder7_Is_MoveShop(driver)
+        self.C_sel_Rewrite.send_keys(h, remark)
+
+    def b_NewOrder_7_Submit(self, driver):
+        #下一步
+        self.Cel_NewOrder_7.el_NewOrder7_Submit(driver).click()
+
+
     #----------------------------------------------------------------------
     #业务组合
     # ----------------------------------------------------------------------
@@ -368,14 +448,7 @@ class C_B_NewOrder(unittest.TestCase):
         self.b_NewOrder_4_EndDate(driver, endDate)
         self.b_NewOrder_4_Phone(driver, phone)
 
-    def b_NewOrder_5_Upload_GroupPhoto(self, driver):
-        #上传店员合影
-        self.Cel_NewOrder_5.el_NewOrder5_GroupPhoto_click(driver).click()
-        act_Camera = "com.android.camera.Camera"
-        driver.wait_activity(act_Camera, 20, 1)
-        self.Cel_NewOrder_5.el_NewOrder5_Camera_Shot(driver).click()
-        self.Cel_NewOrder_5.el_NewOrder5_Camera_Done(driver).click()
+    def b_NewOrder_7_SelectCode(self, driver, item):
+        self.b_NewOrder_7_Code_Click(driver)
+        self.b_NewOrder_7_Select_Code(driver, item)
 
-    def b_NewOrder_5_Submit(self, driver):
-        #提交
-        self.Cel_NewOrder_5.el_NewOrder5_Submit(driver).click()

@@ -25,8 +25,13 @@ class C_el_NewOrder_6():
         return el
 
     def el_NewOrder6_Time(self, driver):
-        """倒计时"""
+        """点击后，显示倒计时"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_code"))
+        return el
+
+    def el_NewOrder6_ETCode(self, driver):
+        """验证码输入框"""
+        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_identifying_code"))
         return el
 
     def el_NewOrder6_Protocal(self, driver):
