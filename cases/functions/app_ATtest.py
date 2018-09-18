@@ -165,8 +165,22 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder_7_Remark(self.driver, remark="123")
         self.C_B_newOrder.b_NewOrder_7_Submit(self.driver)
 
-        #第八步
+        #第八步 填写个人基本信息
+        address = addrDetail
+        education = '博士'
+        pIncome = '2000'
+        expenditure = '800'
+        fIncome = '10000'
+        qq = '1008611'
+        email = 'chen_jz06@126.com'
+        marriage = '未婚'
+        cNumber  = 3
+        self.C_B_newOrder.b_NewOrder_8_Person_BaseInfo(self.driver, l_addr, address, education, pIncome,
+                                     expenditure, fIncome, qq, email, marriage, cNumber)
 
+        self.C_B_newOrder.b_NewOrder_8_Submit(self.driver).click()
+
+        #第九步 单位信息
 
 
 

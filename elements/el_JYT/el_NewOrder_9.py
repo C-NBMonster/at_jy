@@ -30,14 +30,14 @@ class C_el_NewOrder_9():
         return els
 
     def el_NewOrder9_Common_Input(self, driver):
-        """公共：点击弹出弹窗"""
+        """公共：输入框"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_edit_view"))
         return els
 
     # 弹窗元素------------------------------
     # 地址弹窗
 
-    def el_NewOrder9_Choose_Address(self, driver):
+    def el_NewOrder9_Address_List(self, driver):
         """选择省市区"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, (By.ID, "tv_address"))
         return els

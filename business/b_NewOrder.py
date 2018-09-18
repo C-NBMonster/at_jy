@@ -302,13 +302,11 @@ class C_B_NewOrder(unittest.TestCase):
                 #选择市
                 hAddrs = self.Cel_NewOrder_4.el_NewOrder4_Choose_Address(driver)
                 for addr in hAddrs:
-                    # 选择省
                     if addr.getText().strip() == l_addr[1]:
                         addr.click()
                         #选择区县
                         hAddrs = self.Cel_NewOrder_4.el_NewOrder4_Choose_Address(driver)
                         for addr in hAddrs:
-                            # 选择省
                             if addr.getText().strip() == l_addr[2]:
                                 addr.click()
 
@@ -410,6 +408,238 @@ class C_B_NewOrder(unittest.TestCase):
         self.Cel_NewOrder_7.el_NewOrder7_Submit(driver).click()
 
 
+    #第八步，填写个人信息--------------------------------------------------
+    def b_NewOrder_8_County(self, driver, l_addr):
+        #选择县
+        self.Cel_NewOrder_8.el_NewOrder8_Common_PopUp_Click(driver)[0].click()
+        hAddrs = self.Cel_NewOrder_8.el_NewOrder8_Choose_Address(driver)
+        for addr in hAddrs:
+            # 选择省
+            if addr.getText().strip() == l_addr[0]:
+                addr.click()
+                # 选择市
+                hAddrs = self.Cel_NewOrder_8.el_NewOrder8_Choose_Address(driver)
+                for addr in hAddrs:
+                    if addr.getText().strip() == l_addr[1]:
+                        addr.click()
+                        # 选择区县
+                        hAddrs = self.Cel_NewOrder_8.el_NewOrder8_Choose_Address(driver)
+                        for addr in hAddrs:
+                            if addr.getText().strip() == l_addr[2]:
+                                addr.click()
+
+    def b_NewOrder_8_AddressDetail(self, driver, address):
+        #详细地址
+        global hEls
+        hEls = self.Cel_NewOrder_8.el_NewOrder8_Common_Input(driver)
+        h0 = hEls[0]
+        self.C_sel_Rewrite.send_keys(h0, address)
+
+    def b_NewOrder_8_Education(self, driver, educaiton):
+        #选择教育程度
+        self.Cel_NewOrder_8.el_NewOrder8_Common_PopUp_Click(driver)[1].click()
+        title = self.Cel_NewOrder_8.el_NewOrder8_EduMar_Title(driver).getText().strip()
+        els   = self.Cel_NewOrder_8.el_NewOrder8_EduMar_Items(driver)
+        if title == u"选择教育程度":
+            for el in els:
+                if el.getText().strip() == educaiton:
+                    el.click()
+                    break
+                else:
+                    print("没有找到对应学历，请查看输入是否正确")
+        else:
+            print("这不是选择学历的弹窗")
+
+
+    def b_NewOrder_8_personIncome(self, pIncome):
+        #个人总收入
+        self.C_sel_Rewrite.send_keys(hEls[1], pIncome)
+
+    def b_NewOrder_8_Expenditure(self, expenditure):
+        # 个人支出
+        self.C_sel_Rewrite.send_keys(hEls[2], expenditure)
+
+    def b_NewOrder_8_FamilyIncome(self, fIncome):
+        # 个人支出
+        self.C_sel_Rewrite.send_keys(hEls[3], fIncome)
+
+    def b_NewOrder_8_QQ(self, qq):
+        # QQ
+        self.C_sel_Rewrite.send_keys(hEls[4], qq)
+
+    def b_NewOrder_8_Email(self, email):
+        # QQ
+        self.C_sel_Rewrite.send_keys(hEls[5], email)
+
+    def b_NewOrder_8_Marriage(self, driver, marriage):
+        #婚姻状况
+        self.Cel_NewOrder_8.el_NewOrder8_Common_PopUp_Click(driver)[2].click()
+        title = self.Cel_NewOrder_8.el_NewOrder8_EduMar_Title(driver).getText().strip()
+        els = self.Cel_NewOrder_8.el_NewOrder8_EduMar_Items(driver)
+        if title == u"选择状况":
+            for el in els:
+                if el.getText().strip() == marriage:
+                    el.click()
+                    break
+                else:
+                    print("没有找到对应婚姻选项，请查看输入是否正确")
+        else:
+            print("这不是选择婚姻状况的弹窗")
+
+    def b_NewOrder_8_Children(self, driver, cNumber):
+        for i in range(int(cNumber)):
+            self.Cel_NewOrder_8.el_NewOrder8_Add(driver).click()
+            time.sleep(0.3) #循环太快，点击跟不上，所以加固定时间，确保每次都可以点中
+        number = self.Cel_NewOrder_8.el_NewOrder8_Children_Num(driver).getText().strip()
+        if number == cNumber:
+            print("子女数量填写正确")
+        else:
+            print("子女数量没有填写正确！")
+
+    def b_NewOrder_8_Submit(self, driver):
+        #提交
+        self.Cel_NewOrder_8.el_NewOrder8_Submit(driver).click()
+
+    def b_NewOrder_9_syncAdress(self, driver):
+        #同步居住地址
+        h = self.Cel_NewOrder_9.el_NewOrder9_syncAddress(driver)
+        driver.flick(h, 1050, 300)
+
+    def b_NewOrder9_County(self, driver, sync, l_addr):
+        """
+        选择省市区的函数可公用
+        :param driver:
+        :param sync: 是否同步居住地址：是，否
+        :param l_addr: 省市区地址列表
+        :return:
+        """
+
+        if sync == u"是":
+            pass
+        else:
+            self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[0].click()
+            hAddrs = self.Cel_NewOrder_9.el_NewOrder9_Address_List(driver)
+            for addr in hAddrs:
+                # 选择省
+                if addr.getText().strip() == l_addr[0]:
+                    addr.click()
+                    # 选择市
+                    hAddrs = self.Cel_NewOrder_9.el_NewOrder9_Address_List(driver)
+                    for addr in hAddrs:
+                        if addr.getText().strip() == l_addr[1]:
+                            addr.click()
+                            # 选择区县
+                            hAddrs = self.Cel_NewOrder_9.el_NewOrder9_Address_List(driver)
+                            for addr in hAddrs:
+                                if addr.getText().strip() == l_addr[2]:
+                                    addr.click()
+
+    def b_NewOrder9_UnitAddressDetail(self, driver, sync, address):
+        """
+        详细地址
+        :param driver:
+        :param sync: 是否同步居住地址：是，否
+        :param address: 详细地址
+        :return:
+        """
+        if sync == u"是":
+            pass
+        else:
+            h = self.Cel_NewOrder_9.el_NewOrder9_Common_Input(driver)[0]
+            self.C_sel_Rewrite.send_keys(h, address)
+
+    def b_NewOrder9_CommpanyName(self, driver, comName):
+        """
+        填写公司名称
+        :param driver:
+        :param comName:
+        :return:
+        """
+        h = self.Cel_NewOrder_9.el_NewOrder9_Common_Input(driver)[1]
+        self.C_sel_Rewrite.send_keys(h, comName)
+
+    def b_NewOrder9_CommpanyPhone(self, driver, comPhone):
+        """
+        填写公司电话
+        :param driver:
+        :param comName:
+        :return:
+        """
+        h = self.Cel_NewOrder_9.el_NewOrder9_Common_Input(driver)[2]
+        self.C_sel_Rewrite.send_keys(h, comPhone)
+
+    def b_NewOrder9_PhoneExtension(self, driver, comPhone):
+        """
+        填写固化分机号
+        :param driver:
+        :param comName:
+        :return:
+        """
+        h = self.Cel_NewOrder_9.el_NewOrder9_Common_Input(driver)[3]
+        self.C_sel_Rewrite.send_keys(h, comPhone)
+
+    def b_NewOrder9_IndustryGategory(self, driver, iGategory):
+        #选择行业类别
+        self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[1].click()
+        hEls = self.Cel_NewOrder_9.el_NewOrder9_Common_Items(driver)
+        for el in hEls:
+            if el.getText().strip() == iGategory:
+                el.click()
+                break
+            else:
+                print("没有找到该行业类别，请检查输入内容")
+
+    def b_NewOrder9_CompanyProperties(self, driver, cProperties):
+        #单位性质
+        self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[2].click()
+        hEls = self.Cel_NewOrder_9.el_NewOrder9_Common_Items(driver)
+        for el in hEls:
+            if el.getText().strip() == cProperties:
+                el.click()
+                break
+            else:
+                print("没有找到该单位性质，请检查输入内容")
+
+    def b_NewOrder9_Position(self, driver, position):
+        #职位
+        self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[3].click()
+        hEls = self.Cel_NewOrder_9.el_NewOrder9_Common_Items(driver)
+        for el in hEls:
+            if el.getText().strip() == position:
+                el.click()
+                break
+            else:
+                print("没有找到该职位，请检查输入内容")
+
+    def b_NewOrder9_EntryTime(self, driver, position):
+        #入职时间
+        self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[3].click()
+        text = self.Cel_NewOrder_9.el_NewOrder9_EntryTime_Title(driver).getText().strip()
+        if text != u"选择时间":
+            print("不是选择入职时间弹窗，请检查代码：元素下标是否正确")
+        else:
+            #入职时间：年 判断年是否大于当前年
+            self.C_sel_Rewrite.swipeUp(driver,1,300, 988, 300, 820,500, 2)
+            # 入职时间：月 判断月是否大于当前月
+
+
+
+
+
+
+    def b_NewOrder9_WorkYear(self, driver, wYear):
+        #工作年限
+        self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[5].click()
+        hEls = self.Cel_NewOrder_9.el_NewOrder9_Common_Items(driver)
+        for el in hEls:
+            if el.getText().strip() == wYear:
+                el.click()
+                break
+            else:
+                print("没有找到该工作年限，请检查输入内容")
+
+
+
     #----------------------------------------------------------------------
     #业务组合
     # ----------------------------------------------------------------------
@@ -451,4 +681,31 @@ class C_B_NewOrder(unittest.TestCase):
     def b_NewOrder_7_SelectCode(self, driver, item):
         self.b_NewOrder_7_Code_Click(driver)
         self.b_NewOrder_7_Select_Code(driver, item)
+
+    def b_NewOrder_8_Person_BaseInfo(self, driver, l_addr, address, education, pIncome,
+                                     expenditure, fIncome, qq, email, marriage, cNumber):
+        #填写个人基本信息
+        #选择县l_addr:省市区列表
+        self.b_NewOrder_8_County(driver, l_addr)
+        #详细地址
+        self.b_NewOrder_8_AddressDetail(driver, address)
+        #教育程度
+        self.b_NewOrder_8_Education(driver, education)
+        #个人月总收入
+        self.b_NewOrder_8_personIncome(pIncome)
+        #个人月支出
+        self.b_NewOrder_8_Expenditure(expenditure)
+        # 家庭月总收入
+        self.b_NewOrder_8_FamilyIncome(fIncome)
+        #qq
+        self.b_NewOrder_8_QQ(qq)
+        #email
+        self.b_NewOrder_8_Email(email)
+        #婚姻状况
+        self.b_NewOrder_8_Marriage(driver, marriage)
+        #子女数量
+        if marriage == u"未婚":
+            pass
+        else:
+            self.b_NewOrder_8_Children(driver, cNumber)
 

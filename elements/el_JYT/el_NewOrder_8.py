@@ -19,7 +19,7 @@ class C_el_NewOrder_8():
         self.timeOut = 30
         self.el_error_prompt = "找不到页面元素，请检查元素是否已被加载，或是否可见"
 
-    def el_NewOrder8_County_Click(self, driver):
+    def el_NewOrder8_Common_PopUp_Click(self, driver):
         """按顺序，县，教育程度，婚姻状况 公共弹窗"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_right"))
         return els
@@ -30,7 +30,6 @@ class C_el_NewOrder_8():
 
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_edit_view"))
         return els
-
 
     def el_NewOrder8_Children_Num(self, driver):
         """子女数目"""
