@@ -35,7 +35,7 @@ class C_selenium_rewrite():
         except NoSuchElementException as msg:
             print(u"%s 页面中超时%ds未能找到 %s 元素%s" % (self, timeOut, loc, msg))
 
-    def find_els(self, Driver, timeOut, frequency=1, ignored_exceptions=u"找不到该元素", *loc):
+    def find_els(self, Driver, timeOut=30, frequency=1, ignored_exceptions=u"找不到该元素", *loc):
         """
         查找多个元素
         :param loc:元素定位
@@ -73,7 +73,8 @@ class C_selenium_rewrite():
         content:向元素发送的内容
         Usage:Driver.send_keys((By.XPATH,"//a"),'a')
         """
-        self.clear_keys(loc).clear()
+        #self.clear_keys(loc).clear()
+        self.find_el(loc).clear()
         self.find_el(loc).send_keys(content)
 
     def exec_script(self, Driver, src):
@@ -196,59 +197,82 @@ class C_selenium_rewrite():
 
     #封装滑动方法
 
-    def swipeUp(self, Driver, t=500, n=1):
+    def swipeUp(self, Driver, sd=0,  x1=0, y1=0, x2=0, y2=0, t=500, n=1):
         """
         向上滑动屏幕
         :param t: 滑动持续时间
         :param n: 滑动的次数
+        :sd:标记为自定义坐标：0表示根据屏幕来算，默认点在中间； 1表示自定义坐标
         :return:
         """
-        l_winSize = Driver.get_window_size()
-        x1 = l_winSize['width'] * 0.5  # x坐标
-        y1 = l_winSize['height'] * 0.75  # 起始y坐标
-        y2 = l_winSize['height'] * 0.25  # 终点y坐标
-        for i in range(n):
-            Driver.swipe(x1, y1, x1, y2, t)
+        if sd == 1:
+            for i in range(n):
+                Driver.swipe(x1, y1, x2, y2, t)
+                time.sleep(0.3)
+        else:
+            l_winSize = Driver.get_window_size()
+            x1 = l_winSize['width'] * 0.5  # x坐标
+            y1 = l_winSize['height'] * 0.75  # 起始y坐标
+            y2 = l_winSize['height'] * 0.25  # 终点y坐标
+            for i in range(n):
+                Driver.swipe(x1, y1, x1, y2, t)
+                time.sleep(0.3)
 
-    def swipeDown(self, Driver, t=500, n=1):
+    def swipeDown(self, Driver, sd=0,  x1=0, y1=0, x2=0, y2=0, t=500, n=1):
         """
         向下滑动屏幕
         :param t:  滑动持续时间
         :param n: 滑动的次数
+        :sd:标记为自定义坐标：0表示根据屏幕来算，默认点在中间； 1表示自定义坐标
         :return:
         """
-        l_winSize = Driver.get_window_size()
-        x1 = l_winSize['width'] * 0.5  # x坐标
-        y1 = l_winSize['height'] * 0.25  # 起始y坐标
-        y2 = l_winSize['height'] * 0.75  # 终点y坐标
-        for i in range(n):
-            Driver.swipe(x1, y1, x1, y2, t)
+        if sd == 1:
+            for i in range(n):
+                Driver.swipe(x1, y1, x2, y2, t)
+                time.sleep(0.3)
+        else:
+            l_winSize = Driver.get_window_size()
+            x1 = l_winSize['width'] * 0.5  # x坐标
+            y1 = l_winSize['height'] * 0.25  # 起始y坐标
+            y2 = l_winSize['height'] * 0.75  # 终点y坐标
+            for i in range(n):
+                Driver.swipe(x1, y1, x1, y2, t)
+                time.sleep(0.3)
 
-    def swipLeft(self, Driver, t=500, n=1):
+    def swipeLeft(self, Driver,  sd=0,  x1=0, y1=0, x2=0, y2=0, t=500, n=1):
         """
         向左滑动屏幕
         :param t: 滑动持续时间
         :param n: 滑动的次数
         :return:
         """
-        l_winSize = Driver.get_window_size()
-        x1 = l_winSize['width'] * 0.75
-        y1 = l_winSize['height'] * 0.5
-        x2 = l_winSize['width'] * 0.25
-        for i in range(n):
-            Driver.swipe(x1, y1, x2, y1, t)
-            time.sleep(0.5)
+        if sd == 1:
+            for i in range(n):
+                Driver.swipe(x1, y1, x2, y2, t)
+                time.sleep(0.3)
+        else:
+            l_winSize = Driver.get_window_size()
+            x1 = l_winSize['width'] * 0.75
+            y1 = l_winSize['height'] * 0.5
+            x2 = l_winSize['width'] * 0.25
+            for i in range(n):
+                Driver.swipe(x1, y1, x2, y1, t)
+                time.sleep(0.3)
 
-    def swipRight(self, Driver, t=500, n=1):
+    def swipeRight(self, Driver, sd=0,  x1=0, y1=0, x2=0, y2=0, t=500, n=1):
         """
         向右滑动屏幕
         :param t: 滑动持续时间
         :param n: 滑动的次数
         :return:
         """
-        l_winSize = Driver.get_window_size()
-        x1 = l_winSize['width'] * 0.25
-        y1 = l_winSize['height'] * 0.5
-        x2 = l_winSize['width'] * 0.75
-        for i in range(n):
-            Driver.swipe(x1, y1, x2, y1, t)
+        if sd == 1:
+            for i in range(n):
+                Driver.swipe(x1, y1, x2, y2, t)
+        else:
+            l_winSize = Driver.get_window_size()
+            x1 = l_winSize['width'] * 0.25
+            y1 = l_winSize['height'] * 0.5
+            x2 = l_winSize['width'] * 0.75
+            for i in range(n):
+                Driver.swipe(x1, y1, x2, y1, t)

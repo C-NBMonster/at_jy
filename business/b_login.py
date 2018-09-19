@@ -61,8 +61,12 @@ class C_B_Login(unittest.TestCase):
         :param driver:
         :return:
         """
-        self.Cel_Login.el_main_PopUp_1_OK(driver).click()
-        self.Cel_Login.el_main_PopUp_2_NotSetPWD(driver).click()
-        self.Cel_Login.el_main_PopUp_3_OK(driver).click()
+        #弹窗逻辑目前只是按最简单的模式进行判断，后续需再熟悉规则，进行优化
+        if self.Cel_Login.el_main_PopUp_1_OK(driver).is_Displayed() == True:
+            self.Cel_Login.el_main_PopUp_1_OK(driver).click()
+            if self.Cel_Login.el_main_PopUp_2_NotSetPWD(driver).is_Displayed()== True:
+                self.Cel_Login.el_main_PopUp_2_NotSetPWD(driver).click()
+                if self.Cel_Login.el_main_PopUp_3_OK(driver).is_Displayed() == True:
+                    self.Cel_Login.el_main_PopUp_3_OK(driver).click()
 
 
