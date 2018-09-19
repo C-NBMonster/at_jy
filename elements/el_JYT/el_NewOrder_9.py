@@ -34,6 +34,11 @@ class C_el_NewOrder_9():
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_edit_view"))
         return els
 
+    def el_NewOrder9_Submit(self, driver):
+        """提交，下一步"""
+        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
+        return el
+
     # 弹窗元素------------------------------
     # 地址弹窗
 

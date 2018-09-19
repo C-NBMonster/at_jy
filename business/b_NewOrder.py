@@ -500,10 +500,14 @@ class C_B_NewOrder(unittest.TestCase):
         #提交
         self.Cel_NewOrder_8.el_NewOrder8_Submit(driver).click()
 
-    def b_NewOrder_9_syncAdress(self, driver):
+    def b_NewOrder_9_syncAdress(self, driver, sync):
         #同步居住地址
-        h = self.Cel_NewOrder_9.el_NewOrder9_syncAddress(driver)
-        driver.flick(h, 1050, 300)
+        if sync != "是":
+            pass
+        else:
+            h = self.Cel_NewOrder_9.el_NewOrder9_syncAddress(driver)
+            driver.flick(h, 1050, 300)
+        #此处还应增加判断是否真实同步现居住地址代码。想不管---
 
     def b_NewOrder9_County(self, driver, sync, l_addr):
         """
@@ -513,7 +517,6 @@ class C_B_NewOrder(unittest.TestCase):
         :param l_addr: 省市区地址列表
         :return:
         """
-
         if sync == u"是":
             pass
         else:
@@ -568,15 +571,15 @@ class C_B_NewOrder(unittest.TestCase):
         h = self.Cel_NewOrder_9.el_NewOrder9_Common_Input(driver)[2]
         self.C_sel_Rewrite.send_keys(h, comPhone)
 
-    def b_NewOrder9_PhoneExtension(self, driver, comPhone):
+    def b_NewOrder9_PhoneExtension(self, driver, eNumber):
         """
         填写固化分机号
         :param driver:
-        :param comName:
+        :param eNumber:
         :return:
         """
         h = self.Cel_NewOrder_9.el_NewOrder9_Common_Input(driver)[3]
-        self.C_sel_Rewrite.send_keys(h, comPhone)
+        self.C_sel_Rewrite.send_keys(h, eNumber)
 
     def b_NewOrder9_IndustryGategory(self, driver, iGategory):
         #选择行业类别
@@ -611,34 +614,57 @@ class C_B_NewOrder(unittest.TestCase):
             else:
                 print("没有找到该职位，请检查输入内容")
 
-    def b_NewOrder9_EntryTime(self, driver, position):
+    def b_NewOrder9_EntryTime(self, driver, etYear, etMonth):
         #入职时间
         self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[3].click()
         text = self.Cel_NewOrder_9.el_NewOrder9_EntryTime_Title(driver).getText().strip()
         if text != u"选择时间":
             print("不是选择入职时间弹窗，请检查代码：元素下标是否正确")
         else:
-            #入职时间：年 判断年是否大于当前年
-            self.C_sel_Rewrite.swipeUp(driver,1,300, 988, 300, 820,500, 2)
-            # 入职时间：月 判断月是否大于当前月
-
-
-
-
-
+            #大于当前年，向下滑动，小于当前年向上滑动，=则不滑动
+            year = time.localtime()[0]
+            if etYear > year:
+                for i in range(etYear-year):
+                    self.C_sel_Rewrite.swipeDown(driver, 1, 300, 988, 300, 1156, 500, 2)
+                    time.sleep(0.3)
+            elif etYear < year:
+                for i in range(year - etYear):
+                    self.C_sel_Rewrite.swipeUp(driver, 1, 300, 988, 300, 820, 500, 2)
+                    time.sleep(0.3)
+            else:
+                print("入职年为当前年，无需滑动！")
+            # 大于当前年月，向下滑动，小于当前月向上滑动，=则不滑动
+            month = time.localtime()[1]
+            if etMonth > month:
+                for i in range(etMonth - month):
+                    self.C_sel_Rewrite.swipeDown(driver, 1, 780, 988, 780, 1156, 500, 2)
+                    time.sleep(0.3)
+            elif etMonth < month:
+                for i in range(month - etMonth):
+                    self.C_sel_Rewrite.swipeUp(driver, 1, 780, 988, 780, 820, 500, 2)
+                    time.sleep(0.3)
+            else:
+                print("入职月为当前月，无需滑动！")
+            self.Cel_NewOrder_9.el_NewOrder9_EntryTime_Confirm(driver).click()
 
     def b_NewOrder9_WorkYear(self, driver, wYear):
         #工作年限
         self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[5].click()
+        title = self.Cel_NewOrder_9.el_NewOrder9_Common_Title(driver).getText().strip()
         hEls = self.Cel_NewOrder_9.el_NewOrder9_Common_Items(driver)
-        for el in hEls:
-            if el.getText().strip() == wYear:
-                el.click()
-                break
-            else:
-                print("没有找到该工作年限，请检查输入内容")
+        if title != u"选择工作年限":
+            print("不是选择工作年限弹窗，请检查代码：元素下标是否正确")
+        else:
+            for el in hEls:
+                if el.getText().strip() == wYear:
+                    el.click()
+                    break
+                else:
+                    print("没有找到该工作年限，请检查输入内容")
 
-
+    def b_NewOrder9_Submit(self, driver):
+        #提交
+        self.Cel_NewOrder_9.el_NewOrder9_Submit(driver)
 
     #----------------------------------------------------------------------
     #业务组合
@@ -708,4 +734,21 @@ class C_B_NewOrder(unittest.TestCase):
             pass
         else:
             self.b_NewOrder_8_Children(driver, cNumber)
+
+    def b_NewOrder_9_CompanyInfo(self, driver, sync, l_addr, address, comName, comPhone, eNumber,
+                                 iGategory, cProperties, position, etYear, etMonth, wYear):
+        #公司信息
+        #同步现居住地址
+        self.b_NewOrder_9_syncAdress(driver, sync)
+        self.b_NewOrder9_County(driver, sync, l_addr)
+        self.b_NewOrder9_UnitAddressDetail(driver, sync, address)
+        self.b_NewOrder9_CommpanyName(driver, comName)
+        self.b_NewOrder9_CommpanyPhone(driver, comPhone)
+        self.b_NewOrder9_PhoneExtension(driver, eNumber)
+        self.b_NewOrder9_IndustryGategory(driver, iGategory)
+        self.b_NewOrder9_CompanyProperties(driver, cProperties)
+        self.b_NewOrder9_Position(driver, position)
+        self.b_NewOrder9_EntryTime(driver, etYear, etMonth)
+        self.b_NewOrder9_WorkYear(driver, wYear)
+
 

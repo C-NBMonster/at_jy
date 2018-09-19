@@ -181,8 +181,20 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder_8_Submit(self.driver).click()
 
         #第九步 单位信息
-
-
+        sync = "否"
+        l_addr = ["广东", "深圳", "福田区"]
+        comName = "即有分期"
+        comPhone = "13410342891"
+        eNumber= "9527"
+        iGategory = "军队"
+        cProperties = "私企"
+        position = "军人"
+        etYear = 2016
+        etMonth = 12
+        wYear = "3年"
+        self.C_B_newOrder. b_NewOrder_9_CompanyInfo(self.driver, sync, l_addr, address, comName, comPhone, eNumber,
+                                 iGategory, cProperties, position, etYear, etMonth, wYear)
+        self.C_B_newOrder.b_NewOrder9_Submit(self.driver)
 
 
     def tearDown(self):
