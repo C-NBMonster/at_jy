@@ -195,6 +195,25 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder. b_NewOrder_9_CompanyInfo(self.driver, sync, l_addr, address, comName, comPhone, eNumber,
                                  iGategory, cProperties, position, etYear, etMonth, wYear)
         self.C_B_newOrder.b_NewOrder9_Submit(self.driver)
+        
+        #第十步：填写联系人信息
+        fContactName = "李大霄"
+        fContactPhone = "13410342899"
+        fRelationship = "父亲"
+        #家庭联系人信息
+        self.C_B_newOrder.b_NewOrder10_Family_ContactName(self.driver, fContactName)
+        self.C_B_newOrder.b_NewOrder10_Family_ContactPhone(fContactPhone)
+        self.C_B_newOrder.b_NewOrder10_Family_Relationship(self.driver, fRelationship)
+
+        #其它联系人信息
+        oContactName = "黑锅侠"
+        oContactPhone= "13410342655"
+        oRelationship= "同事-1"
+        self.C_B_newOrder.b_NewOrder10_Other_ContactName(self.driver, oContactName)
+        self.C_B_newOrder.b_NewOrder10_Other_ContactPhone(oContactPhone)
+        self.C_B_newOrder.b_NewOrder10_Other_Relationship(self.driver, oRelationship)
+
+        self.C_B_newOrder.b_NewOrder10_Submit(self.driver)
 
 
     def tearDown(self):
