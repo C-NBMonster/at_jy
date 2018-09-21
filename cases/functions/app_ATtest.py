@@ -134,7 +134,7 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder_4_IDInfo(self.driver, cName, idNo, l_addr,
                                               addrDetail, startDate, endDate, phone)
 
-        #第四步提交
+        #提交
         self.C_B_newOrder.b_NewOrder_4_Submit(self.driver)
 
         #第五步，上传店员合影
@@ -149,6 +149,8 @@ class NewOrder_Process_Tests(unittest.TestCase):
 
 
         #第六步 获取短信授权码
+        act_CS = "com.giveu.corder.ordercreate.activity.MessageAuthorizeActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
         #获取短信授权码
         code = self.C_B_newOrder.b_NewOrder_6_GetCode(self.driver)
         #输入验证码
@@ -157,6 +159,8 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder_6_Submit(self.driver)
 
         #第七步 其它信息 ，对门店和客户的评定，备注
+        act_CS = "com.giveu.corder.ordercreate.activity.OtherInfoActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
         item = 1
         self.C_B_newOrder.b_NewOrder_7_SelectCode(self.driver, item)
         #是否移动门店:是
@@ -166,6 +170,8 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder_7_Submit(self.driver)
 
         #第八步 填写个人基本信息
+        act_CS = "com.giveu.corder.ordercreate.activity.InfoEditActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
         address = addrDetail
         education = '博士'
         pIncome = '2000'
@@ -181,6 +187,8 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder_8_Submit(self.driver).click()
 
         #第九步 单位信息
+        act_CS = "com.giveu.corder.ordercreate.activity.CompanyEditActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
         sync = "否"
         l_addr = ["广东", "深圳", "福田区"]
         comName = "即有分期"
@@ -195,20 +203,20 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder. b_NewOrder_9_CompanyInfo(self.driver, sync, l_addr, address, comName, comPhone, eNumber,
                                  iGategory, cProperties, position, etYear, etMonth, wYear)
         self.C_B_newOrder.b_NewOrder9_Submit(self.driver)
-        
-        #第十步：填写联系人信息
+
+        #第十步 填写联系人信息
         fContactName = "李大霄"
         fContactPhone = "13410342899"
         fRelationship = "父亲"
-        #家庭联系人信息
+        # 家庭联系人信息
         self.C_B_newOrder.b_NewOrder10_Family_ContactName(self.driver, fContactName)
         self.C_B_newOrder.b_NewOrder10_Family_ContactPhone(fContactPhone)
         self.C_B_newOrder.b_NewOrder10_Family_Relationship(self.driver, fRelationship)
 
-        #其它联系人信息
+        # 其它联系人信息
         oContactName = "黑锅侠"
-        oContactPhone= "13410342655"
-        oRelationship= "同事-1"
+        oContactPhone = "13410342655"
+        oRelationship = "同事-1"
         self.C_B_newOrder.b_NewOrder10_Other_ContactName(self.driver, oContactName)
         self.C_B_newOrder.b_NewOrder10_Other_ContactPhone(oContactPhone)
         self.C_B_newOrder.b_NewOrder10_Other_Relationship(self.driver, oRelationship)
@@ -222,3 +230,4 @@ class NewOrder_Process_Tests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
