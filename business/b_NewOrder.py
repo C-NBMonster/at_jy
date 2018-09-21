@@ -1,3 +1,4 @@
+# coding = utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,7 +6,7 @@
 @software: JYB_Android_AT
 @file: b_NewOrder.py
 @time: 2018/9/7 17:23
-@desc: ¼´ÓĞ±¦ĞÂÔö¶©µ¥ÒµÎñÂß¼­´úÂë
+@desc: å³æœ‰å®æ–°å¢è®¢å•ä¸šåŠ¡é€»è¾‘ä»£ç 
 """
 from elements.el_JYT.el_NewOrder_1 import C_el_NewOrder_1
 from elements.el_JYT.el_NewOrder_2 import C_el_NewOrder_2
@@ -27,7 +28,7 @@ from selenium.webdriver.common.touch_actions import TouchActions
 class C_B_NewOrder(unittest.TestCase):
 
     def setUp(self):
-        self.Cel_NewOrder_1 = C_el_NewOrder_1()  #ÊµÀı»¯
+        self.Cel_NewOrder_1 = C_el_NewOrder_1()  #å®ä¾‹åŒ–
         self.Cel_NewOrder_2 = C_el_NewOrder_2()
         self.Cel_NewOrder_3 = C_el_NewOrder_3()
         self.Cel_NewOrder_4 = C_el_NewOrder_4()
@@ -40,64 +41,64 @@ class C_B_NewOrder(unittest.TestCase):
         self.C_sel_Rewrite  = C_selenium_rewrite()
         self.C_ORCLE = C_oracle()
         #self.TouchAct = TouchActions(driver)
-        self.shopName = u"Ñ¡ÔñÉÌÆ·ÃÅµê"
-        self.goodType = u"Ñ¡ÔñÉÌÆ·ÀàĞÍ"
-        self.productVersion = u"Ñ¡Ôñ²úÆ·°æ±¾"
-        self.productType = u"Ñ¡Ôñ²úÆ·Àà±ğ"
-        self.lName = ['42010000200 - ÎäººÊĞ½­ÏÄÇø¶à¶àÍ¨Ñ¶Æ÷²Ä¾­Óª²¿', 'ÊÖ»ú', '¼´Ïí´ûB', '³£¹æ']  #¶ÁÈ¡ExcelÊı¾İ
+        self.shopName = u"é€‰æ‹©å•†å“é—¨åº—"
+        self.goodType = u"é€‰æ‹©å•†å“ç±»å‹"
+        self.productVersion = u"é€‰æ‹©äº§å“ç‰ˆæœ¬"
+        self.productType = u"é€‰æ‹©äº§å“ç±»åˆ«"
+        self.lName = ['42010000200 - æ­¦æ±‰å¸‚æ±Ÿå¤åŒºå¤šå¤šé€šè®¯å™¨æç»è¥éƒ¨', 'æ‰‹æœº', 'å³äº«è´·B', 'å¸¸è§„']  #è¯»å–Excelæ•°æ®
 
 
     def b_Choose_Shop_Click(self, driver):
         """
-        µã»÷ÃÅµê£¬µ¯³öµ¯´°
+        ç‚¹å‡»é—¨åº—ï¼Œå¼¹å‡ºå¼¹çª—
         :param driver:
-        :param shopeName:ÉÌÆ·ÃÅµêÃû³Æ
+        :param shopeName:å•†å“é—¨åº—åç§°
         :return:
         """
-        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 1)  #µã»÷ÉÌÆ·ÃÅµê
+        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 1)  #ç‚¹å‡»å•†å“é—¨åº—
 
     def b_Common_Choose(self, driver, tName, strName):
-        #µ¯´°Ñ¡ÔñÄÚÈİ¹«¹²º¯Êı
-        #ËÄ¸öÀàĞÍµÄµ¯´°£¬·ÅÔÚÒ»¸ölistÀïÃæ£¬¼õÉÙĞÎ²Î
+        #å¼¹çª—é€‰æ‹©å†…å®¹å…¬å…±å‡½æ•°
+        #å››ä¸ªç±»å‹çš„å¼¹çª—ï¼Œæ”¾åœ¨ä¸€ä¸ªlisté‡Œé¢ï¼Œå‡å°‘å½¢å‚
         if self.Cel_NewOrder_1.el_NewOrder_Common_PopUp_Title(driver).getText().strip() == tName:
             self.Cel_NewOrder_1.el_NewOrder_Common_PopUp_List(driver, strName).click()
         else:
-            print("²»ÊÇÑ¡Ôñ %s µ¯´°" % strName)
+            print("ä¸æ˜¯é€‰æ‹© %s å¼¹çª—" % strName)
 
     def b_Chose_GoodsType_Click(self, driver):
         """
-        µã»÷ÉÌÆ·ÀàĞÍ µ¯´°
+        ç‚¹å‡»å•†å“ç±»å‹ å¼¹çª—
         :param driver:
-        :param GoodsType: ÉÌÆ·ÀàĞÍ
+        :param GoodsType: å•†å“ç±»å‹
         :return:
         """
-        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 2)  # µã»÷ÉÌÆ·ÀàĞÍ
+        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 2)  # ç‚¹å‡»å•†å“ç±»å‹
 
     def b_Choose_ProductVerson_Click(self, driver):
         """
-        Ñ¡Ôñ²úÆ·°æ±¾
+        é€‰æ‹©äº§å“ç‰ˆæœ¬
         :param driver:
-        :param ProductVerson: ²úÆ·°æ±¾
+        :param ProductVerson: äº§å“ç‰ˆæœ¬
         :return:
         """
-        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 3)  # µã»÷²úÆ·°æ±¾
-        # ÕâÀï»¹Ã»Ğ´Ñ¡Ôñ²úÆ·°æ±¾´úÂë
+        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 3)  # ç‚¹å‡»äº§å“ç‰ˆæœ¬
+        # è¿™é‡Œè¿˜æ²¡å†™é€‰æ‹©äº§å“ç‰ˆæœ¬ä»£ç 
 
     def b_Choose_ProductType_Click(self, driver):
         """
-        Ñ¡Ôñ²úÆ·ÀàĞÍ
+        é€‰æ‹©äº§å“ç±»å‹
         :param driver:
-        :param ProductType: ²úÆ·ÀàĞÍ
+        :param ProductType: äº§å“ç±»å‹
         :return:
         """
-        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 4)  # µã»÷²úÆ·ÀàĞÍ
-        # ÕâÀï»¹Ã»Ğ´Ñ¡Ôñ²úÆ·ÀàĞÍ´úÂë
+        self.Cel_NewOrder_1.el_NewOrder1_ChooseBaseInfo_PopUP(driver, 4)  # ç‚¹å‡»äº§å“ç±»å‹
+        # è¿™é‡Œè¿˜æ²¡å†™é€‰æ‹©äº§å“ç±»å‹ä»£ç 
 
     def b_Fill_GoodsTotel(self, driver, GoodsTotel):
         """
-        ÌîĞ´ÉÌÆ·×Ü¶î
+        å¡«å†™å•†å“æ€»é¢
         :param driver:
-        :param GoodsTotel: ÉÌÆ·×Ü¶î
+        :param GoodsTotel: å•†å“æ€»é¢
         :return:
         """
         self.Cel_NewOrder_1.el_NewOrder1_MoneyTotle(driver, 1).clear()
@@ -105,9 +106,9 @@ class C_B_NewOrder(unittest.TestCase):
 
     def b_Fill_Downpayment(self, driver, Downpayment):
         """
-        ÌîĞ´Ê×¸¶½ğ¶î
+        å¡«å†™é¦–ä»˜é‡‘é¢
         :param driver:
-        :param Downpayment: Ê×¸¶½ğ¶î
+        :param Downpayment: é¦–ä»˜é‡‘é¢
         :return:
         """
         self.Cel_NewOrder_1.el_NewOrder1_MoneyTotle(driver, 2).clear()
@@ -115,13 +116,13 @@ class C_B_NewOrder(unittest.TestCase):
 
 
     # -------------------------------------------------------------
-    """ÒµÎñ×éºÏ"""
+    """ä¸šåŠ¡ç»„åˆ"""
     # -------------------------------------------------------------
     def b_NewOrder_1(self, driver, goodsTotel, downpayment):
         """
-        ĞÂ½¨¶©µ¥£¬µÚÒ»¸öÄÚÈİÌîĞ´Ò³Ãæ£¬»ã×Ü
-        :goodsTotel:ÉÌÆ·×Ü¼Û
-        :downpayment:Ê×¸¶×Ü¶î
+        æ–°å»ºè®¢å•ï¼Œç¬¬ä¸€ä¸ªå†…å®¹å¡«å†™é¡µé¢ï¼Œæ±‡æ€»
+        :goodsTotel:å•†å“æ€»ä»·
+        :downpayment:é¦–ä»˜æ€»é¢
         :return:
         """
         self.b_Choose_Shop_Click(driver)
@@ -136,15 +137,15 @@ class C_B_NewOrder(unittest.TestCase):
         self.b_Fill_Downpayment(driver, downpayment)
 
     def b_NewOrder_1_submit(self, driver):
-        """µÚÒ»²½Ìá½»"""
+        """ç¬¬ä¸€æ­¥æäº¤"""
         self.Cel_NewOrder_1.el_NewOrder_submit_1(driver).click()
 
     def b_Check_LoanSum(self, driver, goodsTotel, downpayment):
         """
-        ÑéÖ¤´û¿î½ğ¶îÊÇ·ñÕıÈ·
+        éªŒè¯è´·æ¬¾é‡‘é¢æ˜¯å¦æ­£ç¡®
         :param driver:
-        :param goodsTotel: ÉÌÆ·×Ü¼Û
-        :param downpayment:Ê×¸¶½ğ¶î
+        :param goodsTotel: å•†å“æ€»ä»·
+        :param downpayment:é¦–ä»˜é‡‘é¢
         :return:
         """
         loanSum = int((self.Cel_NewOrder_1.el_NewOrder1_LoanSum(driver)).strip())
@@ -152,35 +153,35 @@ class C_B_NewOrder(unittest.TestCase):
         if tt == loanSum:
             return True
         else:
-            self.assertEquals(int(goodsTotel) - int(downpayment), loanSum, u"errorInfo:´û¿î½ğ¶î¼ÆËã²»ÕıÈ·")
+            self.assertEquals(int(goodsTotel) - int(downpayment), loanSum, u"errorInfo:è´·æ¬¾é‡‘é¢è®¡ç®—ä¸æ­£ç¡®")
             return False
 
     #--------------------------------------------------
-    #ĞÂ½¨¶©µ¥µÚ¶ş¸öÒ³Ãæ--------------------------------
+    #æ–°å»ºè®¢å•ç¬¬äºŒä¸ªé¡µé¢--------------------------------
     def b_NewOrder_2_Check_LoanSum(self, driver, loanSum):
-        """¼ì²é´û¿î½ğ¶îÊÇ·ñÕıÈ·"""
+        """æ£€æŸ¥è´·æ¬¾é‡‘é¢æ˜¯å¦æ­£ç¡®"""
         sText = self.Cel_NewOrder_2.el_NewOrder2_LoanSum(driver).getText().strip()
         if sText != loanSum:
-            self.assertEquals(sText, loanSum, u"ĞÂ½¨¶©µ¥µÚ¶ş¸öÒ³Ãæ£¬´û¿î½ğ¶îÏÔÊ¾´íÎó£¬Çë¼ì²é!")
+            self.assertEquals(sText, loanSum, u"æ–°å»ºè®¢å•ç¬¬äºŒä¸ªé¡µé¢ï¼Œè´·æ¬¾é‡‘é¢æ˜¾ç¤ºé”™è¯¯ï¼Œè¯·æ£€æŸ¥!")
         else:
-            #Ìí¼ÓÈÕÖ¾ĞÅÏ¢
-            print(u"´û¿îĞÅÏ¢ÏÔÊ¾ÕıÈ·£¡")
+            #æ·»åŠ æ—¥å¿—ä¿¡æ¯
+            print(u"è´·æ¬¾ä¿¡æ¯æ˜¾ç¤ºæ­£ç¡®ï¼")
 
     def b_NewOrder_2_No_TreasureFee(self, driver):
-        """²»²Î¼ÓÃâ»¹´óÀñ°ü"""
-        #Í¨¹ı×ø±êÀ´ÒÆ¶¯ÔªËØ¡£²»Í¬·Ö±æÂÊ£¬Ôò»á³öÏÖbug£¬ÒÔºóÔÙÏë°ì·¨
+        """ä¸å‚åŠ å…è¿˜å¤§ç¤¼åŒ…"""
+        #é€šè¿‡åæ ‡æ¥ç§»åŠ¨å…ƒç´ ã€‚ä¸åŒåˆ†è¾¨ç‡ï¼Œåˆ™ä¼šå‡ºç°bugï¼Œä»¥åå†æƒ³åŠæ³•
         driver.flick(1040, 322, 934, 322)
 
     def b_NewOrder_2_ChooseInstalment(self, driver, instalment):
-        """Ñ¡Ôñ·ÖÆÚ"""
+        """é€‰æ‹©åˆ†æœŸ"""
         instal = self.Cel_NewOrder_2.el_NewOrder2_InstalmentItem(driver, instalment)
         l_instals = []
         for el in instal:
             l_instals.append(el.getText().strip())
         index = 0
         if len(l_instals) == 0:
-            #ÕâÀï½ö¼ÇÂ¼ÈÕÖ¾ĞÅÏ¢
-            print("²éÑ¯Ìõ¼ş£º%s - %s - %s - %s : Ã»ÓĞËÑË÷µ½ÉÌÆ··ÖÆÚ£¬Çë¼ì²éËùÑ¡ÃÅµê¼°ÉÌÆ·ÀàĞÍ£¬²úÆ·°æ±¾µÈÊÇ·ñÕıÈ·" % self.shopName, self.goodType, self.productVersion, self.productType)
+            #è¿™é‡Œä»…è®°å½•æ—¥å¿—ä¿¡æ¯
+            print("æŸ¥è¯¢æ¡ä»¶ï¼š%s - %s - %s - %s : æ²¡æœ‰æœç´¢åˆ°å•†å“åˆ†æœŸï¼Œè¯·æ£€æŸ¥æ‰€é€‰é—¨åº—åŠå•†å“ç±»å‹ï¼Œäº§å“ç‰ˆæœ¬ç­‰æ˜¯å¦æ­£ç¡®" % self.shopName, self.goodType, self.productVersion, self.productType)
             return
         else:
             for str in l_instals:
@@ -189,16 +190,16 @@ class C_B_NewOrder(unittest.TestCase):
             self.Cel_NewOrder_2.el_NewOrder2_InstalmentList(driver)[index].click()
 
     def b_NewOrder_2_Submit(self, driver):
-        """µã»÷ÏÂÒ»²½"""
+        """ç‚¹å‡»ä¸‹ä¸€æ­¥"""
         self.Cel_NewOrder_2.el_NewOrder2_Submit(driver).click()
 
     #-----------------------------------------------------------------------------
-    #ĞÂ½¨¶©µ¥µÚÈı²½
+    #æ–°å»ºè®¢å•ç¬¬ä¸‰æ­¥
     #-----------------------------------------------------------------------------
     def b_NewOrder_3_Choose_SubCategory(self, driver, subCategory):
-        """Ñ¡ÔñÉÌÆ·Ğ¡Àà"""
+        """é€‰æ‹©å•†å“å°ç±»"""
         self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver)[0].click()
-        if self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Title(driver).getText().strip() == u"Ñ¡ÔñÉÌÆ·Ğ¡Àà":
+        if self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Title(driver).getText().strip() == u"é€‰æ‹©å•†å“å°ç±»":
             els = self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Items(driver)
             for el  in els:
                 if el.getText().strip() == subCategory:
@@ -207,17 +208,17 @@ class C_B_NewOrder(unittest.TestCase):
                     return
 
     def b_NewOrder_3_Check_SubCategory(self, driver, subCategory):
-        """ÑéÖ¤ÊÇ·ñ³É¹¦Ñ¡ÔñÉÌÆ·Ğ¡Àà"""
+        """éªŒè¯æ˜¯å¦æˆåŠŸé€‰æ‹©å•†å“å°ç±»"""
         subText = self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 0).getText().strip()
         if subText == subCategory:
-            print("³É¹¦Ñ¡ÔñÉÌÆ·Ğ¡Àà")
+            print("æˆåŠŸé€‰æ‹©å•†å“å°ç±»")
         else:
-            print("Ñ¡ÔñÉÌÆ·Ğ¡ÀàÊ§°Ü£¬Çë¼ì²é")
+            print("é€‰æ‹©å•†å“å°ç±»å¤±è´¥ï¼Œè¯·æ£€æŸ¥")
 
     def b_NewOrder_3_Choose_Brand(self, driver, brand):
-        """Ñ¡ÔñÉÌÆ·Æ·ÅÆ"""
+        """é€‰æ‹©å•†å“å“ç‰Œ"""
         self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 1).click()
-        if self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Title(driver).getText().strip() == u"Ñ¡ÔñÉÌÆ·Æ·ÅÆ":
+        if self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Title(driver).getText().strip() == u"é€‰æ‹©å•†å“å“ç‰Œ":
             els = self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Items(driver)
             for el  in els:
                 if el.getText().strip() == brand:
@@ -226,29 +227,29 @@ class C_B_NewOrder(unittest.TestCase):
                     return
 
     def b_NewOrder_3_Check_brand(self, driver, brand):
-        """ÑéÖ¤ÊÇ·ñ³É¹¦Ñ¡ÔñÉÌÆ·Æ·ÅÆ"""
+        """éªŒè¯æ˜¯å¦æˆåŠŸé€‰æ‹©å•†å“å“ç‰Œ"""
         subText = self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 1).getText().strip()
         if subText == brand:
-            print("³É¹¦Ñ¡ÔñÉÌÆ·Æ·ÅÆ")
+            print("æˆåŠŸé€‰æ‹©å•†å“å“ç‰Œ")
         else:
-            print("Ñ¡ÔñÉÌÆ·Æ·ÅÆÊ§°Ü£¬Çë¼ì²é")
+            print("é€‰æ‹©å•†å“å“ç‰Œå¤±è´¥ï¼Œè¯·æ£€æŸ¥")
 
     def b_NewOrder_3_Choose_SKU(self, driver, sku):
         """
-        Ñ¡ÔñÉÌÆ·ĞÍºÅ¡£PS£ºÓĞÊ±ÊÇÏÂÀ­¿òĞÎÊ½£¬ÓĞÊ±ÊÇÊäÈë¿òĞÎÊ½¡£×¢Òâ£¡£¡£¡
+        é€‰æ‹©å•†å“å‹å·ã€‚PSï¼šæœ‰æ—¶æ˜¯ä¸‹æ‹‰æ¡†å½¢å¼ï¼Œæœ‰æ—¶æ˜¯è¾“å…¥æ¡†å½¢å¼ã€‚æ³¨æ„ï¼ï¼ï¼
         :param driver:
         :param sku:
         :return:
         """
-        #Èç¹ûÊÇÊäÈë¿ò
+        #å¦‚æœæ˜¯è¾“å…¥æ¡†
         br = self.Cel_NewOrder_3.el_NewOrder3_Edit_GP_DP(driver,2).is_Displayed()
         bh = self.Cel_NewOrder_3.el_NewOrder3_Edit_GP_DP(driver,2)
         if br == True:
             self.C_sel_Rewrite.send_keys(bh, sku)
         else:
-            #ÏÂÀ­¿òĞÎÊ½
+            #ä¸‹æ‹‰æ¡†å½¢å¼
             self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 2).click()
-            if self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Title(driver).getText().strip() == u"Ñ¡ÔñÉÌÆ·ĞÍºÅ":
+            if self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Title(driver).getText().strip() == u"é€‰æ‹©å•†å“å‹å·":
                 els = self.Cel_NewOrder_3.el_NewOrder3_PopUp_Common_Items(driver)
                 for el in els:
                     if el.getText().strip() == sku:
@@ -257,79 +258,79 @@ class C_B_NewOrder(unittest.TestCase):
                         return
 
     def b_NewOrder_3_Check_SKU(self, driver, sku):
-        """ÑéÖ¤ÊÇ·ñ³É¹¦Ñ¡ÔñÉÌÆ·ĞÍºÅ"""
+        """éªŒè¯æ˜¯å¦æˆåŠŸé€‰æ‹©å•†å“å‹å·"""
         subText = self.Cel_NewOrder_3.el_NewOrder3_Choose_GoodsInfo_Click(driver, 2).getText().strip()
         if subText == sku:
-            print("³É¹¦Ñ¡ÔñÉÌÆ·ĞÍºÅ")
+            print("æˆåŠŸé€‰æ‹©å•†å“å‹å·")
         else:
-            print("Ñ¡ÔñÉÌÆ·ĞÍºÅÊ§°Ü£¬Çë¼ì²é")
+            print("é€‰æ‹©å•†å“å‹å·å¤±è´¥ï¼Œè¯·æ£€æŸ¥")
 
     #----------------------------------------------------------------------------------
-    #ĞÂÔö¶©µ¥µÚËÄ²½£ºÌîĞ´¿Í»§ĞÅÏ¢
+    #æ–°å¢è®¢å•ç¬¬å››æ­¥ï¼šå¡«å†™å®¢æˆ·ä¿¡æ¯
 
     def b_NewOrder_4_Upload_IDFront(self, driver):
-        """ÉÏ´«Éí·İÖ¤ÕıÃæ"""
-        #ÅÄÕÕ
+        """ä¸Šä¼ èº«ä»½è¯æ­£é¢"""
+        #æ‹ç…§
         self.Cel_NewOrder_4.el_NewOrder4_IDCard_Front(driver).click()
         act_Camera = "com.giveu.corder.ordercreate.activity.CameraActivity"
         driver.wait_activity(act_Camera, 20, 1)
         self.Cel_NewOrder_4.el_NewOrder4_Camera_Shot(driver).click()
-        #ÑéÖ¤´úÂëmissed
+        #éªŒè¯ä»£ç missed
 
     def b_NewOrder_4_cName(self, driver, cName):
-        # ÌîĞ´ÓÃ»§ĞÕÃû
+        # å¡«å†™ç”¨æˆ·å§“å
         hName = self.Cel_NewOrder_4.el_NewOrder4_ID_Name(driver)
         self.C_sel_Rewrite.send_keys(hName, cName)
 
     def b_NewOrder_4_IDNo(self, driver, idNo):
-        #Éí·İÖ¤ºÅ
+        #èº«ä»½è¯å·
         hIDNo = self.Cel_NewOrder_4.el_NewOrder4_ID_No(driver)
         self.C_sel_Rewrite.send_keys(hIDNo, idNo)
 
     def b_NewOrder_4_parentAddr(self, driver, l_addr):
         """
-        Ñ¡ÔñÊ¡ÊĞÇø,
+        é€‰æ‹©çœå¸‚åŒº,
         :param driver:
-        :param l_addr: Ê¡ÊĞÇøÁĞ±í
+        :param l_addr: çœå¸‚åŒºåˆ—è¡¨
         :return:
         """
         self.Cel_NewOrder_4.el_NewOrder4_Address_Click(driver).click()
         hAddrs = self.Cel_NewOrder_4.el_NewOrder4_Choose_Address(driver)
         for addr in hAddrs:
-            #Ñ¡ÔñÊ¡
+            #é€‰æ‹©çœ
             if addr.getText().strip() == l_addr[0]:
                 addr.click()
-                #Ñ¡ÔñÊĞ
+                #é€‰æ‹©å¸‚
                 hAddrs = self.Cel_NewOrder_4.el_NewOrder4_Choose_Address(driver)
                 for addr in hAddrs:
                     if addr.getText().strip() == l_addr[1]:
                         addr.click()
-                        #Ñ¡ÔñÇøÏØ
+                        #é€‰æ‹©åŒºå¿
                         hAddrs = self.Cel_NewOrder_4.el_NewOrder4_Choose_Address(driver)
                         for addr in hAddrs:
                             if addr.getText().strip() == l_addr[2]:
                                 addr.click()
 
     def b_NewOrder_4_AddressDetail(self, driver, addrDetail):
-        #ÌîĞ´ÏêÏ¸µØÖ·
+        #å¡«å†™è¯¦ç»†åœ°å€
         hAddr = self.Cel_NewOrder_4.el_NewOrder4_ID_Address(driver)
         self.C_sel_Rewrite.send_keys(hAddr, addrDetail)
 
-    #Éí·İÖ¤±³ÃæĞÅÏ¢---------------------------------------
+    #èº«ä»½è¯èƒŒé¢ä¿¡æ¯---------------------------------------
     def b_NewOrder_4_IDCard_Back(self, driver):
-        #ÅÄÕÕÉí·İÖ¤±³Ãæ
+        #æ‹ç…§èº«ä»½è¯èƒŒé¢
         self.Cel_NewOrder_4.el_NewOrder4_IDCard_Back(driver).click()
         act_Camera = "com.giveu.corder.ordercreate.activity.CameraActivity"
         driver.wait_activity(act_Camera, 20, 1)
         self.Cel_NewOrder_4.el_NewOrder4_Camera_Shot(driver).click()
 
     def  b_NewOrder_4_startDate(self, driver, startDate):
-        #¿ªÊ¼ÈÕÆÚ£º2011/11/11
+        #å¼€å§‹æ—¥æœŸï¼š2011/11/11
         hDate = self.Cel_NewOrder_4.el_NewOrder4_ID_DateStart(driver)
         self.C_sel_Rewrite.send_keys(hDate, startDate)
 
     def b_NewOrder_4_EndDate(self, driver, endDate):
-        # ½áÊøÈÕÆÚ£º2016/11/11
+        # ç»“æŸæ—¥æœŸï¼š2016/11/11
         hDate = self.Cel_NewOrder_4.el_NewOrder4_ID_DateEnd(driver)
         self.C_sel_Rewrite.send_keys(hDate, endDate)
 
@@ -338,11 +339,11 @@ class C_B_NewOrder(unittest.TestCase):
         self.C_sel_Rewrite.send_keys(hPhone, phone)
 
     def b_NewOrder_4_Submit(self, driver):
-        """Ìá½»"""
+        """æäº¤"""
         self.Cel_NewOrder_4.el_NewOrder4_Submit(driver)
 
     def b_NewOrder_5_Upload_GroupPhoto(self, driver):
-        #ÉÏ´«µêÔ±ºÏÓ°
+        #ä¸Šä¼ åº—å‘˜åˆå½±
         self.Cel_NewOrder_5.el_NewOrder5_GroupPhoto_click(driver).click()
         act_Camera = "com.android.camera.Camera"
         driver.wait_activity(act_Camera, 20, 1)
@@ -350,17 +351,17 @@ class C_B_NewOrder(unittest.TestCase):
         self.Cel_NewOrder_5.el_NewOrder5_Camera_Done(driver).click()
 
     def b_NewOrder_5_Submit(self, driver):
-        #Ìá½»
+        #æäº¤
         self.Cel_NewOrder_5.el_NewOrder5_Submit(driver).click()
 
     def b_NewOrder_6_GetCode(self, driver):
         self.Cel_NewOrder_6.el_NewOrder6_Time(driver).click()
-        #´Ë´¦Òª²Ù×÷Ò»ÏÂÊı¾İ¿â
+        #æ­¤å¤„è¦æ“ä½œä¸€ä¸‹æ•°æ®åº“
         sText = self.Cel_NewOrder_6.el_NewOrder6_Phone(driver).getText().strip()
         sql = r"select CODE from  CS_SMS_AUTHORITY  where mobile=" + str(sText) + " order by update_time desc"
         code = self.C_ORCLE.oracle_Search(sql)
         if code == '':
-            print("30sÄÚÃ¿¸ô3s³¢ÊÔÔÙ´Î²éÑ¯")
+            print("30så†…æ¯éš”3så°è¯•å†æ¬¡æŸ¥è¯¢")
             for i in range(10):
                 global timer
                 timer = threading.Timer(3,self.b_NewOrder_6_GetCode(driver))
@@ -370,18 +371,18 @@ class C_B_NewOrder(unittest.TestCase):
             return code
 
     def b_NewOrder_6_FillCode(self, driver, code):
-        #ÌîĞ´ÊÚÈ¨Âë
+        #å¡«å†™æˆæƒç 
         loc  = self.Cel_NewOrder_6.el_NewOrder6_ETCode(driver)
         self.C_sel_Rewrite.send_keys(loc, code)
 
     def b_NewOrder_6_Submit(self, driver):
-        #Ìá½»ÑéÖ¤
+        #æäº¤éªŒè¯
         self.Cel_NewOrder_6.el_NewOrder6_Submit(driver).click()
 
 
-    #µÚÆß²½ ¶Ô¿Í»§ÃÅµêÆÀ¼Û±¸×¢
+    #ç¬¬ä¸ƒæ­¥ å¯¹å®¢æˆ·é—¨åº—è¯„ä»·å¤‡æ³¨
     def b_NewOrder_7_Code_Click(self, driver):
-        #µã»÷µ¯³öµ¯´°
+        #ç‚¹å‡»å¼¹å‡ºå¼¹çª—
         self.Cel_NewOrder_7.el_NewOrder7_Code_Click(driver).click()
 
     def b_NewOrder_7_Select_Code(self, driver, item):
@@ -391,76 +392,76 @@ class C_B_NewOrder(unittest.TestCase):
                 el.click()
                 break
             else:
-                print("Ã»ÓĞÕÒµ½¶ÔÓ¦Ïî£¬Çë¼ì²éÊäÈëÊÇ·ñÓĞÎó")
+                print("æ²¡æœ‰æ‰¾åˆ°å¯¹åº”é¡¹ï¼Œè¯·æ£€æŸ¥è¾“å…¥æ˜¯å¦æœ‰è¯¯")
 
     def b_NewOrder_7_IsMove(self, driver):
-        #ÊÇ·ñÒÆ¶¯ÃÅµê:ÊÇ
+        #æ˜¯å¦ç§»åŠ¨é—¨åº—:æ˜¯
         el = self.Cel_NewOrder_7.el_NewOrder7_Is_MoveShop(driver)
         driver.flick(el, 960, 324)
 
     def b_NewOrder_7_Remark(self, driver, remark):
-        #ÌîĞ´±¸×¢
+        #å¡«å†™å¤‡æ³¨
         h = self.Cel_NewOrder_7.el_NewOrder7_Is_MoveShop(driver)
         self.C_sel_Rewrite.send_keys(h, remark)
 
     def b_NewOrder_7_Submit(self, driver):
-        #ÏÂÒ»²½
+        #ä¸‹ä¸€æ­¥
         self.Cel_NewOrder_7.el_NewOrder7_Submit(driver).click()
 
 
-    #µÚ°Ë²½£¬ÌîĞ´¸öÈËĞÅÏ¢--------------------------------------------------
+    #ç¬¬å…«æ­¥ï¼Œå¡«å†™ä¸ªäººä¿¡æ¯--------------------------------------------------
     def b_NewOrder_8_County(self, driver, l_addr):
-        #Ñ¡ÔñÏØ
+        #é€‰æ‹©å¿
         self.Cel_NewOrder_8.el_NewOrder8_Common_PopUp_Click(driver)[0].click()
         hAddrs = self.Cel_NewOrder_8.el_NewOrder8_Choose_Address(driver)
         for addr in hAddrs:
-            # Ñ¡ÔñÊ¡
+            # é€‰æ‹©çœ
             if addr.getText().strip() == l_addr[0]:
                 addr.click()
-                # Ñ¡ÔñÊĞ
+                # é€‰æ‹©å¸‚
                 hAddrs = self.Cel_NewOrder_8.el_NewOrder8_Choose_Address(driver)
                 for addr in hAddrs:
                     if addr.getText().strip() == l_addr[1]:
                         addr.click()
-                        # Ñ¡ÔñÇøÏØ
+                        # é€‰æ‹©åŒºå¿
                         hAddrs = self.Cel_NewOrder_8.el_NewOrder8_Choose_Address(driver)
                         for addr in hAddrs:
                             if addr.getText().strip() == l_addr[2]:
                                 addr.click()
 
     def b_NewOrder_8_AddressDetail(self, driver, address):
-        #ÏêÏ¸µØÖ·
+        #è¯¦ç»†åœ°å€
         global hEls
         hEls = self.Cel_NewOrder_8.el_NewOrder8_Common_Input(driver)
         h0 = hEls[0]
         self.C_sel_Rewrite.send_keys(h0, address)
 
     def b_NewOrder_8_Education(self, driver, educaiton):
-        #Ñ¡Ôñ½ÌÓı³Ì¶È
+        #é€‰æ‹©æ•™è‚²ç¨‹åº¦
         self.Cel_NewOrder_8.el_NewOrder8_Common_PopUp_Click(driver)[1].click()
         title = self.Cel_NewOrder_8.el_NewOrder8_EduMar_Title(driver).getText().strip()
         els   = self.Cel_NewOrder_8.el_NewOrder8_EduMar_Items(driver)
-        if title == u"Ñ¡Ôñ½ÌÓı³Ì¶È":
+        if title == u"é€‰æ‹©æ•™è‚²ç¨‹åº¦":
             for el in els:
                 if el.getText().strip() == educaiton:
                     el.click()
                     break
                 else:
-                    print("Ã»ÓĞÕÒµ½¶ÔÓ¦Ñ§Àú£¬Çë²é¿´ÊäÈëÊÇ·ñÕıÈ·")
+                    print("æ²¡æœ‰æ‰¾åˆ°å¯¹åº”å­¦å†ï¼Œè¯·æŸ¥çœ‹è¾“å…¥æ˜¯å¦æ­£ç¡®")
         else:
-            print("Õâ²»ÊÇÑ¡ÔñÑ§ÀúµÄµ¯´°")
+            print("è¿™ä¸æ˜¯é€‰æ‹©å­¦å†çš„å¼¹çª—")
 
 
     def b_NewOrder_8_personIncome(self, pIncome):
-        #¸öÈË×ÜÊÕÈë
+        #ä¸ªäººæ€»æ”¶å…¥
         self.C_sel_Rewrite.send_keys(hEls[1], pIncome)
 
     def b_NewOrder_8_Expenditure(self, expenditure):
-        # ¸öÈËÖ§³ö
+        # ä¸ªäººæ”¯å‡º
         self.C_sel_Rewrite.send_keys(hEls[2], expenditure)
 
     def b_NewOrder_8_FamilyIncome(self, fIncome):
-        # ¸öÈËÖ§³ö
+        # ä¸ªäººæ”¯å‡º
         self.C_sel_Rewrite.send_keys(hEls[3], fIncome)
 
     def b_NewOrder_8_QQ(self, qq):
@@ -472,66 +473,66 @@ class C_B_NewOrder(unittest.TestCase):
         self.C_sel_Rewrite.send_keys(hEls[5], email)
 
     def b_NewOrder_8_Marriage(self, driver, marriage):
-        #»éÒö×´¿ö
+        #å©šå§»çŠ¶å†µ
         self.Cel_NewOrder_8.el_NewOrder8_Common_PopUp_Click(driver)[2].click()
         title = self.Cel_NewOrder_8.el_NewOrder8_EduMar_Title(driver).getText().strip()
         els = self.Cel_NewOrder_8.el_NewOrder8_EduMar_Items(driver)
-        if title == u"Ñ¡Ôñ×´¿ö":
+        if title == u"é€‰æ‹©çŠ¶å†µ":
             for el in els:
                 if el.getText().strip() == marriage:
                     el.click()
                     break
                 else:
-                    print("Ã»ÓĞÕÒµ½¶ÔÓ¦»éÒöÑ¡Ïî£¬Çë²é¿´ÊäÈëÊÇ·ñÕıÈ·")
+                    print("æ²¡æœ‰æ‰¾åˆ°å¯¹åº”å©šå§»é€‰é¡¹ï¼Œè¯·æŸ¥çœ‹è¾“å…¥æ˜¯å¦æ­£ç¡®")
         else:
-            print("Õâ²»ÊÇÑ¡Ôñ»éÒö×´¿öµÄµ¯´°")
+            print("è¿™ä¸æ˜¯é€‰æ‹©å©šå§»çŠ¶å†µçš„å¼¹çª—")
 
     def b_NewOrder_8_Children(self, driver, cNumber):
         for i in range(int(cNumber)):
             self.Cel_NewOrder_8.el_NewOrder8_Add(driver).click()
-            time.sleep(0.3) #Ñ­»·Ì«¿ì£¬µã»÷¸ú²»ÉÏ£¬ËùÒÔ¼Ó¹Ì¶¨Ê±¼ä£¬È·±£Ã¿´Î¶¼¿ÉÒÔµãÖĞ
+            time.sleep(0.3) #å¾ªç¯å¤ªå¿«ï¼Œç‚¹å‡»è·Ÿä¸ä¸Šï¼Œæ‰€ä»¥åŠ å›ºå®šæ—¶é—´ï¼Œç¡®ä¿æ¯æ¬¡éƒ½å¯ä»¥ç‚¹ä¸­
         number = self.Cel_NewOrder_8.el_NewOrder8_Children_Num(driver).getText().strip()
         if number == cNumber:
-            print("×ÓÅ®ÊıÁ¿ÌîĞ´ÕıÈ·")
+            print("å­å¥³æ•°é‡å¡«å†™æ­£ç¡®")
         else:
-            print("×ÓÅ®ÊıÁ¿Ã»ÓĞÌîĞ´ÕıÈ·£¡")
+            print("å­å¥³æ•°é‡æ²¡æœ‰å¡«å†™æ­£ç¡®ï¼")
 
     def b_NewOrder_8_Submit(self, driver):
-        #Ìá½»
+        #æäº¤
         self.Cel_NewOrder_8.el_NewOrder8_Submit(driver).click()
 
     def b_NewOrder_9_syncAdress(self, driver, sync):
-        #Í¬²½¾Ó×¡µØÖ·
-        if sync != "ÊÇ":
+        #åŒæ­¥å±…ä½åœ°å€
+        if sync != "æ˜¯":
             pass
         else:
             h = self.Cel_NewOrder_9.el_NewOrder9_syncAddress(driver)
             driver.flick(h, 1050, 300)
-        #´Ë´¦»¹Ó¦Ôö¼ÓÅĞ¶ÏÊÇ·ñÕæÊµÍ¬²½ÏÖ¾Ó×¡µØÖ·´úÂë¡£Ïë²»¹Ü---
+        #æ­¤å¤„è¿˜åº”å¢åŠ åˆ¤æ–­æ˜¯å¦çœŸå®åŒæ­¥ç°å±…ä½åœ°å€ä»£ç ã€‚æƒ³ä¸ç®¡---
 
     def b_NewOrder9_County(self, driver, sync, l_addr):
         """
-        Ñ¡ÔñÊ¡ÊĞÇøµÄº¯Êı¿É¹«ÓÃ
+        é€‰æ‹©çœå¸‚åŒºçš„å‡½æ•°å¯å…¬ç”¨
         :param driver:
-        :param sync: ÊÇ·ñÍ¬²½¾Ó×¡µØÖ·£ºÊÇ£¬·ñ
-        :param l_addr: Ê¡ÊĞÇøµØÖ·ÁĞ±í
+        :param sync: æ˜¯å¦åŒæ­¥å±…ä½åœ°å€ï¼šæ˜¯ï¼Œå¦
+        :param l_addr: çœå¸‚åŒºåœ°å€åˆ—è¡¨
         :return:
         """
-        if sync == u"ÊÇ":
+        if sync == u"æ˜¯":
             pass
         else:
             self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[0].click()
             hAddrs = self.Cel_NewOrder_9.el_NewOrder9_Address_List(driver)
             for addr in hAddrs:
-                # Ñ¡ÔñÊ¡
+                # é€‰æ‹©çœ
                 if addr.getText().strip() == l_addr[0]:
                     addr.click()
-                    # Ñ¡ÔñÊĞ
+                    # é€‰æ‹©å¸‚
                     hAddrs = self.Cel_NewOrder_9.el_NewOrder9_Address_List(driver)
                     for addr in hAddrs:
                         if addr.getText().strip() == l_addr[1]:
                             addr.click()
-                            # Ñ¡ÔñÇøÏØ
+                            # é€‰æ‹©åŒºå¿
                             hAddrs = self.Cel_NewOrder_9.el_NewOrder9_Address_List(driver)
                             for addr in hAddrs:
                                 if addr.getText().strip() == l_addr[2]:
@@ -539,13 +540,13 @@ class C_B_NewOrder(unittest.TestCase):
 
     def b_NewOrder9_UnitAddressDetail(self, driver, sync, address):
         """
-        ÏêÏ¸µØÖ·
+        è¯¦ç»†åœ°å€
         :param driver:
-        :param sync: ÊÇ·ñÍ¬²½¾Ó×¡µØÖ·£ºÊÇ£¬·ñ
-        :param address: ÏêÏ¸µØÖ·
+        :param sync: æ˜¯å¦åŒæ­¥å±…ä½åœ°å€ï¼šæ˜¯ï¼Œå¦
+        :param address: è¯¦ç»†åœ°å€
         :return:
         """
-        if sync == u"ÊÇ":
+        if sync == u"æ˜¯":
             pass
         else:
             h = self.Cel_NewOrder_9.el_NewOrder9_Common_Input(driver)[0]
@@ -553,7 +554,7 @@ class C_B_NewOrder(unittest.TestCase):
 
     def b_NewOrder9_CommpanyName(self, driver, comName):
         """
-        ÌîĞ´¹«Ë¾Ãû³Æ
+        å¡«å†™å…¬å¸åç§°
         :param driver:
         :param comName:
         :return:
@@ -563,7 +564,7 @@ class C_B_NewOrder(unittest.TestCase):
 
     def b_NewOrder9_CommpanyPhone(self, driver, comPhone):
         """
-        ÌîĞ´¹«Ë¾µç»°
+        å¡«å†™å…¬å¸ç”µè¯
         :param driver:
         :param comName:
         :return:
@@ -573,7 +574,7 @@ class C_B_NewOrder(unittest.TestCase):
 
     def b_NewOrder9_PhoneExtension(self, driver, eNumber):
         """
-        ÌîĞ´¹Ì»¯·Ö»úºÅ
+        å¡«å†™å›ºåŒ–åˆ†æœºå·
         :param driver:
         :param eNumber:
         :return:
@@ -582,7 +583,7 @@ class C_B_NewOrder(unittest.TestCase):
         self.C_sel_Rewrite.send_keys(h, eNumber)
 
     def b_NewOrder9_IndustryGategory(self, driver, iGategory):
-        #Ñ¡ÔñĞĞÒµÀà±ğ
+        #é€‰æ‹©è¡Œä¸šç±»åˆ«
         self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[1].click()
         hEls = self.Cel_NewOrder_9.el_NewOrder9_Common_Items(driver)
         for el in hEls:
@@ -590,10 +591,10 @@ class C_B_NewOrder(unittest.TestCase):
                 el.click()
                 break
             else:
-                print("Ã»ÓĞÕÒµ½¸ÃĞĞÒµÀà±ğ£¬Çë¼ì²éÊäÈëÄÚÈİ")
+                print("æ²¡æœ‰æ‰¾åˆ°è¯¥è¡Œä¸šç±»åˆ«ï¼Œè¯·æ£€æŸ¥è¾“å…¥å†…å®¹")
 
     def b_NewOrder9_CompanyProperties(self, driver, cProperties):
-        #µ¥Î»ĞÔÖÊ
+        #å•ä½æ€§è´¨
         self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[2].click()
         hEls = self.Cel_NewOrder_9.el_NewOrder9_Common_Items(driver)
         for el in hEls:
@@ -601,10 +602,10 @@ class C_B_NewOrder(unittest.TestCase):
                 el.click()
                 break
             else:
-                print("Ã»ÓĞÕÒµ½¸Ãµ¥Î»ĞÔÖÊ£¬Çë¼ì²éÊäÈëÄÚÈİ")
+                print("æ²¡æœ‰æ‰¾åˆ°è¯¥å•ä½æ€§è´¨ï¼Œè¯·æ£€æŸ¥è¾“å…¥å†…å®¹")
 
     def b_NewOrder9_Position(self, driver, position):
-        #Ö°Î»
+        #èŒä½
         self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[3].click()
         hEls = self.Cel_NewOrder_9.el_NewOrder9_Common_Items(driver)
         for el in hEls:
@@ -612,16 +613,16 @@ class C_B_NewOrder(unittest.TestCase):
                 el.click()
                 break
             else:
-                print("Ã»ÓĞÕÒµ½¸ÃÖ°Î»£¬Çë¼ì²éÊäÈëÄÚÈİ")
+                print("æ²¡æœ‰æ‰¾åˆ°è¯¥èŒä½ï¼Œè¯·æ£€æŸ¥è¾“å…¥å†…å®¹")
 
     def b_NewOrder9_EntryTime(self, driver, etYear, etMonth):
-        #ÈëÖ°Ê±¼ä
+        #å…¥èŒæ—¶é—´
         self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[3].click()
         text = self.Cel_NewOrder_9.el_NewOrder9_EntryTime_Title(driver).getText().strip()
-        if text != u"Ñ¡ÔñÊ±¼ä":
-            print("²»ÊÇÑ¡ÔñÈëÖ°Ê±¼äµ¯´°£¬Çë¼ì²é´úÂë£ºÔªËØÏÂ±êÊÇ·ñÕıÈ·")
+        if text != u"é€‰æ‹©æ—¶é—´":
+            print("ä¸æ˜¯é€‰æ‹©å…¥èŒæ—¶é—´å¼¹çª—ï¼Œè¯·æ£€æŸ¥ä»£ç ï¼šå…ƒç´ ä¸‹æ ‡æ˜¯å¦æ­£ç¡®")
         else:
-            #´óÓÚµ±Ç°Äê£¬ÏòÏÂ»¬¶¯£¬Ğ¡ÓÚµ±Ç°ÄêÏòÉÏ»¬¶¯£¬=Ôò²»»¬¶¯
+            #å¤§äºå½“å‰å¹´ï¼Œå‘ä¸‹æ»‘åŠ¨ï¼Œå°äºå½“å‰å¹´å‘ä¸Šæ»‘åŠ¨ï¼Œ=åˆ™ä¸æ»‘åŠ¨
             year = time.localtime()[0]
             if etYear > year:
                 for i in range(etYear-year):
@@ -632,8 +633,8 @@ class C_B_NewOrder(unittest.TestCase):
                     self.C_sel_Rewrite.swipeUp(driver, 1, 300, 988, 300, 820, 500, 2)
                     time.sleep(0.3)
             else:
-                print("ÈëÖ°ÄêÎªµ±Ç°Äê£¬ÎŞĞè»¬¶¯£¡")
-            # ´óÓÚµ±Ç°ÄêÔÂ£¬ÏòÏÂ»¬¶¯£¬Ğ¡ÓÚµ±Ç°ÔÂÏòÉÏ»¬¶¯£¬=Ôò²»»¬¶¯
+                print("å…¥èŒå¹´ä¸ºå½“å‰å¹´ï¼Œæ— éœ€æ»‘åŠ¨ï¼")
+            # å¤§äºå½“å‰å¹´æœˆï¼Œå‘ä¸‹æ»‘åŠ¨ï¼Œå°äºå½“å‰æœˆå‘ä¸Šæ»‘åŠ¨ï¼Œ=åˆ™ä¸æ»‘åŠ¨
             month = time.localtime()[1]
             if etMonth > month:
                 for i in range(etMonth - month):
@@ -644,34 +645,34 @@ class C_B_NewOrder(unittest.TestCase):
                     self.C_sel_Rewrite.swipeUp(driver, 1, 780, 988, 780, 820, 500, 2)
                     time.sleep(0.3)
             else:
-                print("ÈëÖ°ÔÂÎªµ±Ç°ÔÂ£¬ÎŞĞè»¬¶¯£¡")
+                print("å…¥èŒæœˆä¸ºå½“å‰æœˆï¼Œæ— éœ€æ»‘åŠ¨ï¼")
             self.Cel_NewOrder_9.el_NewOrder9_EntryTime_Confirm(driver).click()
 
     def b_NewOrder9_WorkYear(self, driver, wYear):
-        #¹¤×÷ÄêÏŞ
+        #å·¥ä½œå¹´é™
         self.Cel_NewOrder_9.el_NewOrder9_Common_Click(driver)[5].click()
         title = self.Cel_NewOrder_9.el_NewOrder9_Common_Title(driver).getText().strip()
         hEls = self.Cel_NewOrder_9.el_NewOrder9_Common_Items(driver)
-        if title != u"Ñ¡Ôñ¹¤×÷ÄêÏŞ":
-            print("²»ÊÇÑ¡Ôñ¹¤×÷ÄêÏŞµ¯´°£¬Çë¼ì²é´úÂë£ºÔªËØÏÂ±êÊÇ·ñÕıÈ·")
+        if title != u"é€‰æ‹©å·¥ä½œå¹´é™":
+            print("ä¸æ˜¯é€‰æ‹©å·¥ä½œå¹´é™å¼¹çª—ï¼Œè¯·æ£€æŸ¥ä»£ç ï¼šå…ƒç´ ä¸‹æ ‡æ˜¯å¦æ­£ç¡®")
         else:
             for el in hEls:
                 if el.getText().strip() == wYear:
                     el.click()
                     break
                 else:
-                    print("Ã»ÓĞÕÒµ½¸Ã¹¤×÷ÄêÏŞ£¬Çë¼ì²éÊäÈëÄÚÈİ")
+                    print("æ²¡æœ‰æ‰¾åˆ°è¯¥å·¥ä½œå¹´é™ï¼Œè¯·æ£€æŸ¥è¾“å…¥å†…å®¹")
 
     def b_NewOrder9_Submit(self, driver):
-        #Ìá½»
+        #æäº¤
         self.Cel_NewOrder_9.el_NewOrder9_Submit(driver)
 
     #----------------------------------------------------------------------
-    #ÒµÎñ×éºÏ
+    #ä¸šåŠ¡ç»„åˆ
     # ----------------------------------------------------------------------
 
     def b_NewOrder_3_Add_GoodInfo(self, driver, subCategory, brand, sku):
-        #ÌîĞ´ÉÌÆ·ĞÅÏ¢
+        #å¡«å†™å•†å“ä¿¡æ¯
         self.b_NewOrder_3_Choose_SubCategory(driver, subCategory)
         self.b_NewOrder_3_Check_SubCategory(driver, subCategory)
         self.b_NewOrder_3_Choose_Brand(driver, brand)
@@ -680,25 +681,25 @@ class C_B_NewOrder(unittest.TestCase):
         self.b_NewOrder_3_Check_SKU(driver, sku)
 
     def b_NewOrder_3_Submit(self, driver):
-        """Ìá½»£¬ÏÂÒ»²½"""
+        """æäº¤ï¼Œä¸‹ä¸€æ­¥"""
         self.Cel_NewOrder_3.el_NewOrder3_Next(driver).click()
 
     def b_NewOrder_4_IDInfo(self, driver, cName, idNo, l_addr, addrDetail, startDate, endDate, phone):
-        """ÌîĞ´IDInfo"""
-        #ÕıÃæ
+        """å¡«å†™IDInfo"""
+        #æ­£é¢
         self.b_NewOrder_4_Upload_IDFront(driver)
         act_CustomerInfo = "com.giveu.corder.ordercreate.activity.UploadIdCardActivity"
         driver.wait_activity(act_CustomerInfo, 20, 1)
-        #ĞÕÃû
+        #å§“å
         self.b_NewOrder_4_cName(driver, cName)
-        #Éí·İÖ¤ºÅÂë
+        #èº«ä»½è¯å·ç 
         self.b_NewOrder_4_IDNo(driver, idNo)
-        #Ñ¡ÔñÊ¡ÊĞÇø
+        #é€‰æ‹©çœå¸‚åŒº
         self.b_NewOrder_4_parentAddr(driver, l_addr)
-        #ÏêÏ¸µØÖ·
+        #è¯¦ç»†åœ°å€
         self.b_NewOrder_4_AddressDetail(driver, addrDetail)
 
-        #±³Ãæ
+        #èƒŒé¢
         self.b_NewOrder_4_IDCard_Back(driver)
         self.b_NewOrder_4_startDate(driver, startDate)
         self.b_NewOrder_4_EndDate(driver, endDate)
@@ -710,35 +711,35 @@ class C_B_NewOrder(unittest.TestCase):
 
     def b_NewOrder_8_Person_BaseInfo(self, driver, l_addr, address, education, pIncome,
                                      expenditure, fIncome, qq, email, marriage, cNumber):
-        #ÌîĞ´¸öÈË»ù±¾ĞÅÏ¢
-        #Ñ¡ÔñÏØl_addr:Ê¡ÊĞÇøÁĞ±í
+        #å¡«å†™ä¸ªäººåŸºæœ¬ä¿¡æ¯
+        #é€‰æ‹©å¿l_addr:çœå¸‚åŒºåˆ—è¡¨
         self.b_NewOrder_8_County(driver, l_addr)
-        #ÏêÏ¸µØÖ·
+        #è¯¦ç»†åœ°å€
         self.b_NewOrder_8_AddressDetail(driver, address)
-        #½ÌÓı³Ì¶È
+        #æ•™è‚²ç¨‹åº¦
         self.b_NewOrder_8_Education(driver, education)
-        #¸öÈËÔÂ×ÜÊÕÈë
+        #ä¸ªäººæœˆæ€»æ”¶å…¥
         self.b_NewOrder_8_personIncome(pIncome)
-        #¸öÈËÔÂÖ§³ö
+        #ä¸ªäººæœˆæ”¯å‡º
         self.b_NewOrder_8_Expenditure(expenditure)
-        # ¼ÒÍ¥ÔÂ×ÜÊÕÈë
+        # å®¶åº­æœˆæ€»æ”¶å…¥
         self.b_NewOrder_8_FamilyIncome(fIncome)
         #qq
         self.b_NewOrder_8_QQ(qq)
         #email
         self.b_NewOrder_8_Email(email)
-        #»éÒö×´¿ö
+        #å©šå§»çŠ¶å†µ
         self.b_NewOrder_8_Marriage(driver, marriage)
-        #×ÓÅ®ÊıÁ¿
-        if marriage == u"Î´»é":
+        #å­å¥³æ•°é‡
+        if marriage == u"æœªå©š":
             pass
         else:
             self.b_NewOrder_8_Children(driver, cNumber)
 
     def b_NewOrder_9_CompanyInfo(self, driver, sync, l_addr, address, comName, comPhone, eNumber,
                                  iGategory, cProperties, position, etYear, etMonth, wYear):
-        #¹«Ë¾ĞÅÏ¢
-        #Í¬²½ÏÖ¾Ó×¡µØÖ·
+        #å…¬å¸ä¿¡æ¯
+        #åŒæ­¥ç°å±…ä½åœ°å€
         self.b_NewOrder_9_syncAdress(driver, sync)
         self.b_NewOrder9_County(driver, sync, l_addr)
         self.b_NewOrder9_UnitAddressDetail(driver, sync, address)
@@ -751,4 +752,57 @@ class C_B_NewOrder(unittest.TestCase):
         self.b_NewOrder9_EntryTime(driver, etYear, etMonth)
         self.b_NewOrder9_WorkYear(driver, wYear)
 
+    #ç¬¬åæ­¥ï¼šå¡«å†™è”ç³»äººä¿¡æ¯---------------------------------------------------------
+    global hEls
+    def b_NewOrder10_Family_ContactName(self, driver, fContactName):
+        #è”ç³»äººå§“å
+        hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
+        self.C_sel_Rewrite.send_keys(hEls[0], fContactName)
 
+    def b_NewOrder10_Family_ContactPhone(self, fContactPhone):
+        #è”ç³»äººç”µè¯å·ç 
+        #hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
+        self.C_sel_Rewrite.send_keys(hEls[1], fContactPhone)
+
+    global hPopUps
+    def b_NewOrder10_Family_Relationship(self, driver, fRelationship):
+        #ä¸æœ¬äººå…³ç³»
+        hPopUps = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Click(driver)
+        hPopUps[0].click()
+        title = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Title(driver).getText().strip()
+        if title == u"é€‰æ‹©ä¸æœ¬äººå…³ç³»":
+            els = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Items(driver)
+            for el in els:
+                if el.getText().strip() == fRelationship:
+                    el.click()
+                    break
+                else:
+                    print("æ²¡æœ‰æ‰¾åˆ°è¯¥ç§è”ç³»äººå…³ç³»ï¼Œè¯·æŸ¥çœ‹è¾“å…¥å†…å®¹æ˜¯å¦æœ‰é”™")
+
+    def b_NewOrder10_Other_ContactName(self, driver, oContactName):
+        #å…¶ä»–è”ç³»äººå§“å
+        hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
+        self.C_sel_Rewrite.send_keys(hEls[2], oContactName)
+
+    def b_NewOrder10_Other_ContactPhone(self, oContactPhone):
+        #å…¶ä»–è”ç³»äººç”µè¯å·ç 
+        #hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
+        self.C_sel_Rewrite.send_keys(hEls[3], oContactPhone)
+
+    def b_NewOrder10_Other_Relationship(self, driver, oRelationship):
+        #ä¸æœ¬äººå…³ç³»
+        hPopUps = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Click(driver)
+        hPopUps[1].click()
+        title = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Title(driver).getText().strip()
+        if title == u"é€‰æ‹©ä¸æœ¬äººå…³ç³»":
+            els = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Items(driver)
+            for el in els:
+                if el.getText().strip() == oRelationship:
+                    el.click()
+                    break
+                else:
+                    print("æ²¡æœ‰æ‰¾åˆ°è¯¥ç§è”ç³»äººå…³ç³»ï¼Œè¯·æŸ¥çœ‹è¾“å…¥å†…å®¹æ˜¯å¦æœ‰é”™")
+
+    def b_NewOrder10_Submit(self, driver):
+        #æäº¤
+        self.Cel_NewOrder_10.el_NewOrder10_Submit(driver).click()
