@@ -205,6 +205,8 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder9_Submit(self.driver)
 
         #第十步 填写联系人信息
+        act_CS = "com.giveu.corder.ordercreate.activity.ContactsEditActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
         fContactName = "李大霄"
         fContactPhone = "13410342899"
         fRelationship = "父亲"
@@ -222,6 +224,12 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.C_B_newOrder.b_NewOrder10_Other_Relationship(self.driver, oRelationship)
 
         self.C_B_newOrder.b_NewOrder10_Submit(self.driver)
+
+        #第十一步：绑定银行卡-输入银行卡
+        act_CS = "com.giveu.corder.ordercreate.activity.BindingCardActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+
+
 
 
     def tearDown(self):
