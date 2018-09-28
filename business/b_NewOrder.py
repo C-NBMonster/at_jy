@@ -20,6 +20,7 @@ from elements.el_JYT.el_NewOrder_9 import C_el_NewOrder_9
 from elements.el_JYT.el_NewOrder_10 import C_el_NewOrder_10
 from elements.el_JYT.el_NewOrder_11 import C_el_NewOrder_11
 from elements.el_JYT.el_NewOrder_12 import C_el_NewOrder_12
+from elements.el_JYT.el_NewOrder_13 import C_el_NewOrder_13
 from common.rewrite import C_selenium_rewrite
 from common.conn_oracle import C_oracle
 from common.conn_mysql import C_mysql
@@ -43,7 +44,8 @@ class C_B_NewOrder(unittest.TestCase):
         self.Cel_NewOrder_10 = C_el_NewOrder_10()
         self.Cel_NewOrder_11 = C_el_NewOrder_11()
         self.Cel_NewOrder_12 = C_el_NewOrder_12()
-        self.C_sel_Rewrite  = C_selenium_rewrite()
+        self.Cel_NewOrder_13 = C_el_NewOrder_13()
+        self.C_sel_Rewrite   = C_selenium_rewrite()
         self.C_ORCLE = C_oracle()
         self.C_MYSQL = C_mysql()
         #self.TouchAct = TouchActions(driver)
@@ -749,15 +751,15 @@ class C_B_NewOrder(unittest.TestCase):
         self.Cel_NewOrder_11.el_NewOrder11_bind_BankCard_Submit(driver).click()
 
     #第十二步：验证银行卡四要素
-    def b_NewOrder12_Check_BankInfo(self, driver, oWner, bcNo, bankName):
+    def b_NewOrder12_Check_BankInfo(self, driver, owner, bcNo, bankName):
         tOwner = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_Owner(driver).getText().stri()
-        self.assertEquals(tOwner, oWner, u"验证四要素页面，银行卡持有人不正确")
+        self.assertEquals(tOwner, owner, u"验证四要素页面，银行卡持有人不正确")
         tbcNo = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_Number(driver).getText().stri()
         self.assertEquals(tbcNo, bcNo, u"验证四要素页面，银行卡号不正确")
         tbankName = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankName(driver)
         self.assertEquals(tbankName, bankName, u"验证四要素页面，银行卡所属银行判断不正确")
 
-    def b_NewOrder12_Select_BankAddress(self, driver, province, city, county):
+    def b_NewOrder12_Select_BankAddress(self, driver, province, city):
         """开户行地址"""
         self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankAddr_click(driver).click()
         l_Province = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankAddr_List(driver)
@@ -768,11 +770,12 @@ class C_B_NewOrder(unittest.TestCase):
                 for c in l_City:
                     if c.getText().strip() == city:
                         c.click()
-                        l_County = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankAddr_List(driver)
-                        for ct in l_County:
-                            if ct.getText().strip() == county:
-                                ct.click()
-                                break
+                        break
+                        # l_County = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankAddr_List(driver)
+                        # for ct in l_County:
+                        #     if ct.getText().strip() == county:
+                        #         ct.click()
+                        #         break
 
     def b_NewOrder12_Input_Phone(self, driver, bPhone):
         """银行预留手机号"""
@@ -786,13 +789,38 @@ class C_B_NewOrder(unittest.TestCase):
         #判断依据：弹窗提示语（与银行预留信息不一致，请核对资料后重新提交）
         #if True: #条件没搞好
         time.sleep(2)
-        sql = "select * from credit_bankcard_four c where c.name='%s' and c.phone='%s'"
+        sql = "select sms_code from credit_bankcard_four c where c.name='%s' and c.phone='%s'"
         self.C_MYSQL.Update(sql, tdata)
         self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_Submit(driver).click()
         # else:
         #     pass
 
+    #第十三步：银行卡绑定，短信授权
+    def b_NewOrder13_Check_BankInfo(self, driver, owner, bankNo, bankName, bankAddress, bPhone):
+        """二次短信授权页面信息校验"""
+        hEls = self.Cel_NewOrder_13.el_NewOrder13_bankInfo(driver)
+        self.assertEquals(hEls[0].getText().strip(), owner, u"绑定银行卡二次短信授权页面，持卡人显示不正常")
+        self.assertEquals(hEls[1].getText().strip(), bankNo, u"绑定银行卡二次短信授权页面，银行卡号显示不正常")
+        self.assertEquals(hEls[2].getText().strip(), bankName, u"绑定银行卡二次短信授权页面，开户行名称显示不正常")
+        self.assertEquals(hEls[3].getText().strip(), bankAddress, u"绑定银行卡二次短信授权页面，开户行地址显示不正常")
+        self.assertEquals(hEls[4].getText().strip(), bPhone, u"绑定银行卡二次短信授权页面，银行预留手机号显示不正常")
 
+    def b_NewOrder13_GetCode(self, driver, bPhone):
+        self.Cel_NewOrder_13.el_NewOrder13_SendBtn(driver).click()
+        time.sleep(1)
+        sql = "select * from sms_verify_info where phone = '%s' order by sent_time desc limit 1"
+        data=(bPhone)
+        code = self.C_MYSQL.Search(sql, data)
+        return code
+
+    def b_NewOrder13_FillCode(self, driver, code):
+        """填写code"""
+        hEl = self.Cel_NewOrder_13.el_NewOrder13_Code(driver)
+        self.C_sel_Rewrite.send_keys(hEl, code)
+
+    def b_NewOrder13_Submit(self, driver):
+        """提交"""
+        self.Cel_NewOrder_13.el_NewOrder13_Submit(driver).click()
 
     #-----------------------------------------------------------------------
     #业务组合

@@ -97,6 +97,7 @@ class C_mysql():
         for row in cursor.fetchall():
             print("Name:%s\tSaving:%.2f" % row)
         print('共查找出:', cursor.rowcount, '条数据')
+        return cursor.fetchall()
 
     # 删除数据
     def delete(self, sql, data=''):

@@ -228,23 +228,32 @@ class NewOrder_Process_Tests(unittest.TestCase):
         #第十一步：绑定银行卡-输入银行卡
         act_CS = "com.giveu.corder.ordercreate.activity.BindingCardActivity"
         self.driver.wait_activity(act_CS, 20, 1)
-        bcNo = "6228480136254109277"
-        self.C_B_newOrder.b_NewOrder11_Input_BankCardNo(self.driver, bcNo)
+        bankNo = "6228480136254109277"
+        self.C_B_newOrder.b_NewOrder11_Input_BankCardNo(self.driver, bankNo)
         self.C_B_newOrder.b_NewOrder11_Submit(self.driver)
 
         #第十二步：验证银行卡四要素
         act_CS = "com.giveu.corder.ordercreate.activity.BankCardInfoActivity"
         self.driver.wait_activity(act_CS, 20, 1)
-        oWner = "吐舌头"
+        owner = "吐舌头"
         bankName = "中国农业银行"
         province = "广东"
         city = "深圳"
-        county = "深圳"
-        bPhone = "福田区"
-        self.C_B_newOrder.b_NewOrder12_Check_BankInfo(self.driver, oWner, bcNo, bankName)
-        self.C_B_newOrder.b_NewOrder12_Select_BankAddress(self.driver, province, city, county)
+        #county = "深圳"
+        bPhone = "13464631546"
+        tdata = (owner, bPhone)
+        self.C_B_newOrder.b_NewOrder12_Check_BankInfo(self.driver, owner, bankNo, bankName)
+        self.C_B_newOrder.b_NewOrder12_Select_BankAddress(self.driver, province, city)
         self.C_B_newOrder.b_NewOrder12_Input_Phone(self.driver, bPhone)
-        self.C_B_newOrder.b_NewOrder12_Submit(self.driver)
+        self.C_B_newOrder.b_NewOrder12_Submit(self.driver, tdata)
+
+        #第十三步：绑定银行卡， 短信验证
+        bankAddress = province + city
+        self.C_B_newOrder.b_NewOrder13_Check_BankInfo(self.driver, owner, bankNo, bankName, bankAddress, bPhone)
+        code = self.C_B_newOrder.b_NewOrder13_GetCode(self.driver, bPhone)
+        self.C_B_newOrder.b_NewOrder13_FillCode(self.driver, code)
+        self.C_B_newOrder.b_NewOrder13_Submit(self.driver)
+
 
     def tearDown(self):
         #self.log.info("关闭并退出app。")
