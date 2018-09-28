@@ -18,8 +18,11 @@ from elements.el_JYT.el_NewOrder_7 import C_el_NewOrder_7
 from elements.el_JYT.el_NewOrder_8 import C_el_NewOrder_8
 from elements.el_JYT.el_NewOrder_9 import C_el_NewOrder_9
 from elements.el_JYT.el_NewOrder_10 import C_el_NewOrder_10
+from elements.el_JYT.el_NewOrder_11 import C_el_NewOrder_11
+from elements.el_JYT.el_NewOrder_12 import C_el_NewOrder_12
 from common.rewrite import C_selenium_rewrite
 from common.conn_oracle import C_oracle
+from common.conn_mysql import C_mysql
 import unittest
 import time
 import threading
@@ -38,8 +41,11 @@ class C_B_NewOrder(unittest.TestCase):
         self.Cel_NewOrder_8 = C_el_NewOrder_8()
         self.Cel_NewOrder_9 = C_el_NewOrder_9()
         self.Cel_NewOrder_10 = C_el_NewOrder_10()
+        self.Cel_NewOrder_11 = C_el_NewOrder_11()
+        self.Cel_NewOrder_12 = C_el_NewOrder_12()
         self.C_sel_Rewrite  = C_selenium_rewrite()
         self.C_ORCLE = C_oracle()
+        self.C_MYSQL = C_mysql()
         #self.TouchAct = TouchActions(driver)
         self.shopName = u"选择商品门店"
         self.goodType = u"选择商品类型"
@@ -174,7 +180,7 @@ class C_B_NewOrder(unittest.TestCase):
 
     def b_NewOrder_2_ChooseInstalment(self, driver, instalment):
         """选择分期"""
-        instal = self.Cel_NewOrder_2.el_NewOrder2_InstalmentItem(driver, instalment)
+        instal = self.Cel_NewOrder_2.el_NewOrder2_InstalmentItem(driver)
         l_instals = []
         for el in instal:
             l_instals.append(el.getText().strip())
@@ -667,7 +673,128 @@ class C_B_NewOrder(unittest.TestCase):
         #提交
         self.Cel_NewOrder_9.el_NewOrder9_Submit(driver)
 
-    #----------------------------------------------------------------------
+    # 第十步：填写联系人信息---------------------------------------------------------
+    global hEls
+
+    def b_NewOrder10_Family_ContactName(self, driver, fContactName):
+        # 联系人姓名
+        hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
+        self.C_sel_Rewrite.send_keys(hEls[0], fContactName)
+
+    def b_NewOrder10_Family_ContactPhone(self, fContactPhone):
+        # 联系人电话号码
+        # hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
+        self.C_sel_Rewrite.send_keys(hEls[1], fContactPhone)
+
+    global hPopUps
+
+    def b_NewOrder10_Family_Relationship(self, driver, fRelationship):
+        # 与本人关系
+        hPopUps = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Click(driver)
+        hPopUps[0].click()
+        title = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Title(driver).getText().strip()
+        if title == u"选择与本人关系":
+            els = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Items(driver)
+            for el in els:
+                if el.getText().strip() == fRelationship:
+                    el.click()
+                    break
+                else:
+                    print("没有找到该种联系人关系，请查看输入内容是否有错")
+
+    def b_NewOrder10_Other_ContactName(self, driver, oContactName):
+        # 其他联系人姓名
+        hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
+        self.C_sel_Rewrite.send_keys(hEls[2], oContactName)
+
+    def b_NewOrder10_Other_ContactPhone(self, oContactPhone):
+        # 其他联系人电话号码
+        # hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
+        self.C_sel_Rewrite.send_keys(hEls[3], oContactPhone)
+
+    def b_NewOrder10_Other_Relationship(self, driver, oRelationship):
+        # 与本人关系
+        hPopUps = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Click(driver)
+        hPopUps[1].click()
+        title = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Title(driver).getText().strip()
+        if title == u"选择与本人关系":
+            els = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Items(driver)
+            for el in els:
+                if el.getText().strip() == oRelationship:
+                    el.click()
+                    break
+                else:
+                    print("没有找到该种联系人关系，请查看输入内容是否有错")
+
+    def b_NewOrder10_Submit(self, driver):
+        # 提交
+        self.Cel_NewOrder_10.el_NewOrder10_Submit(driver).click()
+
+    #第十一步：绑定银行卡
+    def b_NewOrder11_CheckOwner(self, driver, owner):
+        """
+        检查持有人
+        :param owner:
+        :return:
+        """
+        tOwner = self.Cel_NewOrder_11.el_NewOrder11_bind_BankCard_Owner(driver)
+        self.assertEquals(tOwner, owner, u"银行卡持有人姓名不正常")
+
+    def b_NewOrder11_Input_BankCardNo(self, driver, bcNo):
+        hEl = self.Cel_NewOrder_11.el_NewOrder11_bind_BankCard_Number(driver)
+        self.C_sel_Rewrite.send_keys(hEl, bcNo)
+
+    def b_NewOrder11_Submit(self, driver):
+        #下一步
+        self.Cel_NewOrder_11.el_NewOrder11_bind_BankCard_Submit(driver).click()
+
+    #第十二步：验证银行卡四要素
+    def b_NewOrder12_Check_BankInfo(self, driver, oWner, bcNo, bankName):
+        tOwner = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_Owner(driver).getText().stri()
+        self.assertEquals(tOwner, oWner, u"验证四要素页面，银行卡持有人不正确")
+        tbcNo = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_Number(driver).getText().stri()
+        self.assertEquals(tbcNo, bcNo, u"验证四要素页面，银行卡号不正确")
+        tbankName = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankName(driver)
+        self.assertEquals(tbankName, bankName, u"验证四要素页面，银行卡所属银行判断不正确")
+
+    def b_NewOrder12_Select_BankAddress(self, driver, province, city, county):
+        """开户行地址"""
+        self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankAddr_click(driver).click()
+        l_Province = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankAddr_List(driver)
+        for p in l_Province:
+            if p.getText().strip() == province:
+                p.click()
+                l_City = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankAddr_List(driver)
+                for c in l_City:
+                    if c.getText().strip() == city:
+                        c.click()
+                        l_County = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_BankAddr_List(driver)
+                        for ct in l_County:
+                            if ct.getText().strip() == county:
+                                ct.click()
+                                break
+
+    def b_NewOrder12_Input_Phone(self, driver, bPhone):
+        """银行预留手机号"""
+        hEl = self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_Phone(driver)
+        self.C_sel_Rewrite.send_keys(hEl, bPhone)
+
+    def b_NewOrder12_Submit(self, driver, tdata):
+        """提交"""
+        self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_Submit(driver).click()
+        #此处需要判断是否开关银行卡预留信息校验，如果开启，则需到数据进行修改
+        #判断依据：弹窗提示语（与银行预留信息不一致，请核对资料后重新提交）
+        #if True: #条件没搞好
+        time.sleep(2)
+        sql = "select * from credit_bankcard_four c where c.name='%s' and c.phone='%s'"
+        self.C_MYSQL.Update(sql, tdata)
+        self.Cel_NewOrder_12.el_NewOrder12_bind_BankCard_Submit(driver).click()
+        # else:
+        #     pass
+
+
+
+    #-----------------------------------------------------------------------
     #业务组合
     # ----------------------------------------------------------------------
 
@@ -752,57 +879,4 @@ class C_B_NewOrder(unittest.TestCase):
         self.b_NewOrder9_EntryTime(driver, etYear, etMonth)
         self.b_NewOrder9_WorkYear(driver, wYear)
 
-    #第十步：填写联系人信息---------------------------------------------------------
-    global hEls
-    def b_NewOrder10_Family_ContactName(self, driver, fContactName):
-        #联系人姓名
-        hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
-        self.C_sel_Rewrite.send_keys(hEls[0], fContactName)
 
-    def b_NewOrder10_Family_ContactPhone(self, fContactPhone):
-        #联系人电话号码
-        #hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
-        self.C_sel_Rewrite.send_keys(hEls[1], fContactPhone)
-
-    global hPopUps
-    def b_NewOrder10_Family_Relationship(self, driver, fRelationship):
-        #与本人关系
-        hPopUps = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Click(driver)
-        hPopUps[0].click()
-        title = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Title(driver).getText().strip()
-        if title == u"选择与本人关系":
-            els = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Items(driver)
-            for el in els:
-                if el.getText().strip() == fRelationship:
-                    el.click()
-                    break
-                else:
-                    print("没有找到该种联系人关系，请查看输入内容是否有错")
-
-    def b_NewOrder10_Other_ContactName(self, driver, oContactName):
-        #其他联系人姓名
-        hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
-        self.C_sel_Rewrite.send_keys(hEls[2], oContactName)
-
-    def b_NewOrder10_Other_ContactPhone(self, oContactPhone):
-        #其他联系人电话号码
-        #hEls = self.Cel_NewOrder_10.el_NewOrder10_Common_Input(driver)
-        self.C_sel_Rewrite.send_keys(hEls[3], oContactPhone)
-
-    def b_NewOrder10_Other_Relationship(self, driver, oRelationship):
-        #与本人关系
-        hPopUps = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Click(driver)
-        hPopUps[1].click()
-        title = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Title(driver).getText().strip()
-        if title == u"选择与本人关系":
-            els = self.Cel_NewOrder_10.el_NewOrder10_Common_PopUp_Items(driver)
-            for el in els:
-                if el.getText().strip() == oRelationship:
-                    el.click()
-                    break
-                else:
-                    print("没有找到该种联系人关系，请查看输入内容是否有错")
-
-    def b_NewOrder10_Submit(self, driver):
-        #提交
-        self.Cel_NewOrder_10.el_NewOrder10_Submit(driver).click()
