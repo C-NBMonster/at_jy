@@ -51,6 +51,6 @@ class C_el_NewOrder_12():
         return el
 
     def el_NewOrder12_bind_BankCard_Submit(self, driver):
-        """支持银行卡"""
+        """提交"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
         return el
