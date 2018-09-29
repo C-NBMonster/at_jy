@@ -8,7 +8,7 @@ from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.webdriver.common.by import By
-#my_logger = Logger(logger='BaiduTests').getlog()
+#my_logger = Logger(logger='NewOrder_Process_Tests').getlog()
 from common.rewrite import C_selenium_rewrite
 from business.b_login import C_B_Login
 from business.b_NewOrder import C_B_NewOrder
@@ -20,7 +20,7 @@ class NewOrder_Process_Tests(unittest.TestCase):
 
 
     def setUp(self):
-        self.log = Log("app demo test")
+        self.log = Log("jyb automation test")
         self.base_url = 'http://localhost:4723/wd/hub'
         self.desired_caps = {}
         self.desired_caps['platformName']    = 'Android'
@@ -59,7 +59,7 @@ class NewOrder_Process_Tests(unittest.TestCase):
 
         #登录
         act_login = "com.giveu.corder.me.activity.LoginActivity"
-        self.driver.wait_activity(act_login,20,1)
+        self.driver.wait_activity(act_login, 20, 1)
         self.C_B_login.b_login(self.driver, 829023, 123456)
 
         #登录成功验证
@@ -228,23 +228,76 @@ class NewOrder_Process_Tests(unittest.TestCase):
         #第十一步：绑定银行卡-输入银行卡
         act_CS = "com.giveu.corder.ordercreate.activity.BindingCardActivity"
         self.driver.wait_activity(act_CS, 20, 1)
-        bcNo = "6228480136254109277"
-        self.C_B_newOrder.b_NewOrder11_Input_BankCardNo(self.driver, bcNo)
+        bankNo = "6228480136254109277"
+        self.C_B_newOrder.b_NewOrder11_Input_BankCardNo(self.driver, bankNo)
         self.C_B_newOrder.b_NewOrder11_Submit(self.driver)
 
         #第十二步：验证银行卡四要素
         act_CS = "com.giveu.corder.ordercreate.activity.BankCardInfoActivity"
         self.driver.wait_activity(act_CS, 20, 1)
-        oWner = "吐舌头"
+        owner = "吐舌头"
         bankName = "中国农业银行"
         province = "广东"
         city = "深圳"
-        county = "深圳"
-        bPhone = "福田区"
-        self.C_B_newOrder.b_NewOrder12_Check_BankInfo(self.driver, oWner, bcNo, bankName)
-        self.C_B_newOrder.b_NewOrder12_Select_BankAddress(self.driver, province, city, county)
+        #county = "深圳"
+        bPhone = "13464631546"
+        tdata = (owner, bPhone)
+        self.C_B_newOrder.b_NewOrder12_Check_BankInfo(self.driver, owner, bankNo, bankName)
+        self.C_B_newOrder.b_NewOrder12_Select_BankAddress(self.driver, province, city)
         self.C_B_newOrder.b_NewOrder12_Input_Phone(self.driver, bPhone)
-        self.C_B_newOrder.b_NewOrder12_Submit(self.driver)
+        self.C_B_newOrder.b_NewOrder12_Submit(self.driver, tdata)
+
+        #第十三步：绑定银行卡， 短信验证
+        bankAddress = province + city
+        act_CS = "com.giveu.corder.ordercreate.activity.BankCardSecondActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+        self.C_B_newOrder.b_NewOrder13_Check_BankInfo(self.driver, owner, bankNo, bankName, bankAddress, bPhone)
+        code = self.C_B_newOrder.b_NewOrder13_GetCode(self.driver, bPhone)
+        self.C_B_newOrder.b_NewOrder13_FillCode(self.driver, code)
+        self.C_B_newOrder.b_NewOrder13_Submit(self.driver)
+
+        #第十四步：其它信息，评定
+        act_CS = "com.giveu.corder.ordercreate.activity.OtherInfoActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+        code = 2
+        isMove = '1'
+        remark = "automation test info"
+        self.C_B_newOrder.b_NewOrder_14_OtherInfo(self.driver, code, isMove, remark)
+
+        #第十五步：京东授权 --跳过
+        act_CS = "com.giveu.corder.ordercreate.activity.JingDongAuthorizeActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+        self.C_B_newOrder.b_NewOrder15_JD_Authority(self.driver, Auth=0)
+
+        # 第十六步：富数授权 --跳过
+        act_CS = "com.giveu.corder.ordercreate.activity.FushuAuthorizeActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+        self.C_B_newOrder.b_NewOrder16_FD_Authority(self.driver, Auth=0)
+
+        # 第十七步：运营商授权 --跳过
+        act_CS = "com.giveu.corder.ordercreate.activity.OperatorLicenseAuthorizeActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+        self.C_B_newOrder.b_NewOrder17_Operator_Authority(self.driver, Auth=0)
+
+        # 第十八步：小问卷
+        act_CS = "com.giveu.corder.index.activity.QuestionnaireActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+        #小问卷第一页
+        self.C_B_newOrder.b_NewOrder18_Questionnaire(self.driver, time=2, choice=0)
+
+        #第十九步 影像证明
+        act_CS = "com.giveu.corder.ordercreate.activity.PhotoCertificateActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+        self.C_B_newOrder.b_NewOrder19_ImageProof_BankIMG(self.driver)
+        password = "123456"
+        self.C_B_newOrder.b_NewOrder19_Submit(self.driver, password)
+
+
+        #第二十步：成功页校验
+        #目前校验文字，后续考虑图片校验
+        act_CS = "com.giveu.corder.ordercreate.activity.SuccessActivity"
+        self.driver.wait_activity(act_CS, 20, 1)
+        self.C_B_newOrder.b_NewOrder20_Success_Check(self.driver)
 
     def tearDown(self):
         #self.log.info("关闭并退出app。")
