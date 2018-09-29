@@ -21,14 +21,23 @@ from elements.el_JYT.el_NewOrder_10 import C_el_NewOrder_10
 from elements.el_JYT.el_NewOrder_11 import C_el_NewOrder_11
 from elements.el_JYT.el_NewOrder_12 import C_el_NewOrder_12
 from elements.el_JYT.el_NewOrder_13 import C_el_NewOrder_13
+from elements.el_JYT.el_NewOrder_14 import C_el_NewOrder_14
+from elements.el_JYT.el_NewOrder_15 import C_el_NewOrder_15
+from elements.el_JYT.el_NewOrder_16 import C_el_NewOrder_16
+from elements.el_JYT.el_NewOrder_17 import C_el_NewOrder_17
+from elements.el_JYT.el_NewOrder_18 import C_el_NewOrder_18
+from elements.el_JYT.el_NewOrder_19 import C_el_NewOrder_19
+from elements.el_JYT.el_NewOrder_20 import C_el_NewOrder_20
+from elements.el_os.el_os import C_el_OS
 from common.rewrite import C_selenium_rewrite
 from common.conn_oracle import C_oracle
 from common.conn_mysql import C_mysql
 import unittest
 import time
+import randoms
 import threading
-import cx_Oracle
 from selenium.webdriver.common.touch_actions import TouchActions
+
 class C_B_NewOrder(unittest.TestCase):
 
     def setUp(self):
@@ -45,6 +54,14 @@ class C_B_NewOrder(unittest.TestCase):
         self.Cel_NewOrder_11 = C_el_NewOrder_11()
         self.Cel_NewOrder_12 = C_el_NewOrder_12()
         self.Cel_NewOrder_13 = C_el_NewOrder_13()
+        self.Cel_NewOrder_14 = C_el_NewOrder_14()
+        self.Cel_NewOrder_15 = C_el_NewOrder_15()
+        self.Cel_NewOrder_16 = C_el_NewOrder_16()
+        self.Cel_NewOrder_17 = C_el_NewOrder_17()
+        self.Cel_NewOrder_18 = C_el_NewOrder_18()
+        self.Cel_NewOrder_19 = C_el_NewOrder_19()
+        self.Cel_NewOrder_20 = C_el_NewOrder_20()
+        self.Cel_OS = C_el_OS()
         self.C_sel_Rewrite   = C_selenium_rewrite()
         self.C_ORCLE = C_oracle()
         self.C_MYSQL = C_mysql()
@@ -822,6 +839,151 @@ class C_B_NewOrder(unittest.TestCase):
         """提交"""
         self.Cel_NewOrder_13.el_NewOrder13_Submit(driver).click()
 
+    # 第十四步：其它信息，门店评定
+    def b_NewOrder14_Select_InnerCode(self, driver, code):
+        """选择内部评定代码"""
+        self.Cel_NewOrder_14.el_NewOrder14_InnerCode_Click(driver).click()
+        hEls = self.Cel_NewOrder_14.el_NewOrder14_Code_PopUp_List(driver)
+        for el in hEls:
+            if el.getText().strip() == code:
+                el.click()
+                break
+            else:
+                print("没有找到该内部评定代码")
+
+    def b_NewOrder14_IsMove_Shop(self, driver, isMove):
+        """
+        是否移动门店
+        :param driver:
+        :param isMove: 0否 1是
+        :return:
+        """
+        #h = self.Cel_NewOrder_14.el_NewOrder14_IsMove_Shop(driver)
+        #swipe不行的话，试试flick
+        #后续需要优化：获取屏幕尺寸，再根据尺寸来确定坐标
+        if isMove == '1':
+            self.C_sel_Rewrite.swipeRight(driver, 1, 960, 325, 1050, 325)
+        else:
+            pass
+
+    def b_NewOrder14_Remark(self, driver, remark):
+        """备注"""
+        hEl = self.Cel_NewOrder_14.el_NewOrder14_Remark(driver)
+        self.C_sel_Rewrite.send_keys(hEl, remark)
+
+    def b_NewOrder14_Submit(self, driver):
+        """提交"""
+        self.Cel_NewOrder_14.el_NewOrder14_Submit(driver)
+
+    #第十五步：京东授权
+    def b_NewOrder15_JD_Authority(self, driver, Auth):
+        """
+        京东授权
+        :param driver:
+        :param Auth: 1走授权认证路线
+        :return:
+        """
+        if Auth == '1':
+            self.Cel_NewOrder_15.el_NewOrder15_JD_Authority(driver).click()
+        else:
+            self.Cel_NewOrder_15.el_NewOrder15_Skip_Authority(driver).click()
+
+    #第十六步：富数授权
+    def b_NewOrder16_FD_Authority(self, driver, Auth):
+        """
+        富数授权
+        :param driver:
+        :param Auth: 1走授权认证路线
+        :return:
+        """
+        if Auth == '1':
+            self.Cel_NewOrder_16.el_NewOrder16_FD_Authority(driver).click()
+        else:
+            self.Cel_NewOrder_16.el_NewOrder16_Skip_Authority(driver).click()
+
+    # 第十七步：运营商授权
+    def b_NewOrder17_Operator_Authority(self, driver, Auth):
+        """
+        运营商授权
+        :param driver:
+        :param Auth: 1走授权认证路线
+        :return:
+        """
+        if Auth == '1':
+            self.Cel_NewOrder_17.el_NewOrder17_Operator_Authority(driver).click()
+        else:
+            self.Cel_NewOrder_17.el_NewOrder17_Skip_Authority(driver).click()
+
+    #第十八步：小问卷 1-2问题
+    def b_NewOrder18_Question_LoanTimes(self, driver, time):
+        """
+        填写借贷次数
+        :param driver:
+        :return:
+        """
+        hEl = self.Cel_NewOrder_18.el_NewOrder18_Question_1(driver)
+        self.C_sel_Rewrite.send_keys(hEl, time)
+
+    def b_NewOrder18_Question_GetJYB_From(self, driver, choice=0):
+        """
+        从哪里获知即有宝
+        :param driver:
+        :param choice: 选项:0随机(默认)，其它看情况
+        :return:
+        """
+        hEls = self.Cel_NewOrder_18.el_NewOrder18_Question_2(driver)
+        if choice == '0':
+            i = randoms.randint(0, 6)
+            hEls[i].click()
+        else:
+            dir_oper = {
+                'A': lambda hEls: hEls[0].click(),
+                'B': lambda hEls: hEls[1].click(),
+                'C': lambda hEls: hEls[2].click(),
+                'D': lambda hEls: hEls[3].click(),
+                'E': lambda hEls: hEls[4].click(),
+                'F': lambda hEls: hEls[5].click(),
+                'G': lambda hEls: hEls[6].click()
+            }
+            dir_oper.get(choice)
+
+    def b_NewOrder18_Submit(self, driver):
+        """
+        提交
+        :param driver:
+        :return:
+        """
+        self.Cel_NewOrder_18.el_NewOrder18_Submit(driver).click()
+
+    #第十九步：影像证明
+
+    def b_NewOrder19_ImageProof_BankIMG(self, driver):
+        """拍摄银行卡影像"""
+        tTitle = self.Cel_NewOrder_19.el_NewOrder19_ImageProof_Title(driver).getText().strip()
+        self.assertEquals(tTitle, u"影像证明", u"没有进入影像证明页面")
+        self.Cel_NewOrder_19.el_NewOrder19_ImageProof_BankIMG(driver).click()
+        act_CS = "com.android.camera.Camera"
+        driver.wait_activity(act_CS, 20, 1)
+        self.Cel_OS.el_OS_Camera_Shot(driver).click()
+        self.Cel_OS.el_OS_Camera_Done(driver).click()
+
+    def b_NewOrder19_Submit(self, driver, password):
+        """提交"""
+        self.Cel_NewOrder_19.el_NewOrder19_Submit(driver).click()
+
+        #输入密码
+        hEl = self.Cel_NewOrder_19.el_NewOrder19_PopUP_PWD(driver)
+        self.C_sel_Rewrite.send_keys(hEl, password)
+        self.Cel_NewOrder_19.el_NewOrder19_PopUP_Confirm(driver).click()
+
+    #第二十步：成功页校验
+    # 目前校验文字，后续考虑图片校验
+    def b_NewOrder20_Success_Check(self, driver):
+        tTitle = self.Cel_NewOrder_20.el_NewOrder20_Success_Title(driver).getText().strip()
+        self.assertEquals(tTitle, u"成功提交", u"没有进入成功提交页面")
+        tButton = self.Cel_NewOrder_20.el_NewOrder20_Success_JumpTo_Order(driver).getText().strip()
+        self.assertEquals(tButton, u"查看订单", u"页面内容没有正确显示，请检查是否成功提单")
+
     #-----------------------------------------------------------------------
     #业务组合
     # ----------------------------------------------------------------------
@@ -907,4 +1069,19 @@ class C_B_NewOrder(unittest.TestCase):
         self.b_NewOrder9_EntryTime(driver, etYear, etMonth)
         self.b_NewOrder9_WorkYear(driver, wYear)
 
+    def b_NewOrder_14_OtherInfo(self, driver, code, isMove, remark):
+        #内部评定代码
+        self.b_NewOrder14_Select_InnerCode(driver, code)
+        #是否一定门店
+        self.b_NewOrder14_IsMove_Shop(driver, isMove)
+        #备注
+        self.b_NewOrder14_Remark(driver, remark)
+        #提交
+        self.b_NewOrder14_Submit(driver)
 
+    def b_NewOrder18_Questionnaire(self, driver, time, choice=0):
+        tTitle = self.Cel_NewOrder_18.el_NewOrder18_Questionnaire_Title(driver).getText().strip()
+        self.assertEquals(tTitle, u"小问卷", u"没有跳转到小问卷界面")
+        self.b_NewOrder18_Question_LoanTimes(driver, time)
+        self.b_NewOrder18_Question_GetJYB_From(driver, choice)
+        self.b_NewOrder18_Submit(driver)
