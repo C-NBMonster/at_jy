@@ -3,6 +3,7 @@
 #from selenium import webdriver
 from AT_Demo.common.logger import Logger
 from common.log import Log
+from common.common_func import CCommon_Function
 import unittest, time,os,sys,string
 from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
@@ -12,6 +13,10 @@ from selenium.webdriver.common.by import By
 from common.rewrite import C_selenium_rewrite
 from business.b_login import C_B_Login
 from business.b_NewOrder import C_B_NewOrder
+from common.log import Log
+mylogger = Log(log_module='NewOrder_Process_Tests')
+
+Com_func = CCommon_Function()
 
 
 class NewOrder_Process_Tests(unittest.TestCase):
@@ -36,14 +41,22 @@ class NewOrder_Process_Tests(unittest.TestCase):
         #self.desired_caps['appActivity'] = 'com.giveu.corder.index.activity.WelcomeActivity'
         #.me.activity.LoginActivity}
         #print(os.path.dirname(os.getcwd()))
-        self.driver = webdriver.Remote(self.base_url, self.desired_caps)
+        try:
+            self.driver = webdriver.Remote(self.base_url, self.desired_caps)
+            mylogger.info("成功打开浏览器")
+        except:
+            mylogger.error("打开浏览器失败！")
+            self.assertEquals("o","f", u"打开浏览器失败")
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.C_B_login = C_B_Login()
         self.C_B_newOrder = C_B_NewOrder()
+        t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+        self.sTr = "--" * 20 + t + "--" * 20
 
 
     def test_jyb_login_demo(self):
         """即有宝登录测试用例"""
+        CCommon_Function.func_duration()
         #self.log.info("成功连接appium服务器")
         #ca = self.driver.current_activity()
         #print("当前activity: %s" % sys.stdout.pritn(str(ca)))
@@ -52,7 +65,7 @@ class NewOrder_Process_Tests(unittest.TestCase):
         print("info::switch to the welcome activity successfully!!!")
 
         #滑动欢迎页
-        self.C_sel_Rewrite.swipLeft(self.driver, 500, 2)
+        self.C_sel_Rewrite.swipeLeft(self.driver, 500, 2)
 
         #点击进入登录页
         self.C_sel_Rewrite.find_el(self.driver, 20, (By.ID, "tv_into")).click()
@@ -299,10 +312,16 @@ class NewOrder_Process_Tests(unittest.TestCase):
         self.driver.wait_activity(act_CS, 20, 1)
         self.C_B_newOrder.b_NewOrder20_Success_Check(self.driver)
 
+        st = Com_func.func_duration("test_yy")
+        mylogger.info("%s 用例执行完毕，共消耗：%0.6f Seconds" % ("test_xx", st))
+
     def tearDown(self):
         #self.log.info("关闭并退出app。")
         self.driver.quit()
+        mylogger.info("关闭并退出浏览器。\n")
 
 if __name__ == "__main__":
+    t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    mylogger.info(u"开始测试即有宝提单类测试用例------------------------------------------------------------------------- %s" % t)
     unittest.main()
 
