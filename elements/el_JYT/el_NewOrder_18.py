@@ -11,7 +11,7 @@
 
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_18():
@@ -23,22 +23,22 @@ class C_el_NewOrder_18():
 
     def el_NewOrder18_Questionnaire_Title(self, driver):
         """问卷标题"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "top_tab_center_title"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "top_tab_center_title")
         return el
 
     def el_NewOrder18_Question_1(self, driver):
         """问题1，以前借贷次数"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_time"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_time")
         return el
 
     def el_NewOrder18_Question_2(self, driver):
         """问题2，从哪里获知即有宝"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_choose")
         return els
 
     def el_NewOrder18_Submit(self, driver):
         """提交"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_questionnaire_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_questionnaire_next")
         return el
 
 

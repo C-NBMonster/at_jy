@@ -10,7 +10,7 @@
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_6():
@@ -22,25 +22,25 @@ class C_el_NewOrder_6():
 
     def el_NewOrder6_Phone(self, driver):
         """手机号"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_phonenumber"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_phonenumber")
         return el
 
     def el_NewOrder6_Time(self, driver):
         """点击后，显示倒计时"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_code"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_code")
         return el
 
     def el_NewOrder6_ETCode(self, driver):
         """验证码输入框"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_identifying_code"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_identifying_code")
         return el
 
     def el_NewOrder6_Protocal(self, driver):
         """征信授权协议"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_protocol"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_protocol")
         return el
 
     def el_NewOrder6_Submit(self, driver):
         """授权验证"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_authorize"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_authorize")
         return el

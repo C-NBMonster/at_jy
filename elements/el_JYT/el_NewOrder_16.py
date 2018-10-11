@@ -11,7 +11,7 @@
 
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_16():
@@ -23,10 +23,10 @@ class C_el_NewOrder_16():
 
     def el_NewOrder16_FD_Authority(self, driver):
         """富数授权认证"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_authorize"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_authorize")
         return el
 
     def el_NewOrder16_Skip_Authority(self, driver):
         """跳过授权认证"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_skip"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_skip")
         return el

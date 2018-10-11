@@ -9,7 +9,7 @@
 @desc: 即有宝新建订单页面元素
 """
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 class C_el_NewOrder_1():
     
     def __init__(self):
@@ -24,8 +24,7 @@ class C_el_NewOrder_1():
         :param opt: 1：商品门店:2：商品类型，3：产品版本，4：产品类型
         :return:
         """
-        #els = driver.find_elements_by_id("iv_right")
-        els = self.C_sel_Rewrite.find_el(driver, self.timeOut, 1, self.el_error_prompt, (By.ID, "iv_right"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "iv_right")
         els[opt].click()
 
     def el_NewOrder1_ChooseRight(self, driver, opt):
@@ -35,7 +34,7 @@ class C_el_NewOrder_1():
         :param opt: 1：商品门店:2：商品类型，3：产品版本，4：产品类型
         :return:
         """
-        els = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_right"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv_choose_right")
         return els[opt]
 
     def el_NewOrder1_MoneyTotle(self, driver, opt):
@@ -45,7 +44,7 @@ class C_el_NewOrder_1():
         :param opt: 1:商品总额，2:首付总额
         :return:
         """
-        els = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_edit_view"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "et_edit_view")
         return els[opt]
 
     def el_NewOrder1_LoanSum(self, driver):
@@ -54,7 +53,7 @@ class C_el_NewOrder_1():
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_loan_sum"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_loan_sum")
         return el
 
     def el_NewOrder_submit_1(self, driver):
@@ -63,7 +62,7 @@ class C_el_NewOrder_1():
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_newbuild_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_newbuild_next")
         return el
 
     #以下为弹窗元素，PS，弹窗的设计框架一致，连id都一致，所以，弹窗部分，两个函数即可搞定
@@ -75,12 +74,11 @@ class C_el_NewOrder_1():
 
         :return:
         """
-        #els = driver.find_elements_by_id("iv_right")
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_title"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_choose_title")
         return el
 
     def el_NewOrder_Common_PopUp_List(self, driver, strName):
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "test1"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "test1")
         for n in els:
             if n.text().strip() == strName.strip():
                 return n

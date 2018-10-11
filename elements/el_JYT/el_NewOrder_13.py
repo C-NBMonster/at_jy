@@ -9,7 +9,7 @@
 @desc: 绑定银行卡，四要素二次短信授权
 """
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_13():
@@ -21,20 +21,20 @@ class C_el_NewOrder_13():
 
     def el_NewOrder13_bankInfo(self, driver):
         """银行卡信息"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_right"))
+        els = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_right")
         return els
 
     def el_NewOrder13_SendBtn(self, driver):
         """发送按钮"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_sendCode"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_sendCode")
         return el
 
     def el_NewOrder13_Code(self, driver):
         """发送按钮"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_code"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_code")
         return el
 
     def el_NewOrder13_Submit(self, driver):
         """发送按钮"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_next")
         return el

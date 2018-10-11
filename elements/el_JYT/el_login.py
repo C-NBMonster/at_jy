@@ -23,7 +23,7 @@ class C_el_login():
         :return:
         """
         el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_account")
-        return  el
+        return el
 
     def el_login_pwd(self, driver):
         """

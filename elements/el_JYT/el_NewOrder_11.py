@@ -10,7 +10,7 @@
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_11():
@@ -22,22 +22,22 @@ class C_el_NewOrder_11():
 
     def el_NewOrder11_bind_BankCard_Owner(self, driver):
         """持有人"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_owner"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_owner")
         return el
 
     def el_NewOrder11_bind_BankCard_Number(self, driver):
         """银行卡号"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_cardNumber"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_cardNumber")
         return el
 
     def el_NewOrder11_bind_BankCard_Support(self, driver):
         """支持银行卡"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_supported_bank"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_supported_bank")
         return el
 
     def el_NewOrder11_bind_BankCard_Submit(self, driver):
         """支持银行卡"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_next")
         return el
 
 

@@ -10,7 +10,7 @@
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_14():
@@ -22,26 +22,26 @@ class C_el_NewOrder_14():
 
     def el_NewOrder14_InnerCode_Click(self, driver):
         """内部评定代码"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_innerCode"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_innerCode")
         return el
 
     def el_NewOrder14_IsMove_Shop(self, driver):
         """是否移动门店"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "is_move"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "is_move")
         return el
 
     def el_NewOrder14_Remark(self, driver):
         """备注"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_remark"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_remark")
         return el
 
     def el_NewOrder14_Submit(self, driver):
         """提交"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_next")
         return el
 
     def el_NewOrder14_Code_PopUp_List(self, driver):
         """评定代码列表"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv")
         return els
 

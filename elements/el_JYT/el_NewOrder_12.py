@@ -10,7 +10,7 @@
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_12():
@@ -22,35 +22,35 @@ class C_el_NewOrder_12():
 
     def el_NewOrder12_bind_BankCard_Owner(self, driver):
         """持有人"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_owner"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_owner")
         return el
 
     def el_NewOrder12_bind_BankCard_Number(self, driver):
         """银行卡号"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_cardNumber"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_cardNumber")
         return el
 
     def el_NewOrder12_bind_BankCard_BankName(self, driver):
         """银行名"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_bankName"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_bankName")
         return el
 
     def el_NewOrder12_bind_BankCard_BankAddr_click(self, driver):
         """银行开户行省市区"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_bankBra"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_bankBra")
         return el
 
     def el_NewOrder12_bind_BankCard_BankAddr_List(self, driver):
         """银行开户行省市区列表"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_address"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv_address")
         return els
 
     def el_NewOrder12_bind_BankCard_Phone(self, driver):
         """银行预留手机号"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_phone"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_phone")
         return el
 
     def el_NewOrder12_bind_BankCard_Submit(self, driver):
         """提交"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_next")
         return el

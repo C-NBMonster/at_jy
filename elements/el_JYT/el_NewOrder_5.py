@@ -10,7 +10,7 @@
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_5():
@@ -22,30 +22,30 @@ class C_el_NewOrder_5():
 
     def el_NewOrder5_GroupPhoto_click(self, driver):
         """点击，打开相机"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.XPATH, "//*[@class='android.widget.ImageView']"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.XPATH, "//*[@class='android.widget.ImageView']")
         return el
 
     def el_NewOrder5_Submit(self, driver):
         """点击，打开相机"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "tv_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_next")
         return el
 
     def el_NewOrder5_Camera_Cancel(self, driver):
         """取消"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "btn_cancel"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "btn_cancel")
         return el
 
     def el_NewOrder5_Camera_Done(self, driver):
         """最终选择"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "btn_done"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "btn_done")
         return el
 
     def el_NewOrder5_Camera_Shot(self, driver):
         """拍照"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "shutter_button"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "shutter_button")
         return el
 
     def el_NewOrder5_Camera_Reshot(self, driver):
         """最终选择"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "btn_retake"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "btn_retake")
         return el

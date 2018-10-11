@@ -11,7 +11,7 @@
 
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_3():
@@ -23,42 +23,42 @@ class C_el_NewOrder_3():
 
     def el_NewOrder3_GoodPrice(self, driver):
         """商品金额"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_goods_sum"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_goods_sum")
         return el
 
     def el_NewOrder3_DownPayment(self, driver):
         """首付金额"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_down_payments"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_down_payments")
         return el
 
     def el_NewOrder3_LoanSum(self, driver):
         """贷款金额"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_loan_sum"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_loan_sum")
         return el
 
     def el_NewOrder3_InstalmentNum(self, driver):
         """分期数"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_loan_sum"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_loan_sum")
         return el
 
     def el_NewOrder3_Pay_PerMonth(self, driver):
         """每月应还"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_installment_price"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_installment_price")
         return el
 
     def el_NewOrder3_ProductCode(self, driver):
         """产品代码"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_installment_code"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_installment_code")
         return el
 
     def el_NewOrder3_Add_GoodType(self, driver):
         """添加商品类型。PS:添加多一个商品"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "iv_change_goods"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "iv_change_goods")
         return el
 
     def el_NewOrder3_Edit_GoodPrice(self, driver):
         """编辑框：商品价格"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "iv_change_goods"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "iv_change_goods")
         return el
 
     def el_NewOrder3_Edit_GP_DP(self, driver, opt):
@@ -68,7 +68,7 @@ class C_el_NewOrder_3():
         :param opt: 0商品价格 1首付金额 2商品型号
         :return:
         """
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "iv_change_goods"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "iv_change_goods")
         return els[opt]
 
     def el_NewOrder3_Choose_GoodsInfo_Click(self, driver, opt):
@@ -78,7 +78,7 @@ class C_el_NewOrder_3():
         :param opt: 1商品小类 2商品品牌 3商品型号
         :return:
         """
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_right"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv_choose_right")
         return els[opt]
 
     def el_NewOrder3_Next(self, driver):
@@ -87,7 +87,7 @@ class C_el_NewOrder_3():
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_next")
         return el
 
     #下拉框公共
@@ -97,7 +97,7 @@ class C_el_NewOrder_3():
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_title"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_choose_title")
         return el
 
     def el_NewOrder3_PopUp_Common_Items(self, driver):
@@ -107,7 +107,7 @@ class C_el_NewOrder_3():
         :strTypes:商品类型
         :return:
         """
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_text"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_text")
         return els
 
     def el_NewOrder3_PopUp_Brand_SKU(self, driver):
@@ -117,7 +117,7 @@ class C_el_NewOrder_3():
         :strTypes:商品品牌，型号
         :return:
         """
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "text1"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "text1")
         return els
 
 
