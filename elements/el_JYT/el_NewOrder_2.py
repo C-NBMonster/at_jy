@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_2.py
 @time: 2018/9/13 10:33
-@desc: ĞÂ½¨¶©µ¥µÚ¶ş¸öÒ³Ãæ
+@desc: æ–°å»ºè®¢å•ç¬¬äºŒä¸ªé¡µé¢
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -17,44 +18,44 @@ class C_el_NewOrder_2():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder2_LoanSum(self, driver):
-        """µÚ¶şÒ³ÏÔÊ¾µÄ´û¿î½ğ¶î"""
+        """ç¬¬äºŒé¡µæ˜¾ç¤ºçš„è´·æ¬¾é‡‘é¢"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_loan_sum"))
         return el
 
     def el_NewOrder2_Insurance_Fee(self, driver):
-        """¿ªÆô»ò¹Ø±Õ²Î¼ÓÃâ»¹´óÀñ°ü"""
+        """å¼€å¯æˆ–å…³é—­å‚åŠ å…è¿˜å¤§ç¤¼åŒ…"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "switch_insurance"))
         return el
 
     def el_NewOrder2_Treasure_Fee(self, driver):
-        """¿ªÆô»ò¹Ø±Õ²Î¼ÓÃâ»¹´óÀñ°ü"""
+        """å¼€å¯æˆ–å…³é—­å‚åŠ å…è¿˜å¤§ç¤¼åŒ…"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "switch_treasure"))
         return  el
 
     def el_NewOrder2_CouponPrice(self, driver):
-        """ÉÌ³ÇµÖÓÃÈ¯"""
+        """å•†åŸæŠµç”¨åˆ¸"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_coupon_price"))
         return el
 
     def el_NewOrder2_InstalmentItem(self, driver):
-        """·ÖÆÚ±êºÅ£¬ÓÃÓÚÅĞ¶ÏÑ¡Ôñ·ÖÆÚ"""
+        """åˆ†æœŸæ ‡å·ï¼Œç”¨äºåˆ¤æ–­é€‰æ‹©åˆ†æœŸ"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_str1"))
         return els
 
     def el_NewOrder2_ProductCode(self, driver):
-        """²úÆ·´úÂë£¬ÓÃ´¦ÊÇ£ºÈç¹ûµÚÈı¸öÒ³ÃæĞèÒªÑéÖ¤Êı¾İ£¬ÔòĞè»ñÈ¡Õâ¸öÖµ"""
+        """äº§å“ä»£ç ï¼Œç”¨å¤„æ˜¯ï¼šå¦‚æœç¬¬ä¸‰ä¸ªé¡µé¢éœ€è¦éªŒè¯æ•°æ®ï¼Œåˆ™éœ€è·å–è¿™ä¸ªå€¼"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_str3"))
         return els
 
     def el_NewOrder2_InstalmentList(self, driver):
-        """ÉÌÆ·µÄ·ÖÆÚ·½°¸ÁĞ±í£¬Ñ¡Ôñ·ÖÆÚ"""
+        """å•†å“çš„åˆ†æœŸæ–¹æ¡ˆåˆ—è¡¨ï¼Œé€‰æ‹©åˆ†æœŸ"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "ll_background"))
         return els
 
     def el_NewOrder2_Submit(self, driver):
-        """ÏÂÒ»²½"""
+        """ä¸‹ä¸€æ­¥"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_installment_next"))
         return el

@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_18.py
 @time: 2018/9/29 14:29
-@desc: Ğ¡ÎÊ¾í
+@desc: å°é—®å·
 """
 
 
@@ -19,25 +19,25 @@ class C_el_NewOrder_18():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder18_Questionnaire_Title(self, driver):
-        """ÎÊ¾í±êÌâ"""
+        """é—®å·æ ‡é¢˜"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "top_tab_center_title"))
         return el
 
     def el_NewOrder18_Question_1(self, driver):
-        """ÎÊÌâ1£¬ÒÔÇ°½è´û´ÎÊı"""
+        """é—®é¢˜1ï¼Œä»¥å‰å€Ÿè´·æ¬¡æ•°"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_time"))
         return el
 
     def el_NewOrder18_Question_2(self, driver):
-        """ÎÊÌâ2£¬´ÓÄÄÀï»ñÖª¼´ÓĞ±¦"""
+        """é—®é¢˜2ï¼Œä»å“ªé‡Œè·çŸ¥å³æœ‰å®"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose"))
         return els
 
     def el_NewOrder18_Submit(self, driver):
-        """Ìá½»"""
+        """æäº¤"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_questionnaire_next"))
         return el
 

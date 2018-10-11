@@ -2,11 +2,12 @@
 #coding=utf-8
 import sys
 
-from selenium import webdriver
+#from selenium import webdriver
+from appium import webdriver
 import unittest,sys,time,random,datetime
 from random import Random
 import HTMLTestRunner
-import os,datetime
+import os, datetime
 import smtplib
 from selenium.webdriver.support.ui import WebDriverWait
 from email.mime.text import MIMEText

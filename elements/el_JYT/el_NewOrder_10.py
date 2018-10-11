@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_10.py
 @time: 2018/9/17 11:47
-@desc:ÌîĞ´ÁªÏµÈË
+@desc:å¡«å†™è”ç³»äºº
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -17,7 +18,7 @@ class C_el_NewOrder_10():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder10_Common_Input(self, driver):
         """"""
@@ -30,22 +31,22 @@ class C_el_NewOrder_10():
         return els
 
     def el_NewOrder10_Common_PopUp_Click(self, driver):
-        """¹«¹²µã»÷µ¯³öµ¯´°"""
+        """å…¬å…±ç‚¹å‡»å¼¹å‡ºå¼¹çª—"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_right"))
         return els
 
     def el_NewOrder10_Common_PopUp_Title(self, driver):
-        """¹«¹²µ¯´°title"""
+        """å…¬å…±å¼¹çª—title"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_title"))
         return el
 
     def el_NewOrder10_Common_PopUp_Items(self, driver):
-        """¹«¹²µ¯´°items"""
+        """å…¬å…±å¼¹çª—items"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "text1"))
         return els
 
     def el_NewOrder10_Submit(self, driver):
-        """¹«¹²µã»÷µ¯³öµ¯´°"""
+        """å…¬å…±ç‚¹å‡»å¼¹å‡ºå¼¹çª—"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
         return els
 

@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_14.py
 @time: 2018/9/29 9:45
-@desc: ÆäËüĞÅÏ¢£¬ÃÅµêÆÀ¶¨
+@desc: å…¶å®ƒä¿¡æ¯ï¼Œé—¨åº—è¯„å®š
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -18,30 +18,30 @@ class C_el_NewOrder_14():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder14_InnerCode_Click(self, driver):
-        """ÄÚ²¿ÆÀ¶¨´úÂë"""
+        """å†…éƒ¨è¯„å®šä»£ç """
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_innerCode"))
         return el
 
     def el_NewOrder14_IsMove_Shop(self, driver):
-        """ÊÇ·ñÒÆ¶¯ÃÅµê"""
+        """æ˜¯å¦ç§»åŠ¨é—¨åº—"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "is_move"))
         return el
 
     def el_NewOrder14_Remark(self, driver):
-        """±¸×¢"""
+        """å¤‡æ³¨"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_remark"))
         return el
 
     def el_NewOrder14_Submit(self, driver):
-        """Ìá½»"""
+        """æäº¤"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
         return el
 
     def el_NewOrder14_Code_PopUp_List(self, driver):
-        """ÆÀ¶¨´úÂëÁĞ±í"""
+        """è¯„å®šä»£ç åˆ—è¡¨"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv"))
         return els
 

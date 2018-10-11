@@ -1,52 +1,45 @@
 # coding=utf-8
 
-#from selenium import webdriver
-from AT_Demo.common.logger import Logger
-from common.log import Log
 from common.common_func import CCommon_Function
-import unittest, time,os,sys,string
+import unittest, time
 from appium import webdriver
 from appium.webdriver.common.touch_action import TouchAction
 from appium.webdriver.common.mobileby import MobileBy
 from selenium.webdriver.common.by import By
-#my_logger = Logger(logger='NewOrder_Process_Tests').getlog()
 from common.rewrite import C_selenium_rewrite
 from business.b_login import C_B_Login
+from business.b_common import C_B_Common
 from business.b_NewOrder import C_B_NewOrder
 from common.log import Log
-mylogger = Log(log_module='NewOrder_Process_Tests')
 
+mylogger = Log('NewOrder_Process_Tests')
 Com_func = CCommon_Function()
 
 
 class NewOrder_Process_Tests(unittest.TestCase):
 
     #adb shell dumpsys window w |findstr \/ |findstr name=     用于查看当前activity。建议用这个
-
-
     def setUp(self):
-        self.log = Log("jyb automation test")
-        self.base_url = 'http://localhost:4723/wd/hub'
-        self.desired_caps = {}
-        self.desired_caps['platformName']    = 'Android'
-        self.desired_caps['platformVersion'] = '4.4.2'
-        self.desired_caps['deviceName']  = '127.0.0.1:62001'
-        #AndroidDebugBridge().call_adb('127.0.0.1:62025')  用于切换模拟器
-        self.desired_caps['appPackage']  = 'com.giveu.corder'
-        self.desired_caps['appActivity'] = 'com.giveu.corder.index.activity.SplashActivity'
-        self.desired_caps['autoLaunch']  = 'true'
-        #支持中文输入
-        self.desired_caps['unicodeKeyboard'] = 'true'
-        self.desired_caps['resetKeyboard'] = 'true'
-        #self.desired_caps['appActivity'] = 'com.giveu.corder.index.activity.WelcomeActivity'
-        #.me.activity.LoginActivity}
-        #print(os.path.dirname(os.getcwd()))
-        try:
-            self.driver = webdriver.Remote(self.base_url, self.desired_caps)
-            mylogger.info("成功打开浏览器")
-        except:
-            mylogger.error("打开浏览器失败！")
-            self.assertEquals("o","f", u"打开浏览器失败")
+        self.C_B_common = C_B_Common()
+        self.driver = self.C_B_common.init_APP()
+        # self.base_url = 'http://localhost:4723/wd/hub'
+        # self.desired_caps = {}
+        # self.desired_caps['platformName']    = 'Android'
+        # self.desired_caps['platformVersion'] = '4.4.2'
+        # self.desired_caps['deviceName']  = '127.0.0.1:62001'
+        # #AndroidDebugBridge().call_adb('127.0.0.1:62025')  用于切换模拟器
+        # self.desired_caps['appPackage']  = 'com.giveu.corder'
+        # self.desired_caps['appActivity'] = 'com.giveu.corder.index.activity.SplashActivity'
+        # self.desired_caps['autoLaunch']  = 'true'
+        # #支持中文输入
+        # self.desired_caps['unicodeKeyboard'] = 'true'
+        # self.desired_caps['resetKeyboard'] = 'true'
+        # try:
+        #     self.driver = webdriver.Remote(self.base_url, self.desired_caps)
+        #     mylogger.info("成功打开app")
+        # except:
+        #     mylogger.error("打开app失败！")
+            #self.assertEquals("o","f", u"打开app失败")
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.C_B_login = C_B_Login()
         self.C_B_newOrder = C_B_NewOrder()
@@ -56,7 +49,7 @@ class NewOrder_Process_Tests(unittest.TestCase):
 
     def test_jyb_login_demo(self):
         """即有宝登录测试用例"""
-        CCommon_Function.func_duration()
+        Com_func.func_duration()
         #self.log.info("成功连接appium服务器")
         #ca = self.driver.current_activity()
         #print("当前activity: %s" % sys.stdout.pritn(str(ca)))
@@ -65,7 +58,7 @@ class NewOrder_Process_Tests(unittest.TestCase):
         print("info::switch to the welcome activity successfully!!!")
 
         #滑动欢迎页
-        self.C_sel_Rewrite.swipeLeft(self.driver, 500, 2)
+        self.C_sel_Rewrite.swipeLeft(self.driver, t=500, n=2)
 
         #点击进入登录页
         self.C_sel_Rewrite.find_el(self.driver, 20, (By.ID, "tv_into")).click()
@@ -316,9 +309,8 @@ class NewOrder_Process_Tests(unittest.TestCase):
         mylogger.info("%s 用例执行完毕，共消耗：%0.6f Seconds" % ("test_xx", st))
 
     def tearDown(self):
-        #self.log.info("关闭并退出app。")
         self.driver.quit()
-        mylogger.info("关闭并退出浏览器。\n")
+        mylogger.info("关闭并退出app。\n")
 
 if __name__ == "__main__":
     t = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))

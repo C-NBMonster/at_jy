@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_4.py
 @time: 2018/9/14 10:29
-@desc: Ìí¼Ó¿Í»§ĞÅÏ¢£ºÉÏ´«Éí·İÖ¤£¬¾Ó×¡µØÖ·
+@desc: æ·»åŠ å®¢æˆ·ä¿¡æ¯ï¼šä¸Šä¼ èº«ä»½è¯ï¼Œå±…ä½åœ°å€
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -17,80 +18,80 @@ class C_el_NewOrder_4():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder4_IDCard_Front(self, driver):
-        """Éí·İÖ¤ÕıÃæ"""
+        """èº«ä»½è¯æ­£é¢"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "iv_loading_front"))
         return el
 
     def el_NewOrder4_IDCard_Back(self, driver):
-        """Éí·İÖ¤±³Ãæ"""
+        """èº«ä»½è¯èƒŒé¢"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "iv_loading_back"))
         return el
 
     def el_NewOrder4_Phone(self, driver):
-        """ÊÖ»úºÅÂë"""
+        """æ‰‹æœºå·ç """
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "et_edit_view"))
         return el
 
     def el_NewOrder4_Submit(self, driver):
-        """Ìá½»¶©µ¥"""
+        """æäº¤è®¢å•"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "tv_order"))
         return el
 
     def el_NewOrder4_Camera_Shot(self, driver):
-        """ÅÄÕÕ"""
+        """æ‹ç…§"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "imbtn_takepic"))
         return el
 
     def el_NewOrder4_Camera_ReShot(self, driver):
-        """ÖØÅÄ,0,ÖØÅÄÕıÃæ 1,ÖØÅÄ±³Ãæ PS:Õı·´Ãæ¶¼³öÏÖÕâ¸öÔªËØÊ±ĞèÒªÏÂ±ê¡£·ñÔò²»ĞèÒª"""
+        """é‡æ‹,0,é‡æ‹æ­£é¢ 1,é‡æ‹èƒŒé¢ PS:æ­£åé¢éƒ½å‡ºç°è¿™ä¸ªå…ƒç´ æ—¶éœ€è¦ä¸‹æ ‡ã€‚å¦åˆ™ä¸éœ€è¦"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, (By.ID, "tv_remark_back"))
         return els
 
     def el_NewOrder4_Camera_Cancel(self, driver):
-        """È¡Ïû£¬·µ»Ø"""
+        """å–æ¶ˆï¼Œè¿”å›"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "imbtn_camera_back"))
         return el
 
     def el_NewOrder4_ID_Name(self, driver):
-        """ĞÕÃû"""
+        """å§“å"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "tv_name_front"))
         return el
 
     def el_NewOrder4_ID_No(self, driver):
-        """Éí·İÖ¤ºÅÂë"""
+        """èº«ä»½è¯å·ç """
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "et_idcard_front"))
         return el
 
     def el_NewOrder4_ID_Address(self, driver):
-        """ËùÔÚÊ¡ÊĞÇø"""
+        """æ‰€åœ¨çœå¸‚åŒº"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "et_address_front"))
         return el
 
     def el_NewOrder4_Address_Click(self, driver):
-        """µ¯³öÑ¡ÔñÊ¡ÊĞÇøµ¯´°"""
+        """å¼¹å‡ºé€‰æ‹©çœå¸‚åŒºå¼¹çª—"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "tv_choose_address"))
         return el
 
     def el_NewOrder4_Choose_Address(self, driver):
-        """Ñ¡ÔñÊ¡ÊĞÇø"""
+        """é€‰æ‹©çœå¸‚åŒº"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, (By.ID, "tv_address"))
         return els
 
     def el_NewOrder4_Dialog_Close(self, driver):
-        """¹Ø±ÕµØÖ·¶Ô»°¿ò"""
+        """å…³é—­åœ°å€å¯¹è¯æ¡†"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, (By.ID, "iv_dialog_close"))
         return els
 
     def el_NewOrder4_ID_DateStart(self, driver):
-        """Éí·İÖ¤ÓĞĞ§¿ªÊ¼ÈÕÆÚ"""
+        """èº«ä»½è¯æœ‰æ•ˆå¼€å§‹æ—¥æœŸ"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "rl_date_start"))
         return el
 
     def el_NewOrder4_ID_DateEnd(self, driver):
-        """Éí·İÖ¤ÓĞĞ§½áÊøÈÕÆÚ"""
+        """èº«ä»½è¯æœ‰æ•ˆç»“æŸæ—¥æœŸ"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "rl_date_end"))
         return el
 

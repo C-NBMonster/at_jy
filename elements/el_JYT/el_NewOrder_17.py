@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_17.py
 @time: 2018/9/29 14:18
-@desc: ÔËÓªÉÌÊÚÈ¨
+@desc: è¿è¥å•†æˆæƒ
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -18,14 +18,14 @@ class C_el_NewOrder_17():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder17_Operator_Authority(self, driver):
-        """ÔËÓªÉÌÊÚÈ¨ÈÏÖ¤"""
+        """è¿è¥å•†æˆæƒè®¤è¯"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_authorize"))
         return el
 
     def el_NewOrder17_Skip_Authority(self, driver):
-        """Ìø¹ıÊÚÈ¨ÈÏÖ¤"""
+        """è·³è¿‡æˆæƒè®¤è¯"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_skip"))
         return el

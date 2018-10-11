@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_11.py
 @time: 2018/9/21 17:20
-@desc: °ó¶¨ÒøĞĞ¿¨µÚÒ»²½
+@desc: ç»‘å®šé“¶è¡Œå¡ç¬¬ä¸€æ­¥
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -18,25 +18,25 @@ class C_el_NewOrder_11():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder11_bind_BankCard_Owner(self, driver):
-        """³ÖÓĞÈË"""
+        """æŒæœ‰äºº"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_owner"))
         return el
 
     def el_NewOrder11_bind_BankCard_Number(self, driver):
-        """ÒøĞĞ¿¨ºÅ"""
+        """é“¶è¡Œå¡å·"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_cardNumber"))
         return el
 
     def el_NewOrder11_bind_BankCard_Support(self, driver):
-        """Ö§³ÖÒøĞĞ¿¨"""
+        """æ”¯æŒé“¶è¡Œå¡"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_supported_bank"))
         return el
 
     def el_NewOrder11_bind_BankCard_Submit(self, driver):
-        """Ö§³ÖÒøĞĞ¿¨"""
+        """æ”¯æŒé“¶è¡Œå¡"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
         return el
 

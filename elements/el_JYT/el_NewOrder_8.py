@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_8.py
 @time: 2018/9/17 10:02
-@desc: ÌîĞ´¸öÈË»ù±¾ĞÅÏ¢
+@desc: å¡«å†™ä¸ªäººåŸºæœ¬ä¿¡æ¯
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -17,61 +18,61 @@ class C_el_NewOrder_8():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder8_Common_PopUp_Click(self, driver):
-        """°´Ë³Ğò£¬ÏØ£¬½ÌÓı³Ì¶È£¬»éÒö×´¿ö ¹«¹²µ¯´°"""
+        """æŒ‰é¡ºåºï¼Œå¿ï¼Œæ•™è‚²ç¨‹åº¦ï¼Œå©šå§»çŠ¶å†µ å…¬å…±å¼¹çª—"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_right"))
         return els
 
     def el_NewOrder8_Common_Input(self, driver):
-        """ÊäÈë¿ò¹«¹²º¯Êı"""
-        #´ÓÉÏµ½ÏÂ°´Ë³Ğò£ºÏêÏ¸µØÖ·£¬¸öÈËÔÂÊÕÈë£¬¸öÈËÔÂÖ§³ö£¬¼ÒÍ¥×ÜÊÕÈë,qq,µç×ÓÓÊÏä
+        """è¾“å…¥æ¡†å…¬å…±å‡½æ•°"""
+        #ä»ä¸Šåˆ°ä¸‹æŒ‰é¡ºåºï¼šè¯¦ç»†åœ°å€ï¼Œä¸ªäººæœˆæ”¶å…¥ï¼Œä¸ªäººæœˆæ”¯å‡ºï¼Œå®¶åº­æ€»æ”¶å…¥,qq,ç”µå­é‚®ç®±
 
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_edit_view"))
         return els
 
     def el_NewOrder8_Children_Num(self, driver):
-        """×ÓÅ®ÊıÄ¿"""
+        """å­å¥³æ•°ç›®"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_people"))
         return el
 
     def el_NewOrder8_Subtract(self, driver):
-        """×ÓÅ®ÊıÁ¿¼õ1"""
+        """å­å¥³æ•°é‡å‡1"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_people"))
         return el
 
     def el_NewOrder8_Add(self, driver):
-        """×ÓÅ®ÊıÁ¿¼Ó1"""
+        """å­å¥³æ•°é‡åŠ 1"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "iv_add"))
         return el
 
     def el_NewOrder8_Submit(self, driver):
-        """ÏÂÒ»²½"""
+        """ä¸‹ä¸€æ­¥"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
         return el
 
 
-    #µ¯´°ÔªËØ------------------------------
-    #µØÖ·µ¯´°
+    #å¼¹çª—å…ƒç´ ------------------------------
+    #åœ°å€å¼¹çª—
     def el_NewOrder8_Choose_Address(self, driver):
-        """Ñ¡ÔñÊ¡ÊĞÇø£¬×Ô¶¯ÅĞ¶¨ipËùÔÚÊ¡"""
+        """é€‰æ‹©çœå¸‚åŒºï¼Œè‡ªåŠ¨åˆ¤å®šipæ‰€åœ¨çœ"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, (By.ID, "tv_address"))
         return els
 
     def el_NewOrder8_PoUp_Close(self, driver):
-        """¹Ø±Õµ¯´°"""
+        """å…³é—­å¼¹çª—"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_dialog_close"))
         return el
 
-    #½ÌÓı³Ì¶Èµ¯´°
+    #æ•™è‚²ç¨‹åº¦å¼¹çª—
     def el_NewOrder8_EduMar_Title(self, driver):
-        """½ÌÓı¡¢»éÒö¹«¹²µ¯´°title"""
+        """æ•™è‚²ã€å©šå§»å…¬å…±å¼¹çª—title"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_title"))
         return el
 
     def el_NewOrder8_EduMar_Items(self, driver):
-        """½ÌÓı¡¢»éÒö¹«¹²µ¯´°ÁĞ±íÏî"""
+        """æ•™è‚²ã€å©šå§»å…¬å…±å¼¹çª—åˆ—è¡¨é¡¹"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "text1"))
         return els
 

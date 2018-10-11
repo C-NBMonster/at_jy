@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_19.py
 @time: 2018/9/29 16:10
-@desc: µÚÊ®¾Å²½ Ó°ÏñÖ¤Ã÷
+@desc: ç¬¬åä¹æ­¥ å½±åƒè¯æ˜
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -18,42 +18,42 @@ class C_el_NewOrder_19():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder19_ImageProof_Title(self, driver):
-        """Ó°ÏñÖ¤Ã÷title"""
+        """å½±åƒè¯æ˜title"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "top_tab_center_title"))
         return el
 
     def el_NewOrder19_ImageProof_IMG_Common(self, driver):
-        """Í¼Æ¬¸¸ÔªËØ£¬¿ÓµùµÄÃüÃû·½·¨µ¼ÖÂÒªÕâÃ´×ö£¬Ä¬ÈÏÓĞËÄ¸ö£¬Ë³Ğò£º¿Í»§ÃÅµêÕÕÆ¬£¬Éí·İÖ¤ÈËÏñÖ¤£¬Éí·İÖ¤¹ú»ÕÃæ£¬ÒøĞĞ¿¨¡£
-        PS£ºÈç¹ûÈÎÒâÒ»ÖÖÍ¼Æ¬³¬¹ıÒ»ĞĞ£¬¿ÉÄÜ»áµ¼ÖÂ¶¨Î»²»µ½ÔªËØ"""
+        """å›¾ç‰‡çˆ¶å…ƒç´ ï¼Œå‘çˆ¹çš„å‘½åæ–¹æ³•å¯¼è‡´è¦è¿™ä¹ˆåšï¼Œé»˜è®¤æœ‰å››ä¸ªï¼Œé¡ºåºï¼šå®¢æˆ·é—¨åº—ç…§ç‰‡ï¼Œèº«ä»½è¯äººåƒè¯ï¼Œèº«ä»½è¯å›½å¾½é¢ï¼Œé“¶è¡Œå¡ã€‚
+        PSï¼šå¦‚æœä»»æ„ä¸€ç§å›¾ç‰‡è¶…è¿‡ä¸€è¡Œï¼Œå¯èƒ½ä¼šå¯¼è‡´å®šä½ä¸åˆ°å…ƒç´ """
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "gv_otherCertificate"))
         return els
 
     def el_NewOrder19_ImageProof_BankIMG(self, driver):
-        """ÒøĞĞÓ°Ïñ"""
+        """é“¶è¡Œå½±åƒ"""
         hEls = self.el_NewOrder19_ImageProof_IMG_Common(driver)
         el = hEls[3].find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "iv_photo"))
         return el
 
     def el_NewOrder19_ImageProof_More(self, driver):
-        """¸ü¶àÓ°ÏñÖ¤Ã÷"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.XPATH, "//*[@text='¸ü¶àÖ¤Ã÷']"))
+        """æ›´å¤šå½±åƒè¯æ˜"""
+        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.XPATH, "//*[@text='æ›´å¤šè¯æ˜']"))
         return el
 
     def el_NewOrder19_Submit(self, driver):
-        """Ìá½»"""
+        """æäº¤"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_commit"))
         return el
 
     def el_NewOrder19_PopUP_PWD(self, driver):
-        """µ¯´°ÊäÈëµÇÂ¼ÃÜÂë"""
+        """å¼¹çª—è¾“å…¥ç™»å½•å¯†ç """
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_pwd"))
         return el
 
     def el_NewOrder19_PopUP_Confirm(self, driver):
-        """µ¯´°È·ÈÏ"""
+        """å¼¹çª—ç¡®è®¤"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_confirm"))
         return el
 

@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_12.py
 @time: 2018/9/21 17:29
-@desc:°ó¶¨ÒøĞĞ¿¨µÚ¶ş²½
+@desc:ç»‘å®šé“¶è¡Œå¡ç¬¬äºŒæ­¥
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -18,39 +18,39 @@ class C_el_NewOrder_12():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder12_bind_BankCard_Owner(self, driver):
-        """³ÖÓĞÈË"""
+        """æŒæœ‰äºº"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_owner"))
         return el
 
     def el_NewOrder12_bind_BankCard_Number(self, driver):
-        """ÒøĞĞ¿¨ºÅ"""
+        """é“¶è¡Œå¡å·"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_cardNumber"))
         return el
 
     def el_NewOrder12_bind_BankCard_BankName(self, driver):
-        """ÒøĞĞÃû"""
+        """é“¶è¡Œå"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_bankName"))
         return el
 
     def el_NewOrder12_bind_BankCard_BankAddr_click(self, driver):
-        """ÒøĞĞ¿ª»§ĞĞÊ¡ÊĞÇø"""
+        """é“¶è¡Œå¼€æˆ·è¡Œçœå¸‚åŒº"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_bankBra"))
         return el
 
     def el_NewOrder12_bind_BankCard_BankAddr_List(self, driver):
-        """ÒøĞĞ¿ª»§ĞĞÊ¡ÊĞÇøÁĞ±í"""
+        """é“¶è¡Œå¼€æˆ·è¡Œçœå¸‚åŒºåˆ—è¡¨"""
         els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_address"))
         return els
 
     def el_NewOrder12_bind_BankCard_Phone(self, driver):
-        """ÒøĞĞÔ¤ÁôÊÖ»úºÅ"""
+        """é“¶è¡Œé¢„ç•™æ‰‹æœºå·"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_phone"))
         return el
 
     def el_NewOrder12_bind_BankCard_Submit(self, driver):
-        """Ìá½»"""
+        """æäº¤"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
         return el

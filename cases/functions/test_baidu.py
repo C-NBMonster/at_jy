@@ -12,7 +12,7 @@ class BaiduTests(unittest.TestCase):
     def setUp(self):
         #self.log = Log("BaiduTests")
         self.driver = webdriver.Firefox()
-        self.log.info("打开浏览器")
+        my_logger.info("打开浏览器")
         self.driver.implicitly_wait(30)  # 隐性等待时间为30秒
         self.base_url = "https://www.baidu.com"
 
