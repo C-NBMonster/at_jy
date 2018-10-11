@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,10 +6,10 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_13.py
 @time: 2018/9/28 17:42
-@desc: °ó¶¨ÒøĞĞ¿¨£¬ËÄÒªËØ¶ş´Î¶ÌĞÅÊÚÈ¨
+@desc: ç»‘å®šé“¶è¡Œå¡ï¼Œå››è¦ç´ äºŒæ¬¡çŸ­ä¿¡æˆæƒ
 """
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_13():
@@ -17,24 +17,24 @@ class C_el_NewOrder_13():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder13_bankInfo(self, driver):
-        """ÒøĞĞ¿¨ĞÅÏ¢"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_right"))
+        """é“¶è¡Œå¡ä¿¡æ¯"""
+        els = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_right")
         return els
 
     def el_NewOrder13_SendBtn(self, driver):
-        """·¢ËÍ°´Å¥"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_sendCode"))
+        """å‘é€æŒ‰é’®"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_sendCode")
         return el
 
     def el_NewOrder13_Code(self, driver):
-        """·¢ËÍ°´Å¥"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_code"))
+        """å‘é€æŒ‰é’®"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_code")
         return el
 
     def el_NewOrder13_Submit(self, driver):
-        """·¢ËÍ°´Å¥"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_next"))
+        """å‘é€æŒ‰é’®"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_next")
         return el

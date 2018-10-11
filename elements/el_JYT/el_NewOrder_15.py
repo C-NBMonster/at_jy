@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,11 +6,11 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_15.py
 @time: 2018/9/29 10:38
-@desc: ¾©¶«ÊÚÈ¨
+@desc: äº¬ä¸œæˆæƒ
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_15():
@@ -18,16 +18,16 @@ class C_el_NewOrder_15():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder15_JD_Authority(self, driver):
-        """¾©¶«ÊÚÈ¨ÈÏÖ¤"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_authorize"))
+        """äº¬ä¸œæˆæƒè®¤è¯"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_authorize")
         return el
 
     def el_NewOrder15_Skip_Authority(self, driver):
-        """Ìø¹ıÊÚÈ¨ÈÏÖ¤"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_skip"))
+        """è·³è¿‡æˆæƒè®¤è¯"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_skip")
         return el
 
 

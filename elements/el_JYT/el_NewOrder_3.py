@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,12 +6,12 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_3.py
 @time: 2018/9/13 16:06
-@desc: ĞÂ½¨¶©µ¥µÚÈı¸öÒ³Ãæ
+@desc: æ–°å»ºè®¢å•ç¬¬ä¸‰ä¸ªé¡µé¢
 """
 
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_3():
@@ -18,105 +19,105 @@ class C_el_NewOrder_3():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder3_GoodPrice(self, driver):
-        """ÉÌÆ·½ğ¶î"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_goods_sum"))
+        """å•†å“é‡‘é¢"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_goods_sum")
         return el
 
     def el_NewOrder3_DownPayment(self, driver):
-        """Ê×¸¶½ğ¶î"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_down_payments"))
+        """é¦–ä»˜é‡‘é¢"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_down_payments")
         return el
 
     def el_NewOrder3_LoanSum(self, driver):
-        """´û¿î½ğ¶î"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_loan_sum"))
+        """è´·æ¬¾é‡‘é¢"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_loan_sum")
         return el
 
     def el_NewOrder3_InstalmentNum(self, driver):
-        """·ÖÆÚÊı"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_loan_sum"))
+        """åˆ†æœŸæ•°"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_loan_sum")
         return el
 
     def el_NewOrder3_Pay_PerMonth(self, driver):
-        """Ã¿ÔÂÓ¦»¹"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_installment_price"))
+        """æ¯æœˆåº”è¿˜"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_installment_price")
         return el
 
     def el_NewOrder3_ProductCode(self, driver):
-        """²úÆ·´úÂë"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_installment_code"))
+        """äº§å“ä»£ç """
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_installment_code")
         return el
 
     def el_NewOrder3_Add_GoodType(self, driver):
-        """Ìí¼ÓÉÌÆ·ÀàĞÍ¡£PS:Ìí¼Ó¶àÒ»¸öÉÌÆ·"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "iv_change_goods"))
+        """æ·»åŠ å•†å“ç±»å‹ã€‚PS:æ·»åŠ å¤šä¸€ä¸ªå•†å“"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "iv_change_goods")
         return el
 
     def el_NewOrder3_Edit_GoodPrice(self, driver):
-        """±à¼­¿ò£ºÉÌÆ·¼Û¸ñ"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "iv_change_goods"))
+        """ç¼–è¾‘æ¡†ï¼šå•†å“ä»·æ ¼"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "iv_change_goods")
         return el
 
     def el_NewOrder3_Edit_GP_DP(self, driver, opt):
         """
-        ±à¼­¿ò£º1ÉÌÆ·¼Û¸ñºÍ2Ê×¸¶½ğ¶î
+        ç¼–è¾‘æ¡†ï¼š1å•†å“ä»·æ ¼å’Œ2é¦–ä»˜é‡‘é¢
         :param driver:
-        :param opt: 0ÉÌÆ·¼Û¸ñ 1Ê×¸¶½ğ¶î 2ÉÌÆ·ĞÍºÅ
+        :param opt: 0å•†å“ä»·æ ¼ 1é¦–ä»˜é‡‘é¢ 2å•†å“å‹å·
         :return:
         """
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "iv_change_goods"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "iv_change_goods")
         return els[opt]
 
     def el_NewOrder3_Choose_GoodsInfo_Click(self, driver, opt):
         """
-        µã»÷µ¯³öÏÂÀ­¿ò£º1ÉÌÆ·Ğ¡Àà 2ÉÌÆ·Æ·ÅÆ 3ÉÌÆ·ĞÍºÅ
+        ç‚¹å‡»å¼¹å‡ºä¸‹æ‹‰æ¡†ï¼š1å•†å“å°ç±» 2å•†å“å“ç‰Œ 3å•†å“å‹å·
         :param driver:
-        :param opt: 1ÉÌÆ·Ğ¡Àà 2ÉÌÆ·Æ·ÅÆ 3ÉÌÆ·ĞÍºÅ
+        :param opt: 1å•†å“å°ç±» 2å•†å“å“ç‰Œ 3å•†å“å‹å·
         :return:
         """
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_right"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv_choose_right")
         return els[opt]
 
     def el_NewOrder3_Next(self, driver):
         """
-        ÏÂÒ»²½¡£PS:Èç¹û×ßµÄÊÇ·Ö¶ÎÊ½µÄÁ÷³Ì£¬ÕâÀïÊÇÉ¨Âë¿Í»§¶şÎ¬Âë
+        ä¸‹ä¸€æ­¥ã€‚PS:å¦‚æœèµ°çš„æ˜¯åˆ†æ®µå¼çš„æµç¨‹ï¼Œè¿™é‡Œæ˜¯æ‰«ç å®¢æˆ·äºŒç»´ç 
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_next")
         return el
 
-    #ÏÂÀ­¿ò¹«¹²
+    #ä¸‹æ‹‰æ¡†å…¬å…±
     def el_NewOrder3_PopUp_Common_Title(self, driver):
         """
-        µ¯´°title
+        å¼¹çª—title
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_title"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_choose_title")
         return el
 
     def el_NewOrder3_PopUp_Common_Items(self, driver):
         """
-        ÁĞ±íÏî
+        åˆ—è¡¨é¡¹
         :param driver:
-        :strTypes:ÉÌÆ·ÀàĞÍ
+        :strTypes:å•†å“ç±»å‹
         :return:
         """
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_text"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_text")
         return els
 
     def el_NewOrder3_PopUp_Brand_SKU(self, driver):
         """
-        ÁĞ±íÏî
+        åˆ—è¡¨é¡¹
         :param driver:
-        :strTypes:ÉÌÆ·Æ·ÅÆ£¬ĞÍºÅ
+        :strTypes:å•†å“å“ç‰Œï¼Œå‹å·
         :return:
         """
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "text1"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "text1")
         return els
 
 

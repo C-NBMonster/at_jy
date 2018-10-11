@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,7 +6,7 @@
 @software: JYB_Android_AT
 @file: el_os.py
 @time: 2018/9/29 16:22
-@desc: ÏµÍ³Ó¦ÓÃ¹«¹²ÔªËØ¿â
+@desc: ç³»ç»Ÿåº”ç”¨å…¬å…±å…ƒç´ åº“
 """
 
 from common.rewrite import C_selenium_rewrite
@@ -18,25 +18,25 @@ class C_el_OS():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
-    #ÕÕÏà»ú-----------------------------------------------------------------------------------------------------
+    #ç…§ç›¸æœº-----------------------------------------------------------------------------------------------------
     def el_OS_Camera_Shot(self, driver):
-        """ÅÄÕÕ°´Å¥"""
+        """æ‹ç…§æŒ‰é’®"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "shutter_button"))
         return el
 
     def el_OS_Camera_ReShot(self, driver):
-        """ÖØÅÄ"""
+        """é‡æ‹"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "btn_retake"))
         return el
 
     def el_OS_Camera_Cancel(self, driver):
-        """È¡Ïû"""
+        """å–æ¶ˆ"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "btn_cancel"))
         return el
 
     def el_OS_Camera_Done(self, driver):
-        """È·ÈÏ"""
+        """ç¡®è®¤"""
         el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "btn_done"))
         return el

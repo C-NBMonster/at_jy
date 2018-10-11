@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,86 +6,84 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_1.py
 @time: 2018/9/7 17:05
-@desc: ¼´ÓĞ±¦ĞÂ½¨¶©µ¥Ò³ÃæÔªËØ
+@desc: å³æœ‰å®æ–°å»ºè®¢å•é¡µé¢å…ƒç´ 
 """
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 class C_el_NewOrder_1():
     
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder1_ChooseBaseInfo_PopUP(self, driver, opt):
         """
-        µã»÷ÉÌÆ·ÃÅµê£¬ÉÌÆ·ÀàĞÍ£¬²úÆ·°æ±¾£¬²úÆ·ÀàĞÍ -->µ¯³öµ¯´°
+        ç‚¹å‡»å•†å“é—¨åº—ï¼Œå•†å“ç±»å‹ï¼Œäº§å“ç‰ˆæœ¬ï¼Œäº§å“ç±»å‹ -->å¼¹å‡ºå¼¹çª—
         :param driver:
-        :param opt: 1£ºÉÌÆ·ÃÅµê:2£ºÉÌÆ·ÀàĞÍ£¬3£º²úÆ·°æ±¾£¬4£º²úÆ·ÀàĞÍ
+        :param opt: 1ï¼šå•†å“é—¨åº—:2ï¼šå•†å“ç±»å‹ï¼Œ3ï¼šäº§å“ç‰ˆæœ¬ï¼Œ4ï¼šäº§å“ç±»å‹
         :return:
         """
-        #els = driver.find_elements_by_id("iv_right")
-        els = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "iv_right"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "iv_right")
         els[opt].click()
 
     def el_NewOrder1_ChooseRight(self, driver, opt):
         """
-        Õâ¸öÔªËØÓÃÓÚÏÔÊ¾ÓÃ»§Ñ¡ÔñµÄÄÚÈİ
+        è¿™ä¸ªå…ƒç´ ç”¨äºæ˜¾ç¤ºç”¨æˆ·é€‰æ‹©çš„å†…å®¹
         :param driver:
-        :param opt: 1£ºÉÌÆ·ÃÅµê:2£ºÉÌÆ·ÀàĞÍ£¬3£º²úÆ·°æ±¾£¬4£º²úÆ·ÀàĞÍ
+        :param opt: 1ï¼šå•†å“é—¨åº—:2ï¼šå•†å“ç±»å‹ï¼Œ3ï¼šäº§å“ç‰ˆæœ¬ï¼Œ4ï¼šäº§å“ç±»å‹
         :return:
         """
-        els = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_right"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv_choose_right")
         return els[opt]
 
     def el_NewOrder1_MoneyTotle(self, driver, opt):
         """
-        ÉÌÆ·×Ü¶î£¬Ê×¸¶×Ü¶î
+        å•†å“æ€»é¢ï¼Œé¦–ä»˜æ€»é¢
         :param driver:
-        :param opt: 1:ÉÌÆ·×Ü¶î£¬2:Ê×¸¶×Ü¶î
+        :param opt: 1:å•†å“æ€»é¢ï¼Œ2:é¦–ä»˜æ€»é¢
         :return:
         """
-        els = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_edit_view"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "et_edit_view")
         return els[opt]
 
     def el_NewOrder1_LoanSum(self, driver):
         """
-        ´û¿î½ğ¶î
+        è´·æ¬¾é‡‘é¢
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_loan_sum"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_loan_sum")
         return el
 
     def el_NewOrder_submit_1(self, driver):
         """
-        °´Å¥£ºÏÂÒ»²½
+        æŒ‰é’®ï¼šä¸‹ä¸€æ­¥
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_newbuild_next"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_newbuild_next")
         return el
 
-    #ÒÔÏÂÎªµ¯´°ÔªËØ£¬PS£¬µ¯´°µÄÉè¼Æ¿ò¼ÜÒ»ÖÂ£¬Á¬id¶¼Ò»ÖÂ£¬ËùÒÔ£¬µ¯´°²¿·Ö£¬Á½¸öº¯Êı¼´¿É¸ã¶¨
+    #ä»¥ä¸‹ä¸ºå¼¹çª—å…ƒç´ ï¼ŒPSï¼Œå¼¹çª—çš„è®¾è®¡æ¡†æ¶ä¸€è‡´ï¼Œè¿idéƒ½ä¸€è‡´ï¼Œæ‰€ä»¥ï¼Œå¼¹çª—éƒ¨åˆ†ï¼Œä¸¤ä¸ªå‡½æ•°å³å¯æå®š
 
     def el_NewOrder_Common_PopUp_Title(self, driver):
         """
-        µ¯´°title
+        å¼¹çª—title
         :param driver:
 
         :return:
         """
-        #els = driver.find_elements_by_id("iv_right")
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_title"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_choose_title")
         return el
 
     def el_NewOrder_Common_PopUp_List(self, driver, strName):
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "test1"))
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "test1")
         for n in els:
             if n.text().strip() == strName.strip():
                 return n
             else:
-                print("Ã»ÓĞÕÒµ½¶ÔÓ¦ÔªËØ£¬Çë¼ì²éÊäÈëÄÚÈİÊÇ·ñÓĞÎó")
+                print("æ²¡æœ‰æ‰¾åˆ°å¯¹åº”å…ƒç´ ï¼Œè¯·æ£€æŸ¥è¾“å…¥å†…å®¹æ˜¯å¦æœ‰è¯¯")
                 break
 
 

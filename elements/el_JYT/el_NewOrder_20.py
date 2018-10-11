@@ -1,4 +1,4 @@
-# coding = utf-8  
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -6,26 +6,26 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_20.py
 @time: 2018/9/29 17:20
-@desc: Ìá½»¶©µ¥³É¹¦Ò³
+@desc: æäº¤è®¢å•æˆåŠŸé¡µ
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_20():
 
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
-        self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.timeOut = 10
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder20_Success_Title(self, driver):
-        """³É¹¦Ò³Title"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "top_tab_center_title"))
+        """æˆåŠŸé¡µTitle"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "top_tab_center_title")
         return el
 
     def el_NewOrder20_Success_JumpTo_Order(self, driver):
-        """²é¿´¶©µ¥"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_finish"))
+        """æŸ¥çœ‹è®¢å•"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_finish")
         return el

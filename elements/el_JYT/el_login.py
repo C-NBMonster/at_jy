@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,82 +6,85 @@
 @software: JYB_Android_AT
 @file: el_login.py
 @time: 2018/9/11 17:35
-@desc: µÇÂ¼Ä£¿éÔªËØ¿â
+@desc: ç™»å½•æ¨¡å—å…ƒç´ åº“ åŒ…å«æ¬¢è¿é¡µçš„å…ƒç´ 
 """
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 from common.rewrite import C_selenium_rewrite
 class C_el_login():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
-        self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.timeOut = 10
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_Login_uName(self, driver):
         """
-        ÓÃ»§Ãû
+        ç”¨æˆ·å
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, 1, self.el_error_prompt, (By.ID, "et_account"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_account")
         return el
 
     def el_login_pwd(self, driver):
         """
-        ÓÃ»§ÃÜÂë
+        ç”¨æˆ·å¯†ç 
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, 1, self.el_error_prompt, (By.ID, "et_pwd"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_pwd")
         return el
 
     def el_login_submit(self, driver):
         """
-        Ìá½»
+        æäº¤
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, 1, self.el_error_prompt, (By.ID, "tv_login"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_login")
         return el
 
-    # µÇÂ¼Ö®ºóµÄÈı¸öµ¯´°
+    # ç™»å½•ä¹‹åçš„ä¸‰ä¸ªå¼¹çª—
     def el_main_PopUp_1_OK(self, driver):
         """
-        µÚÒ»¸öµ¯´°£¬OK°´Å¥
+        ç¬¬ä¸€ä¸ªå¼¹çª—ï¼ŒOKæŒ‰é’®
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, 1, self.el_error_prompt, (By.ID, "tv_ok"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_ok")
         return el
 
     def el_main_PopUp_2_SetPWD(self, driver):
         """
-        µÚ¶ş¸öµ¯´°£¬ÉèÖÃÊÖÊÆÃÜÂë °´Å¥
+        ç¬¬äºŒä¸ªå¼¹çª—ï¼Œè®¾ç½®æ‰‹åŠ¿å¯†ç  æŒ‰é’®
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, 1, self.el_error_prompt, (By.ID, "tv_set"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_set")
         return el
 
     def el_main_PopUp_2_NotSetPWD(self, driver):
         """
-        µÚ¶ş¸öµ¯´°£¬²»ÉèÖÃÊÖÊÆÃÜÂë °´Å¥
+        ç¬¬äºŒä¸ªå¼¹çª—ï¼Œä¸è®¾ç½®æ‰‹åŠ¿å¯†ç  æŒ‰é’®
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, 1, self.el_error_prompt, (By.ID, "tv_not_set"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_not_set")
         return el
 
     def el_main_PopUp_3_OK(self, driver):
         """
-        µÚÈı¸öµ¯´°£¬OK °´Å¥
+        ç¬¬ä¸‰ä¸ªå¼¹çª—ï¼ŒOK æŒ‰é’®
         :param driver:
         :return:
         """
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, 1, self.el_error_prompt, (By.ID, "tv_right"))
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_right")
         return el
 
 
-
+    #æ¬¢è¿é¡µ
+    def el_Welcome_EnterLogin(self, driver):
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_into")
+        return el
 
 
 

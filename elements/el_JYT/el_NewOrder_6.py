@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,11 +6,11 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_6.py
 @time: 2018/9/17 9:43
-@desc:¶ÌĞÅÕ÷ĞÅÊÚÈ¨
+@desc:çŸ­ä¿¡å¾ä¿¡æˆæƒ
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_6():
@@ -17,29 +18,29 @@ class C_el_NewOrder_6():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder6_Phone(self, driver):
-        """ÊÖ»úºÅ"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_phonenumber"))
+        """æ‰‹æœºå·"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_phonenumber")
         return el
 
     def el_NewOrder6_Time(self, driver):
-        """µã»÷ºó£¬ÏÔÊ¾µ¹¼ÆÊ±"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_code"))
+        """ç‚¹å‡»åï¼Œæ˜¾ç¤ºå€’è®¡æ—¶"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_code")
         return el
 
     def el_NewOrder6_ETCode(self, driver):
-        """ÑéÖ¤ÂëÊäÈë¿ò"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_identifying_code"))
+        """éªŒè¯ç è¾“å…¥æ¡†"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_identifying_code")
         return el
 
     def el_NewOrder6_Protocal(self, driver):
-        """Õ÷ĞÅÊÚÈ¨Ğ­Òé"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_protocol"))
+        """å¾ä¿¡æˆæƒåè®®"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_protocol")
         return el
 
     def el_NewOrder6_Submit(self, driver):
-        """ÊÚÈ¨ÑéÖ¤"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_authorize"))
+        """æˆæƒéªŒè¯"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_authorize")
         return el

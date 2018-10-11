@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,11 +6,11 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_5.py
 @time: 2018/9/14 17:52
-@desc: ĞÂ½¨¶©µ¥µÚÎå²½£¬Ìí¼ÓµêÔ±ºÏÕÕ
+@desc: æ–°å»ºè®¢å•ç¬¬äº”æ­¥ï¼Œæ·»åŠ åº—å‘˜åˆç…§
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_5():
@@ -17,34 +18,34 @@ class C_el_NewOrder_5():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder5_GroupPhoto_click(self, driver):
-        """µã»÷£¬´ò¿ªÏà»ú"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.XPATH, "//*[@class='android.widget.ImageView']"))
+        """ç‚¹å‡»ï¼Œæ‰“å¼€ç›¸æœº"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.XPATH, "//*[@class='android.widget.ImageView']")
         return el
 
     def el_NewOrder5_Submit(self, driver):
-        """µã»÷£¬´ò¿ªÏà»ú"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "tv_next"))
+        """ç‚¹å‡»ï¼Œæ‰“å¼€ç›¸æœº"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_next")
         return el
 
     def el_NewOrder5_Camera_Cancel(self, driver):
-        """È¡Ïû"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "btn_cancel"))
+        """å–æ¶ˆ"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "btn_cancel")
         return el
 
     def el_NewOrder5_Camera_Done(self, driver):
-        """×îÖÕÑ¡Ôñ"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "btn_done"))
+        """æœ€ç»ˆé€‰æ‹©"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "btn_done")
         return el
 
     def el_NewOrder5_Camera_Shot(self, driver):
-        """ÅÄÕÕ"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "shutter_button"))
+        """æ‹ç…§"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "shutter_button")
         return el
 
     def el_NewOrder5_Camera_Reshot(self, driver):
-        """×îÖÕÑ¡Ôñ"""
-        el  = self.C_sel_Rewrite.find_el(driver,self.timeOut,(By.ID, "btn_retake"))
+        """æœ€ç»ˆé€‰æ‹©"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "btn_retake")
         return el

@@ -41,7 +41,8 @@ from selenium.webdriver.common.touch_actions import TouchActions
 class C_B_NewOrder(unittest.TestCase):
 
     def setUp(self):
-        self.Cel_NewOrder_1 = C_el_NewOrder_1()  #实例化
+        # 实例化
+        self.Cel_NewOrder_1 = C_el_NewOrder_1()
         self.Cel_NewOrder_2 = C_el_NewOrder_2()
         self.Cel_NewOrder_3 = C_el_NewOrder_3()
         self.Cel_NewOrder_4 = C_el_NewOrder_4()

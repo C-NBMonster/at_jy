@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,11 +6,11 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_4.py
 @time: 2018/9/14 10:29
-@desc: Ìí¼Ó¿Í»§ĞÅÏ¢£ºÉÏ´«Éí·İÖ¤£¬¾Ó×¡µØÖ·
+@desc: æ·»åŠ å®¢æˆ·ä¿¡æ¯ï¼šä¸Šä¼ èº«ä»½è¯ï¼Œå±…ä½åœ°å€
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_4():
@@ -17,81 +18,81 @@ class C_el_NewOrder_4():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder4_IDCard_Front(self, driver):
-        """Éí·İÖ¤ÕıÃæ"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "iv_loading_front"))
+        """èº«ä»½è¯æ­£é¢"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "iv_loading_front")
         return el
 
     def el_NewOrder4_IDCard_Back(self, driver):
-        """Éí·İÖ¤±³Ãæ"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "iv_loading_back"))
+        """èº«ä»½è¯èƒŒé¢"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "iv_loading_back")
         return el
 
     def el_NewOrder4_Phone(self, driver):
-        """ÊÖ»úºÅÂë"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "et_edit_view"))
+        """æ‰‹æœºå·ç """
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_edit_view")
         return el
 
     def el_NewOrder4_Submit(self, driver):
-        """Ìá½»¶©µ¥"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "tv_order"))
+        """æäº¤è®¢å•"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_order")
         return el
 
     def el_NewOrder4_Camera_Shot(self, driver):
-        """ÅÄÕÕ"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "imbtn_takepic"))
+        """æ‹ç…§"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "imbtn_takepic")
         return el
 
     def el_NewOrder4_Camera_ReShot(self, driver):
-        """ÖØÅÄ,0,ÖØÅÄÕıÃæ 1,ÖØÅÄ±³Ãæ PS:Õı·´Ãæ¶¼³öÏÖÕâ¸öÔªËØÊ±ĞèÒªÏÂ±ê¡£·ñÔò²»ĞèÒª"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, (By.ID, "tv_remark_back"))
+        """é‡æ‹,0,é‡æ‹æ­£é¢ 1,é‡æ‹èƒŒé¢ PS:æ­£åé¢éƒ½å‡ºç°è¿™ä¸ªå…ƒç´ æ—¶éœ€è¦ä¸‹æ ‡ã€‚å¦åˆ™ä¸éœ€è¦"""
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv_remark_back")
         return els
 
     def el_NewOrder4_Camera_Cancel(self, driver):
-        """È¡Ïû£¬·µ»Ø"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "imbtn_camera_back"))
+        """å–æ¶ˆï¼Œè¿”å›"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "imbtn_camera_back")
         return el
 
     def el_NewOrder4_ID_Name(self, driver):
-        """ĞÕÃû"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "tv_name_front"))
+        """å§“å"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_name_front")
         return el
 
     def el_NewOrder4_ID_No(self, driver):
-        """Éí·İÖ¤ºÅÂë"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "et_idcard_front"))
+        """èº«ä»½è¯å·ç """
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_idcard_front")
         return el
 
     def el_NewOrder4_ID_Address(self, driver):
-        """ËùÔÚÊ¡ÊĞÇø"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "et_address_front"))
+        """æ‰€åœ¨çœå¸‚åŒº"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "et_address_front")
         return el
 
     def el_NewOrder4_Address_Click(self, driver):
-        """µ¯³öÑ¡ÔñÊ¡ÊĞÇøµ¯´°"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "tv_choose_address"))
+        """å¼¹å‡ºé€‰æ‹©çœå¸‚åŒºå¼¹çª—"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_choose_address")
         return el
 
     def el_NewOrder4_Choose_Address(self, driver):
-        """Ñ¡ÔñÊ¡ÊĞÇø"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, (By.ID, "tv_address"))
+        """é€‰æ‹©çœå¸‚åŒº"""
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv_address")
         return els
 
     def el_NewOrder4_Dialog_Close(self, driver):
-        """¹Ø±ÕµØÖ·¶Ô»°¿ò"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, (By.ID, "iv_dialog_close"))
+        """å…³é—­åœ°å€å¯¹è¯æ¡†"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "iv_dialog_close")
         return els
 
     def el_NewOrder4_ID_DateStart(self, driver):
-        """Éí·İÖ¤ÓĞĞ§¿ªÊ¼ÈÕÆÚ"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "rl_date_start"))
+        """èº«ä»½è¯æœ‰æ•ˆå¼€å§‹æ—¥æœŸ"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "rl_date_start")
         return el
 
     def el_NewOrder4_ID_DateEnd(self, driver):
-        """Éí·İÖ¤ÓĞĞ§½áÊøÈÕÆÚ"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, (By.ID, "rl_date_end"))
+        """èº«ä»½è¯æœ‰æ•ˆç»“æŸæ—¥æœŸ"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "rl_date_end")
         return el
 
 

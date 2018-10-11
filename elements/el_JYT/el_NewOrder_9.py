@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 @author: mirrorChen
 @license: (C) Copyright 2011-2018, mirror personal Limited.
@@ -5,11 +6,11 @@
 @software: JYB_Android_AT
 @file: el_NewOrder_9.py
 @time: 2018/9/17 11:14
-@desc: ÌîĞ´µ¥Î»ĞÅÏ¢
+@desc: å¡«å†™å•ä½ä¿¡æ¯
 """
 
 from common.rewrite import C_selenium_rewrite
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.mobileby import MobileBy
 
 
 class C_el_NewOrder_9():
@@ -17,76 +18,76 @@ class C_el_NewOrder_9():
     def __init__(self):
         self.C_sel_Rewrite = C_selenium_rewrite()
         self.timeOut = 30
-        self.el_error_prompt = "ÕÒ²»µ½Ò³ÃæÔªËØ£¬Çë¼ì²éÔªËØÊÇ·ñÒÑ±»¼ÓÔØ£¬»òÊÇ·ñ¿É¼û"
+        self.el_error_prompt = "æ‰¾ä¸åˆ°é¡µé¢å…ƒç´ ï¼Œè¯·æ£€æŸ¥å…ƒç´ æ˜¯å¦å·²è¢«åŠ è½½ï¼Œæˆ–æ˜¯å¦å¯è§"
 
     def el_NewOrder9_syncAddress(self, driver):
-        """Í¬²½ÏÖ¾Ó×¡µØÖ·"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "toggleSwitch"))
+        """åŒæ­¥ç°å±…ä½åœ°å€"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "toggleSwitch")
         return el
 
     def el_NewOrder9_Common_Click(self, driver):
-        """¹«¹²£ºµã»÷µ¯³öµ¯´°"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_right"))
+        """å…¬å…±ï¼šç‚¹å‡»å¼¹å‡ºå¼¹çª—"""
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv_choose_right")
         return els
 
     def el_NewOrder9_Common_Input(self, driver):
-        """¹«¹²£ºÊäÈë¿ò"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "et_edit_view"))
+        """å…¬å…±ï¼šè¾“å…¥æ¡†"""
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "et_edit_view")
         return els
 
     def el_NewOrder9_Submit(self, driver):
-        """Ìá½»£¬ÏÂÒ»²½"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_next"))
+        """æäº¤ï¼Œä¸‹ä¸€æ­¥"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_next")
         return el
 
-    # µ¯´°ÔªËØ------------------------------
-    # µØÖ·µ¯´°
+    # å¼¹çª—å…ƒç´ ------------------------------
+    # åœ°å€å¼¹çª—
 
     def el_NewOrder9_Address_List(self, driver):
-        """Ñ¡ÔñÊ¡ÊĞÇø"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, (By.ID, "tv_address"))
+        """é€‰æ‹©çœå¸‚åŒº"""
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "tv_address")
         return els
 
     def el_NewOrder9_PoUp_Close(self, driver):
-        """¹Ø±Õµ¯´°"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_dialog_close"))
+        """å…³é—­å¼¹çª—"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_dialog_close")
         return el
 
-        # ½ÌÓı³Ì¶Èµ¯´°
+        # æ•™è‚²ç¨‹åº¦å¼¹çª—
 
     def el_NewOrder9_Common_Title(self, driver):
-        """ĞĞÒµÀà±ğ£¬µ¥Î»ĞÔÖÊ£¬Ö°Î»£¬¹¤×÷ÄêÏŞ ¹«¹²µ¯´°title"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_choose_title"))
+        """è¡Œä¸šç±»åˆ«ï¼Œå•ä½æ€§è´¨ï¼ŒèŒä½ï¼Œå·¥ä½œå¹´é™ å…¬å…±å¼¹çª—title"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_choose_title")
         return el
 
     def el_NewOrder9_Common_Items(self, driver):
-        """ĞĞÒµÀà±ğ£¬µ¥Î»ĞÔÖÊ£¬Ö°Î»£¬¹¤×÷ÄêÏŞ ¹«¹²µ¯´°ÁĞ±íÏî"""
-        els = self.C_sel_Rewrite.find_els(driver, self.timeOut, self.el_error_prompt, (By.ID, "text1"))
+        """è¡Œä¸šç±»åˆ«ï¼Œå•ä½æ€§è´¨ï¼ŒèŒä½ï¼Œå·¥ä½œå¹´é™ å…¬å…±å¼¹çª—åˆ—è¡¨é¡¹"""
+        els = self.C_sel_Rewrite.find_els(driver, MobileBy.ID, "text1")
         return els
 
     def el_NewOrder9_EntryTime_Title(self, driver):
-        """ÈëÖ°Ê±¼ätitle"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_title"))
+        """å…¥èŒæ—¶é—´title"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_title")
         return el
 
     def el_NewOrder9_EntryTime_Year(self, driver):
-        """ÈëÖ°Ê±¼ä:Äê"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "wl1"))
+        """å…¥èŒæ—¶é—´:å¹´"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "wl1")
         return el
 
     def el_NewOrder9_EntryTime_Month(self, driver):
-        """ÈëÖ°Ê±¼ä:ÔÂ"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "wl2"))
+        """å…¥èŒæ—¶é—´:æœˆ"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "wl2")
         return el
 
     def el_NewOrder9_EntryTime_Cancel(self, driver):
-        """È¡Ïû£¬¹Ø±Õµ¯´°"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_left"))
+        """å–æ¶ˆï¼Œå…³é—­å¼¹çª—"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_left")
         return el
 
     def el_NewOrder9_EntryTime_Confirm(self, driver):
-        """È·ÈÏ Ñ¡ÔñÊ±¼ä"""
-        el = self.C_sel_Rewrite.find_el(driver, self.timeOut, self.el_error_prompt, (By.ID, "tv_right"))
+        """ç¡®è®¤ é€‰æ‹©æ—¶é—´"""
+        el = self.C_sel_Rewrite.find_el(driver, MobileBy.ID, "tv_right")
         return el
 
 

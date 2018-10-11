@@ -2,17 +2,18 @@
 #coding=utf-8
 import sys
 
-from selenium import webdriver
+#from selenium import webdriver
+from appium import webdriver
 import unittest,sys,time,random,datetime
 from random import Random
 import HTMLTestRunner
-import time,os,datetime
+import os, datetime
 import smtplib
 from selenium.webdriver.support.ui import WebDriverWait
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
-
+import time, timeit
 
 
 class CCommon_Function():
@@ -158,3 +159,19 @@ class CCommon_Function():
             except Exception as e:
                 return False
 
+    def func_duration(self, func_name=None, clock = [time.time()]):
+        """
+        计算函数执行时间
+        :param func_name: 函数名
+        :param clock: 时间
+        :return:
+        :usage:在需要计时的函数前后执行该函数:func_duration（） func()  func_duration(func)
+        """
+
+        duration = None
+        if func_name != None:
+            duration = time.time() - clock[0]
+            #return ('%s 执行完毕，共执行： %.2f seconds.' % (func_name, duration))
+
+        clock[0] = time.time()
+        return duration
